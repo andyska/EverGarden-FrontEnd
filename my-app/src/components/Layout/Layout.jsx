@@ -11,7 +11,7 @@ import iconFacebook from "../../images/facebook.png"
 import iconInstagram from "../../images/instagram.png"
 import iconMail from "../../images/mail.png"
 import iconMap from "../../images/ubicacion.png"
-import iconPlanta from '../../images/planta.png'
+import logoPlanta from '../../images/logo.png'
 import {
   HomeOutlined,
   IdcardOutlined,
@@ -89,14 +89,12 @@ const MyLayout = () => {
               <div className="container-body">
                
               <div class="column1">
-                
-                <h4>EVER GARDEN</h4>
+                <img src={logoPlanta}/>
                 <p>
-                  <img src={iconPlanta}/>
-                   Sistema Modulares 
+                  Sistema Modulares 
                 </p>
                 <p>
-                de Jardineria Vertical
+                  de Jardineria Vertical
                 </p>
               </div>
                 <div className="column2">
