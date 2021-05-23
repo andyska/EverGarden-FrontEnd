@@ -21,13 +21,13 @@
 .ant-layout-sider {
   color: #fff;
   line-height: 20px;
-  background: black;
+  background: rgb(8, 214, 8);
 }
 
 .ant-layout-sider .menu {
   
   line-height: 120px;
-  background: black;
+  background: rgb(8, 214, 8);
 }
 
 [data-theme="dark"] .ant-layout-sider {
@@ -54,7 +54,7 @@
   color: #fff;
   line-height: 48px;
   text-align: center;
-  background:yellow;
+  background:orange;
   cursor: pointer;
   transition: all 0.2s;
 }
@@ -73,7 +73,7 @@
 }
 
 .ant-menu-dark.ant-menu-dark:not(.ant-menu-horizontal) .ant-menu-item-selected {
-  background-color: black;
+  background-color: rgb(8, 214, 8);
 }
 
 .ant-menu-dark .ant-menu-item-selected > a, .ant-menu-dark .ant-menu-item-selected > span > a, .ant-menu-dark .ant-menu-item-selected > a:hover, .ant-menu-dark .ant-menu-item-selected > span > a:hover {
@@ -83,7 +83,7 @@
 
 .ant-menu.ant-menu-dark, .ant-menu-dark .ant-menu-sub, .ant-menu.ant-menu-dark .ant-menu-sub {
   /* color: rgba(255, 255, 255, 0.65); */
-  background: black;
+  background: rgb(8, 214, 8);
 }
 
 
@@ -143,8 +143,8 @@ footer {
 }
 
 .column1 img{
-  width: 36px;
-  height: 36px;
+  width: 170px;
+  height: 30px;
 }
 
 .column1 p{
@@ -162,7 +162,7 @@ footer {
 }
 
 .column2 .row{
-  margin-top: 25px;
+  margin-top: 5px;
   display: flex;
 }
 
@@ -186,7 +186,7 @@ footer {
 }
 
 .row2{
-  margin-top: 20px;
+  margin-top: 5px;
   display: flex;
 }
 
@@ -203,7 +203,7 @@ footer {
 }
 
 .container-footer{
-  background: #101010;
+  background: rgb(8, 214, 8);
   margin: auto;
   width: 100%;
 }
@@ -218,7 +218,7 @@ footer {
 }
 
 .copyright {
-  color: #c7c7c7;
+  color:white;
 }
 
 .copyright a {
@@ -229,7 +229,7 @@ footer {
 
 .information a {
   text-decoration: none;
-  color: #c7c7c7;
+  color: white;
 }
 
 .ant-layout-footer {
