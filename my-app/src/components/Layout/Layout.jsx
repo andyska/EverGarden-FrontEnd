@@ -3,7 +3,7 @@ import { Layout, Menu } from 'antd'
 import './Layout.css'
 import  {NavLink,  Routes, Route} from 'react-router-dom'
 //import { Divider } from 'antd'
-//import Books from '../Books'
+import AboutUs from '../Pages/AboutUs'
 //import Users from '../Users'
 import imgHeader from '../../images/header_a.jpg'
 import iconFacebook from "../../images/facebook.png"
@@ -47,13 +47,13 @@ const MyLayout = () => {
             </Menu.Item>
 
             <Menu.Item className="item" key="2" icon={<TeamOutlined />}>
-              <NavLink to="/">
+              <NavLink to="/aboutus">
                 Nosotros
               </NavLink>
             </Menu.Item>
 
             <Menu.Item className="item" key="3" icon={<PictureOutlined />}>
-              <NavLink to="/Galery">
+              <NavLink to="/galery">
                 Galeria
               </NavLink>
             </Menu.Item>
@@ -87,6 +87,7 @@ const MyLayout = () => {
           <Content>
             <div >
               <Routes> 
+                <Route path="/aboutus" element= {<AboutUs/>} />
                 <Route path="/galery" element= {<MyCarousel/>} />
                 <Route path="/admin" element= {<MyLogin/>} />
               </Routes>
