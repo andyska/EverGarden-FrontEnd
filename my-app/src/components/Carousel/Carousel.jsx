@@ -5,6 +5,7 @@ import gardenImages from './GardenImages'
 //import armadoImages from './ArmadoImages'
 import './Carousel.css'
 import RadioGalery from '../Radio/Radio'
+import MyDropDown from '../DropDown/DropDown'
 
 function onChange(a, b, c) {
   // console.log('carousel onchange=>',a, b, c);
@@ -32,10 +33,11 @@ const MyCarousel = () => {
       
   return (
   <div>
-    <RadioGalery galeryImages={galeryImages} setGaleryImages={setGaleryImages} />
+    <MyDropDown  galeryImages={galeryImages} setGaleryImages={setGaleryImages} />
     <Carousel afterChange={onChange} 
       effect="fade" //esto hace que pase como apagandose...
       autoplay 
+      dotPosition="bottom"
       //arrows nextArrow={<RightCircleTwoTone  twoToneColor="#666600" />} 
       //prevArrow={<LeftCircleTwoTone twoToneColor="#666600" />}
       >
