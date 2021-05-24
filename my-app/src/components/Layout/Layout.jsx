@@ -1,10 +1,9 @@
 import React, { useState } from 'react'
 import { Layout, Menu } from 'antd'
 import './Layout.css'
-import {Routes, Route} from 'react-router-dom'
+import {Route} from 'react-router-dom'
 import {NavLink } from 'react-router-dom'
-import { Divider } from 'antd'
-//import Books from '../Books'
+import IndexPage from '../Pages/index'
 //import Users from '../Users'
 import imgHeader from '../../images/header_a.jpg'
 import iconFacebook from "../../images/facebook.png"
@@ -40,9 +39,6 @@ const MyLayout = () => {
         <Sider className="sider" collapsible collapsed={collapsed} onCollapse={handleOnCollapsed}>
         <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
 
-          <Menu.Item className="item" key="1" >
-              
-            </Menu.Item>
           <Menu.Item className="item" key="1" icon={<HomeOutlined />}>
               <NavLink to="/">
                 Inicio
@@ -81,9 +77,19 @@ const MyLayout = () => {
               <img className="img" src={imgHeader} alt=""/>
             </div>
           </Header>
-          <Content>Content
 
+          <Content style={{ margin: '0 16px' }}>
+            <div className="site-layout-background" style={{ padding: 24, minHeight: 360 }}>
+            
+              <Route path="/" element={<IndexPage/>}/>
+                {/*<Route path="/aboutUs" element={</>}/>
+                <Route path="/gallery" element={</>}/>
+                <Route path="/products" element={</>}/>
+                <Route path="/contact" element={</>}/>*/}
+            
+            </div>
           </Content>
+
           <Footer>
             <div className="container-all">
               <div className="container-body">
