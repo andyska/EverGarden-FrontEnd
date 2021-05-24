@@ -19,9 +19,9 @@ import {
   ShopOutlined,
 } from '@ant-design/icons'
 import MyCarousel from '../Carousel/Carousel'
+import MyLogin from '../Login/Login'
 
 const { Header, Content, Footer, Sider } = Layout;
-
 
 const MyLayout = () => {
   const [collapsed, setCollapsed] = useState(false)
@@ -40,36 +40,39 @@ const MyLayout = () => {
         <Sider className="sider" collapsible collapsed={collapsed} onCollapse={handleOnCollapsed}>
         <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
 
-          <Menu.Item className="item" key="1" >
-              
-            </Menu.Item>
-          <Menu.Item className="item" key="2" icon={<HomeOutlined />}>
+          <Menu.Item className="item" key="1" icon={<HomeOutlined />}>
               <NavLink to="/">
                 Inicio
               </NavLink>
             </Menu.Item>
 
-            <Menu.Item className="item" key="3" icon={<TeamOutlined />}>
+            <Menu.Item className="item" key="2" icon={<TeamOutlined />}>
               <NavLink to="/">
                 Nosotros
               </NavLink>
             </Menu.Item>
 
-            <Menu.Item className="item" key="4" icon={<PictureOutlined />}>
+            <Menu.Item className="item" key="3" icon={<PictureOutlined />}>
               <NavLink to="/Galery">
                 Galeria
               </NavLink>
             </Menu.Item>
 
-            <Menu.Item className="item" key="5" icon={<ShopOutlined />}>
+            <Menu.Item className="item" key="4" icon={<ShopOutlined />}>
               <NavLink to="/">
                 Producto
               </NavLink>
             </Menu.Item>
 
-            <Menu.Item className="item" key="6" icon={<IdcardOutlined />}>
+            <Menu.Item className="item" key="5" icon={<IdcardOutlined />}>
               <NavLink to="/">
                 Contacto
+              </NavLink>
+            </Menu.Item>  
+
+            <Menu.Item className="item" key="6" icon={<IdcardOutlined />}>
+              <NavLink to="/admin">
+                Login
               </NavLink>
             </Menu.Item>  
             </Menu>
@@ -85,6 +88,7 @@ const MyLayout = () => {
             <div >
               <Routes> 
                 <Route path="/galery" element= {<MyCarousel/>} />
+                <Route path="/admin" element= {<MyLogin/>} />
               </Routes>
             </div>
           </Content>
