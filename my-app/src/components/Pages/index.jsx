@@ -1,24 +1,31 @@
 import React, { useState } from 'react'
-import imgContent from '../../images/header_a.jpg'
+import imgContent from '../../images/fondo.png'
+import imgIndex from '../../images/fotoinicial.jpg'
+import './Index.css'
 
+const containerStyle = {
+  backgroundImage: "url(" + imgContent + ")",
+  backgroundPosition: 'center',
+  backgroundSize: '100%',
+  backgroundRepeat: 'no-repeat'
+};
 
 const IndexPage = () => {
-  
 
   return (
-      <div className="container-fluid contenido">
-        <div className="fila-1 row">
-          
-          <div className="col-1 col-sm-6">
-            <div className="col-container">
-              <h1>¡Hola!
-                <br/>
-                <strong>Soy Estefanía Beltrami</strong>
-                <img src={imgContent} alt="" />
-              </h1>
-            </div>
+      <div className="container" style={containerStyle}>
+        <div className="col">
+          <div className="col2"/>
+          <div className="col2">
+            <p>"planta tu sueños y crecerán días felices"</p>
+            <p>"Ever Garden"</p>
           </div>
+        
         </div>
+        <div className="col">
+          <img src={imgIndex} alt="" />
+        </div>
+        
       </div>
   );
   }

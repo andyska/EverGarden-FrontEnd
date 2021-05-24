@@ -1,9 +1,9 @@
-import React, { useState } from 'react'
+import React, { useState  } from 'react'
 import { Layout, Menu } from 'antd'
 import './Layout.css'
-import {Route} from 'react-router-dom'
-import {NavLink } from 'react-router-dom'
-import IndexPage from '../Pages/index'
+import  {NavLink,  Routes, Route} from 'react-router-dom'
+//import { Divider } from 'antd'
+//import Books from '../Books'
 //import Users from '../Users'
 import imgHeader from '../../images/header_a.jpg'
 import iconFacebook from "../../images/facebook.png"
@@ -17,7 +17,9 @@ import {
   PictureOutlined,
   TeamOutlined,
   ShopOutlined,
-} from '@ant-design/icons';
+} from '@ant-design/icons'
+import MyCarousel from '../Carousel/Carousel'
+import IndexPage from '../Pages/index'
 
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -39,31 +41,34 @@ const MyLayout = () => {
         <Sider className="sider" collapsible collapsed={collapsed} onCollapse={handleOnCollapsed}>
         <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
 
-          <Menu.Item className="item" key="1" icon={<HomeOutlined />}>
+          <Menu.Item className="item" key="1" >
+              
+            </Menu.Item>
+          <Menu.Item className="item" key="2" icon={<HomeOutlined />}>
               <NavLink to="/">
                 Inicio
               </NavLink>
             </Menu.Item>
 
-            <Menu.Item className="item" key="1" icon={<TeamOutlined />}>
+            <Menu.Item className="item" key="3" icon={<TeamOutlined />}>
               <NavLink to="/">
                 Nosotros
               </NavLink>
             </Menu.Item>
 
-            <Menu.Item className="item" key="1" icon={<PictureOutlined />}>
-              <NavLink to="/">
+            <Menu.Item className="item" key="4" icon={<PictureOutlined />}>
+              <NavLink to="/galery">
                 Galeria
               </NavLink>
             </Menu.Item>
 
-            <Menu.Item className="item" key="1" icon={<ShopOutlined />}>
+            <Menu.Item className="item" key="5" icon={<ShopOutlined />}>
               <NavLink to="/">
                 Producto
               </NavLink>
             </Menu.Item>
 
-            <Menu.Item className="item" key="1" icon={<IdcardOutlined />}>
+            <Menu.Item className="item" key="6" icon={<IdcardOutlined />}>
               <NavLink to="/">
                 Contacto
               </NavLink>
@@ -77,17 +82,11 @@ const MyLayout = () => {
               <img className="img" src={imgHeader} alt=""/>
             </div>
           </Header>
-
-          <Content style={{ margin: '0 16px' }}>
-            <div className="site-layout-background" style={{ padding: 24, minHeight: 360 }}>
-            
-              <Route path="/" element={<IndexPage/>}/>
-                {/*<Route path="/aboutUs" element={</>}/>
-                <Route path="/gallery" element={</>}/>
-                <Route path="/products" element={</>}/>
-                <Route path="/contact" element={</>}/>*/}
-            
-            </div>
+          <Content>
+              <Routes>
+                <Route path="/" element= {<IndexPage/>} />
+                <Route path="/galery" element= {<MyCarousel/>} />
+              </Routes>
           </Content>
 
           <Footer>
