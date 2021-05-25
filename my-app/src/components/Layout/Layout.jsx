@@ -20,17 +20,25 @@ import {
 } from '@ant-design/icons'
 import MyCarousel from '../Carousel/Carousel'
 import IndexPage from '../Pages/index'
+import ContactModal from '../Modal/ContactModal'
 
 const { Header, Content, Footer, Sider } = Layout;
 
 
 const MyLayout = () => {
   const [collapsed, setCollapsed] = useState(false)
+  const [isModalVisible, setIsModalVisible] = useState(true);
 
   const handleOnCollapsed = (collapsed) => {
     console.log(collapsed);
     setCollapsed(collapsed);
   };
+
+
+  const HandleOnClick =() => {
+    setIsModalVisible(true)
+    console.log('visible:', isModalVisible)
+  }
 
 
   return (
@@ -51,7 +59,7 @@ const MyLayout = () => {
             </Menu.Item>
 
             <Menu.Item className="item" key="3" icon={<TeamOutlined />}>
-              <NavLink to="/">
+              <NavLink to="/aboutus">
                 Nosotros
               </NavLink>
             </Menu.Item>
@@ -63,13 +71,13 @@ const MyLayout = () => {
             </Menu.Item>
 
             <Menu.Item className="item" key="5" icon={<ShopOutlined />}>
-              <NavLink to="/">
+              <NavLink to="/products">
                 Producto
               </NavLink>
             </Menu.Item>
 
             <Menu.Item className="item" key="6" icon={<IdcardOutlined />}>
-              <NavLink to="/">
+              <NavLink to="/contact" onClick={() => HandleOnClick()} >
                 Contacto
               </NavLink>
             </Menu.Item>  
@@ -86,6 +94,7 @@ const MyLayout = () => {
               <Routes>
                 <Route path="/" element= {<IndexPage/>} />
                 <Route path="/galery" element= {<MyCarousel/>} />
+                <Route path="/contact" element= {<ContactModal/>} />
               </Routes>
           </Content>
 

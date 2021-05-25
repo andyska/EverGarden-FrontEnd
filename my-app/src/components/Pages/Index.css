@@ -19,8 +19,7 @@
 	text-align: center;
 }
 
-p{
-  
+.p-frase{
   display: block;
     margin-block-start: 1em;
     margin-block-end: 1em;
@@ -35,9 +34,10 @@ p{
 
 .col2{
   height: 50%;
+  width: 100%;
 }
 
-img{
+.img-index{
   width: 380px;
   height: 380px;
   border-radius:200px;
