@@ -19,3 +19,14 @@
     border-bottom: 1px solid #f0f0f0;
     border-radius: 2px 2px 0 0;
 }
+.ant-card-bordered .ant-card-cover {
+    margin-top: -1px;
+    margin-right: auto;
+    margin-left: auto;
+    display: flex;
+    justify-content: space-around;
+}
+
+.ant-card-cover img {
+    border-radius: 15px;
+}

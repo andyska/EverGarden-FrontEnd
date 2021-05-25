@@ -2,9 +2,8 @@ import React, { useState  } from 'react'
 import { Layout, Menu } from 'antd'
 import './Layout.css'
 import  {NavLink,  Routes, Route} from 'react-router-dom'
-//import { Divider } from 'antd'
-import aboutUs from '../Pages/aboutUs'
-//import Users from '../Users'
+import AboutUs from '../Pages/AboutUs'
+import ContactModal from '../Modal/ContactModal'
 import imgHeader from '../../images/header_a.jpg'
 import iconFacebook from "../../images/facebook.png"
 import iconInstagram from "../../images/instagram.png"
@@ -19,18 +18,25 @@ import {
   ShopOutlined,
 } from '@ant-design/icons'
 import MyCarousel from '../Carousel/Carousel'
-import IndexPage from '../Pages/index'
+import IndexPage from '../Pages/Index'
 import MyLogin from '../Login/Login'
 
 const { Header, Content, Footer, Sider } = Layout;
 
 const MyLayout = () => {
   const [collapsed, setCollapsed] = useState(false)
+  const [isModalVisible, setIsModalVisible] = useState(true);
 
   const handleOnCollapsed = (collapsed) => {
     console.log(collapsed);
     setCollapsed(collapsed);
   };
+
+
+  const HandleOnClick =() => {
+    setIsModalVisible(true)
+    console.log('visible:', isModalVisible)
+  }
 
 
   return (
@@ -60,13 +66,13 @@ const MyLayout = () => {
             </Menu.Item>
 
             <Menu.Item className="item" key="4" icon={<ShopOutlined />}>
-              <NavLink to="/">
+              <NavLink to="/producto">
                 Producto
               </NavLink>
             </Menu.Item>
 
             <Menu.Item className="item" key="5" icon={<IdcardOutlined />}>
-              <NavLink to="/">
+              <NavLink to="/contact" onClick={() => HandleOnClick()} >
                 Contacto
               </NavLink>
             </Menu.Item>  
@@ -88,8 +94,8 @@ const MyLayout = () => {
           <Content>
             <Routes> 
                  <Route path="/" element= {<IndexPage/>} />
-                <Route path="/aboutus" element= {<aboutUs/>} />
-
+                <Route path="/aboutus" element= {<AboutUs/>} />
+                <Route path="/contact" element= {<ContactModal/>} />
                 <Route path="/galery" element= {<MyCarousel/>} />
                 <Route path="/admin" element= {<MyLogin/>} />
               </Routes>
