@@ -19,16 +19,18 @@ const tailLayout = {
 };
 
 const MyLogin = () => {
+
+
   const onFinish = async(values) => {
     console.log('Success:', values);
-
     const userObject = 
       {
         userName: values.username,
         password: values.password
       }
-
-    const response = await axios.post('http://localhost:8080/users/login/', userObject );
+    console.log ('userObject:', userObject)
+    const response = await axios.post('http://localhost:8080/api/users/login/', userObject );
+    console.log ('repsonse:', response.data)
   };
 
   const onFinishFailed = (errorInfo) => {

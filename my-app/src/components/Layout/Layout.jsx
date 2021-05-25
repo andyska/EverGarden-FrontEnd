@@ -79,7 +79,7 @@ const MyLayout = () => {
 
             <Menu.Item className="item" key="6" icon={<IdcardOutlined />}>
               <NavLink to="/admin">
-                Login
+                Acceso
               </NavLink>
             </Menu.Item>  
             </Menu>
