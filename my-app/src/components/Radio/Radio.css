@@ -12,5 +12,18 @@
     font-size: 0;
     line-height: inherit;
     align-items: stretch;
-    align-content: flex-start;
+    align-content: center;
+    padding-left: 40px;
+}
+
+.ant-radio-input {
+    color: #666600;
+    background-color: #666600;
+    border: 4px solid #666600;
+}
+
+.ant-radio-checked {
+    color: #666600;
+    border-color: #666600;
+    border: 4px solid #666600;
 }

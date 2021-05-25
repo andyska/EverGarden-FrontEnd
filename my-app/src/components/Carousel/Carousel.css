@@ -4,7 +4,15 @@ las flechitas para pasar de una foto a otra
 .ant-carousel .slick-prev,
 .ant-carousel .slick-next {
   color: unset;
-  font-size: unset;
+  /*position: static;*/
+  /*align-content: center;*/
+  padding: 2px;
+  font-size: 25px;
+  background: transparent;
+  border: 0;
+ /* outline: none;*/
+  cursor: pointer;
+ 
 }
 
 .ant-carousel .slick-prev:hover,
@@ -30,5 +38,5 @@ las flechitas para pasar de una foto a otra
   outline: none;
   cursor: pointer;
   opacity: 1;
-  transition: all 0.5s;
+  transition: all 1s;
 }
