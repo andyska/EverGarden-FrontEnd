@@ -1,6 +1,7 @@
 import React , {useState} from 'react';
 import { Form, Input, Button, Checkbox, Space } from 'antd';
 import './Login.css'
+import axios from 'axios'
 
 const layout = {
   labelCol: {
@@ -18,8 +19,18 @@ const tailLayout = {
 };
 
 const MyLogin = () => {
-  const onFinish = (values) => {
+
+
+  const onFinish = async(values) => {
     console.log('Success:', values);
+    const userObject = 
+      {
+        userName: values.username,
+        password: values.password
+      }
+    console.log ('userObject:', userObject)
+    const response = await axios.post('http://localhost:8080/api/users/login/', userObject );
+    console.log ('repsonse:', response.data)
   };
 
   const onFinishFailed = (errorInfo) => {
@@ -38,12 +49,12 @@ const MyLogin = () => {
       onFinishFailed={onFinishFailed}
     >
       <Form.Item
-        label="Username"
+        label="Usuario"
         name="username"
         rules={[
           {
             required: true,
-            message: 'Please enter your username!',
+            message: 'Ingrese su nombre de usuario',
           },
         ]}
       >
@@ -51,12 +62,12 @@ const MyLogin = () => {
       </Form.Item>
 
       <Form.Item
-        label="Password"
+        label="Contraseña"
         name="password"
         rules={[
           {
             required: true,
-            message: 'Please enter your password!',
+            message: 'Ingrese su contraseña',
           },
         ]}
       >
@@ -64,12 +75,12 @@ const MyLogin = () => {
       </Form.Item>
 
       <Form.Item {...tailLayout} name="remember" valuePropName="checked">
-        <Checkbox>Remember me</Checkbox>
+        <Checkbox>Recordarme</Checkbox>
       </Form.Item>
 
       <Form.Item {...tailLayout}>
         <Button type="primary" htmlType="submit">
-          Submit
+          Ingresar
         </Button>
       </Form.Item>
     </Form>
