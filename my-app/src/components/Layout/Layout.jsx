@@ -19,6 +19,7 @@ import {
   ShopOutlined,
 } from '@ant-design/icons'
 import MyCarousel from '../Carousel/Carousel'
+import IndexPage from '../Pages/index'
 import MyLogin from '../Login/Login'
 
 const { Header, Content, Footer, Sider } = Layout;
@@ -85,14 +86,15 @@ const MyLayout = () => {
             </div>
           </Header>
           <Content>
-            <div >
-              <Routes> 
+            <Routes> 
+                 <Route path="/" element= {<IndexPage/>} />
                 <Route path="/aboutus" element= {<AboutUs/>} />
+
                 <Route path="/galery" element= {<MyCarousel/>} />
                 <Route path="/admin" element= {<MyLogin/>} />
               </Routes>
-            </div>
           </Content>
+
           <Footer>
             <div className="container-all">
               <div className="container-body">
