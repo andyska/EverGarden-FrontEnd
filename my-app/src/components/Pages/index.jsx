@@ -17,13 +17,13 @@ const IndexPage = () => {
         <div className="col">
           <div className="col2"/>
           <div className="col2">
-            <p>"planta tu sueños y crecerán días felices"</p>
-            <p>"Ever Garden"</p>
+            <p className="p-frase">"planta tu sueños y crecerán días felices"</p>
+            <p className="p-frase">"Ever Garden"</p>
           </div>
         
         </div>
         <div className="col">
-          <img src={imgIndex} alt="" />
+          <img className="img-index" src={imgIndex} alt="" />
         </div>
         
       </div>

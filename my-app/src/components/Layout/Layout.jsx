@@ -26,11 +26,18 @@ const { Header, Content, Footer, Sider } = Layout;
 
 const MyLayout = () => {
   const [collapsed, setCollapsed] = useState(false)
+  const [isModalVisible, setIsModalVisible] = useState(true);
 
   const handleOnCollapsed = (collapsed) => {
     console.log(collapsed);
     setCollapsed(collapsed);
   };
+
+
+  const HandleOnClick =() => {
+    setIsModalVisible(true)
+    console.log('visible:', isModalVisible)
+  }
 
 
   return (
