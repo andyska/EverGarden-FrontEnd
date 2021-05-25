@@ -2,6 +2,7 @@ import React , {useState} from 'react';
 import { Form, Input, Button, Checkbox, Space } from 'antd';
 import './Login.css'
 import axios from 'axios'
+import { Routes } from 'react-router';
 
 const layout = {
   labelCol: {
@@ -20,7 +21,6 @@ const tailLayout = {
 
 const MyLogin = () => {
 
-
   const onFinish = async(values) => {
     console.log('Success:', values);
     const userObject = 
@@ -31,6 +31,8 @@ const MyLogin = () => {
     console.log ('userObject:', userObject)
     const response = await axios.post('http://localhost:8080/api/users/login/', userObject );
     console.log ('repsonse:', response.data)
+
+    
   };
 
   const onFinishFailed = (errorInfo) => {
@@ -79,7 +81,7 @@ const MyLogin = () => {
       </Form.Item>
 
       <Form.Item {...tailLayout}>
-        <Button type="primary" htmlType="submit">
+        <Button type="primary" htmlType="submit" style={{backgroundColor: '#666600', border: 'none'}}>
           Ingresar
         </Button>
       </Form.Item>
