@@ -31,14 +31,20 @@ const LayoutAdmin = (visible) => {
 
           <Menu.ItemGroup className="itemGroup" key="g1" title="Menu" >
             <Divider style={{ borderColor: 'white' }} />
-
+            
             <Menu.Item className="item" key="1" icon={<GithubOutlined />}>
+              <NavLink to="/menuadmin">
+                Usuario
+              </NavLink>
+            </Menu.Item>
+
+            <Menu.Item className="item" key="2" icon={<GithubOutlined />}>
               <NavLink to="/users">
                 Usuario
               </NavLink>
             </Menu.Item>
 
-            <Menu.Item className="item" key="2" icon={<BookOutlined />}>
+            <Menu.Item className="item" key="3" icon={<BookOutlined />}>
               <NavLink to="/productocrud">
                 Productos
               </NavLink>
@@ -54,6 +60,7 @@ const LayoutAdmin = (visible) => {
           
           <div className="site-layout-background" style={{ padding: 24, minHeight: 360 }}>
             <Routes>
+              <Route path="/menuadmin" element={<IndexPage/>}/>
               <Route path="/users" element={<Users/>}/>
               <Route path="/productocrud" element={<ProductsCrud/>}/>
             </Routes>

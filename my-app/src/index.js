@@ -3,12 +3,14 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import {BrowserRouter} from 'react-router-dom'
+import {BrowserRouter, Route} from 'react-router-dom'
+import MenuAdmin from './components/Pages/MenuAdmin'
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <App />
+      <Route path="/MenuAdmin" element= {<MenuAdmin/>} />
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')

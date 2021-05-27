@@ -11,7 +11,7 @@ const MyCard = ({info}) =>  {
     <Card
         hoverable
         style={{ width: "fit-content(100)"  }}
-        cover={<img alt={""} src={info.info_url}/>}
+        cover={<img alt={""} src={info.info_url} style= {{ width:"auto" , height: "auto" }}/>}
         size={"default"}
         title={info.title}
     >
