@@ -10,6 +10,11 @@
     margin-left: 180px;
 }
 
-.ant-form{
-    
+.ant-input-affix-wrapper > input.ant-input{
+    width: 100%;
+}
+
+.ant-checkbox-checked .ant-checkbox-inner{
+background-color: #666600;
+border-color: #666600;
 }
