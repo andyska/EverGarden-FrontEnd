@@ -42,7 +42,7 @@ const MyLogin = () => {
   const onFinishFailed = (errorInfo) => {
     console.log('Failed:', errorInfo);
   };
-
+ /*
   const HandleOnClick =() => {
     setIsModalVisible(true)
     console.log('visible:', isModalVisible);
@@ -51,7 +51,7 @@ const MyLogin = () => {
         <LayoutAdmin/>
       </>
     );  
-  }
+  }*/
 
   return (
     
