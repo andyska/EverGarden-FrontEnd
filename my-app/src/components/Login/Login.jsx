@@ -20,7 +20,7 @@ const tailLayout = {
 };
 
 const MyLogin = () => {
-
+  
   const onFinish = async(values) => {
     console.log('Success:', values);
     const userObject = 
@@ -31,8 +31,10 @@ const MyLogin = () => {
     console.log ('userObject:', userObject)
     const response = await axios.post('http://localhost:8080/api/users/login/', userObject );
     console.log ('repsonse:', response.data)
-
-    
+     //window.location.href= '/MenuAdmin'  
+     // no estoy segura que me este redirigiendo bien porque /MenuAdmin deberia ser una pagina en blanco que renderice un Hello World 
+     // pruebo rediriegiendo a aboutus y veo que esta funcionando OK
+     window.location.href= '/AboutUs' 
   };
 
   const onFinishFailed = (errorInfo) => {
@@ -81,7 +83,7 @@ const MyLogin = () => {
       </Form.Item>
 
       <Form.Item {...tailLayout}>
-        <Button type="primary" htmlType="submit" style={{backgroundColor: '#666600', border: 'none'}}>
+        <Button type="primary" htmlType="submit" style={{backgroundColor: '#666600', border: 'none'}} >
           Ingresar
         </Button>
       </Form.Item>

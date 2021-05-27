@@ -21,6 +21,7 @@ import MyCarousel from '../Carousel/Carousel'
 import IndexPage from '../Pages/Index'
 import MyLogin from '../Login/Login'
 
+
 const { Header, Content, Footer, Sider } = Layout;
 
 const MyLayout = () => {
@@ -93,12 +94,12 @@ const MyLayout = () => {
           </Header>
           <Content>
             <Routes> 
-                 <Route path="/" element= {<IndexPage/>} />
+                <Route path="/" element= {<IndexPage/>} />
                 <Route path="/aboutus" element= {<AboutUs/>} />
                 <Route path="/contact" element= {<ContactModal/>} />
                 <Route path="/galery" element= {<MyCarousel/>} />
                 <Route path="/admin" element= {<MyLogin/>} />
-              </Routes>
+            </Routes>
           </Content>
 
           <Footer>
