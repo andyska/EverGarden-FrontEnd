@@ -1,6 +1,8 @@
-import React , {useState} from 'react';
+import React , {useState , useEffect} from 'react';
 import { Form, Input, Button, Checkbox, Space } from 'antd';
 import './Login.css'
+import LayoutAdmin from '../Layout/LayoutAdmin'
+import  {NavLink,  Routes, Route} from 'react-router-dom'
 
 const layout = {
   labelCol: {
@@ -18,6 +20,7 @@ const tailLayout = {
 };
 
 const MyLogin = () => {
+  const [isModalVisible, setIsModalVisible] = useState(false);
   const onFinish = (values) => {
     console.log('Success:', values);
   };
@@ -26,7 +29,18 @@ const MyLogin = () => {
     console.log('Failed:', errorInfo);
   };
 
+  const HandleOnClick =() => {
+    setIsModalVisible(true)
+    console.log('visible:', isModalVisible);
+    return(
+      <>
+        <LayoutAdmin/>
+      </>
+    );  
+  }
+
   return (
+    
     <Space>
         <Form
       {...layout}
@@ -68,7 +82,7 @@ const MyLogin = () => {
       </Form.Item>
 
       <Form.Item {...tailLayout}>
-        <Button type="primary" htmlType="submit">
+        <Button type="primary" htmlType="submit" onClick={() => HandleOnClick()}>
           Submit
         </Button>
       </Form.Item>

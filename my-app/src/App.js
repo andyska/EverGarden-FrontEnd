@@ -1,13 +1,13 @@
 import './App.css';
 import React from 'react'
 import 'antd/dist/antd.css'
-import MyLayout from './components/Layout/Layout';
+import LayoutAdmin from './components/Layout/LayoutAdmin';
 
 
 function App() {
   return (
     <div>
-      <MyLayout/>
+      <LayoutAdmin/>
     </div>
   );
 }
