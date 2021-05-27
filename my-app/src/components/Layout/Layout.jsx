@@ -20,7 +20,7 @@ import {
 import MyCarousel from '../Carousel/Carousel'
 import IndexPage from '../Pages/Index'
 import MyLogin from '../Login/Login'
-
+import Products from '../Pages/Products'
 
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -67,7 +67,7 @@ const MyLayout = () => {
             </Menu.Item>
 
             <Menu.Item className="item" key="4" icon={<ShopOutlined />}>
-              <NavLink to="/producto">
+              <NavLink to="/products">
                 Producto
               </NavLink>
             </Menu.Item>
@@ -96,8 +96,9 @@ const MyLayout = () => {
             <Routes> 
                 <Route path="/" element= {<IndexPage/>} />
                 <Route path="/aboutus" element= {<AboutUs/>} />
-                <Route path="/contact" element= {<ContactModal/>} />
                 <Route path="/galery" element= {<MyCarousel/>} />
+                <Route path="/products" element= {<Products/>} />
+                <Route path="/contact" element= {<ContactModal/>} />
                 <Route path="/admin" element= {<MyLogin/>} />
             </Routes>
           </Content>
