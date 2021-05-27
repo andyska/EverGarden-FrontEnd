@@ -15,7 +15,7 @@ const ProductsCrud = () => {
   }
   
   const getAllProducts = async () => {
-    const resp = await axios.get(`localhost:8080/api/products`);
+    const resp = await axios.get('http://localhost:8080/api/products');
     console.log(resp.data)
     setProducts(resp.data)
   }
