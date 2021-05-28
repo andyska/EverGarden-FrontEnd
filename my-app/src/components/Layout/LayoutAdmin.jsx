@@ -4,7 +4,7 @@ import {Routes, Route} from 'react-router-dom'
 import {NavLink } from 'react-router-dom'
 import { Divider } from 'antd'
 import ProductsCrud from '../../ProductsCrud'
-import Users from '../../Users'
+import Users from '../Pages/Users'
 import {
   BookOutlined,
   GithubOutlined,
