@@ -94,12 +94,12 @@ const MyLayout = () => {
           </Header>
           <Content>
             <Routes> 
-                <Route path="/" element= {<IndexPage/>} />
-                <Route path="/aboutus" element= {<AboutUs/>} />
-                <Route path="/galery" element= {<MyCarousel/>} />
-                <Route path="/products" element= {<Products/>} />
-                <Route path="/contact" element= {<ContactModal/>} />
-                <Route path="/admin" element= {<MyLogin/>} />
+                <Route exact path="/" element= {<IndexPage/>} />
+                <Route exact path="/aboutus" element= {<AboutUs/>} />
+                <Route exact path="/galery" element= {<MyCarousel/>} />
+                <Route exact path="/products" element= {<Products/>} />
+                <Route exact path="/contact" element= {<ContactModal/>} />
+                <Route exact path="/admin" element= {<MyLogin/>} />
             </Routes>
           </Content>
 

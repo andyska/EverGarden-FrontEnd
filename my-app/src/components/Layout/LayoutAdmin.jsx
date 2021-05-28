@@ -4,7 +4,7 @@ import {Routes, Route} from 'react-router-dom'
 import {NavLink } from 'react-router-dom'
 import { Divider } from 'antd'
 import ProductsCrud from '../../ProductsCrud'
-import Users from '../../Users'
+import Users from '../Pages/Users'
 import {
   BookOutlined,
   GithubOutlined,
@@ -60,8 +60,8 @@ const LayoutAdmin = (visible) => {
           
           <div className="site-layout-background" style={{ padding: 24, minHeight: 360 }}>
             <Routes>
-              <Route path="/users" element={<Users/>}/>
-              <Route path="/productocrud" element={<ProductsCrud/>}/>
+              <Route exact path="/users" element={<Users/>}/>
+              <Route exact path="/productocrud" element={<ProductsCrud/>}/>
             </Routes>
           </div>
         </Content>

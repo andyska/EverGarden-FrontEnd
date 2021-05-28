@@ -10,7 +10,7 @@ ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <App />
-      <Route path="/MenuAdmin" element= {<MenuAdmin/>} />
+      <Route exact path="/MenuAdmin" element= {<MenuAdmin/>} />
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')

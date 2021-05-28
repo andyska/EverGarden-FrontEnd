@@ -12,4 +12,12 @@ function App() {
   );
 }
 
+/*
+function App() {
+  return (
+    <div>
+      <MyLayout/>
+    </div>
+  );
+}*/
 export default App;

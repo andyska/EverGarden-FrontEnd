@@ -17,7 +17,7 @@ const IndexPage = () => {
         <div className="col">
           <div className="col2"/>
           <div className="col2">
-            <p className="p-frase">"planta tu sueños y crecerán días felices"</p>
+            <p className="p-frase">"Planta tus sueños y crecerán días felices"</p>
             <p className="p-frase">"Ever Garden"</p>
           </div>
         
