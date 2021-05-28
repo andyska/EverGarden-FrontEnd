@@ -60,7 +60,6 @@ const LayoutAdmin = (visible) => {
           
           <div className="site-layout-background" style={{ padding: 24, minHeight: 360 }}>
             <Routes>
-              <Route path="/menuadmin" element={<IndexPage/>}/>
               <Route path="/users" element={<Users/>}/>
               <Route path="/productocrud" element={<ProductsCrud/>}/>
             </Routes>

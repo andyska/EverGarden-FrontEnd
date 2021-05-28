@@ -1,9 +1,10 @@
 import React , {useState , useEffect} from 'react';
 import { Form, Input, Button, Checkbox, Space } from 'antd';
 import './Login.css'
-import axios from 'axios'
 import LayoutAdmin from '../Layout/LayoutAdmin'
 import  {NavLink,  Routes, Route} from 'react-router-dom'
+import axios from 'axios'
+
 
 
 const layout = {
@@ -22,7 +23,6 @@ const tailLayout = {
 };
 
 const MyLogin = () => {
-  
   const onFinish = async(values) => {
     console.log('Success:', values);
     const userObject = 
@@ -42,7 +42,16 @@ const MyLogin = () => {
   const onFinishFailed = (errorInfo) => {
     console.log('Failed:', errorInfo);
   };
-
+ /*
+  const HandleOnClick =() => {
+    setIsModalVisible(true)
+    console.log('visible:', isModalVisible);
+    return(
+      <>
+        <LayoutAdmin/>
+      </>
+    );  
+  }*/
 
   return (
     
@@ -87,8 +96,10 @@ const MyLogin = () => {
       </Form.Item>
 
       <Form.Item {...tailLayout}>
+
         <Button type="primary" htmlType="submit" style={{backgroundColor: '#666600', border: 'none'}} >
           Ingresar
+
         </Button>
       </Form.Item>
     </Form>

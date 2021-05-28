@@ -22,7 +22,6 @@ import IndexPage from '../Pages/Index'
 import MyLogin from '../Login/Login'
 import Products from '../Pages/Products'
 
-
 const { Header, Content, Footer, Sider } = Layout;
 
 const MyLayout = () => {

@@ -1,21 +1,18 @@
 import React, { useEffect, useState } from 'react'
-import {Table} from 'antd'
+import { Table , Button} from 'antd'
 import axios from 'axios'
-import {DeleteOutlined , EditOutlined} from '@ant-design/icons';
+import {DeleteOutlined , EditOutlined, PlusCircleOutlined} from '@ant-design/icons';
+import ProductModal from '../src/components/Modal/ProductModal'
+import ModalConfirm from '../src/components/Modal/ModalConfirm'
 
 
 const ProductsCrud = () => {
 
   const [products, setProducts] = useState([])
-  const [isModalVisible, setIsModalVisible] = useState(true);
+  const [productmodal, setProductModal] = useState(false)
 
-  const handleOnClick =() => {
-    setIsModalVisible(true)
-    console.log('visible:', isModalVisible)
-  }
-  
   const getAllProducts = async () => {
-    const resp = await axios.get(`localhost:8080/api/products`);
+    const resp = await axios.get('http://localhost:8080/api/products');
     console.log(resp.data)
     setProducts(resp.data)
   }
@@ -24,6 +21,26 @@ const ProductsCrud = () => {
     getAllProducts()
   },[]
   )
+
+  const openModal = ()=>{
+    setProductModal(true)
+   }
+ 
+  const [ isModalVisible, setIsModalVisible] = useState(false)
+    
+  const [ productdetails, setProductdetails]  = useState({})
+    
+  const handleOnDelete = (event) => {
+        //antes de borrar llamar a un modal que confirme que quiere borrar ese libro
+    setProductdetails (event)
+       // console.log('books-handleOnDelete', bookdetails)
+    setIsModalVisible(true)
+    const deleteId = event._id
+          /*  const response = await axios.delete('http://localhost:8080/api/books/' + deleteId)
+            //validar que salio ok el delete para refrescar la tabla
+            console.log(response)
+            getAllBooks()*/
+    } 
 
   const columns = [
     {
@@ -72,11 +89,12 @@ const ProductsCrud = () => {
       key: 'actions',
       render: (text, row) =>
         <>
-          <DeleteOutlined style={{fontSize:'25px', color:'red'}} />
+          <DeleteOutlined style={{fontSize:'25px', color:'red'}} onClick={()=>handleOnDelete(row)}/>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          <EditOutlined style={{fontSize:'25px', color:'blue'}} />
+          <EditOutlined style={{fontSize:'25px', color:'blue'}} onClick={(record) => console.log('record', record)} />
         </>
     },
+
   ];
   
   
@@ -84,6 +102,9 @@ const ProductsCrud = () => {
     <div>
       
       <h1>Productos</h1>
+      <Button type="primary" icon={<PlusCircleOutlined/>} onClick={openModal} >Nuevo Producto</Button>
+      <ProductModal productmodal={productmodal} setProductModal={setProductModal} getAllProducts={getAllProducts} />
+      <ModalConfirm isModalVisible={isModalVisible} setIsModalVisible={setIsModalVisible} getAllProducts={getAllProducts} productdetails={productdetails} />
       <Table dataSource={products} columns={columns} rowKey="_id"/>
     </div>
 
