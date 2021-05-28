@@ -7,9 +7,17 @@ import MyLayout from './components/Layout/Layout'
 function App() {
   return (
     <div>
-      <MyLayout/>
+      <LayoutAdmin/>
     </div>
   );
 }
 
+/*
+function App() {
+  return (
+    <div>
+      <MyLayout/>
+    </div>
+  );
+}*/
 export default App;

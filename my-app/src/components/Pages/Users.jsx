@@ -2,22 +2,28 @@ import React, { useEffect, useState } from 'react'
 import {Table , Button} from 'antd'
 import axios from 'axios'
 import {DeleteOutlined , EditOutlined , PlusCircleOutlined} from '@ant-design/icons';
-
+import UserModal from '../Modal/UserModal'
+import ConfirmModal from '../Modal/ConfirmModal'
 
 const UsersCrud = () => {
-
   const [users, setUsers] = useState([])
   const [isModalVisible, setIsModalVisible] = useState(true);
-
+/*
   const handleOnClick =() => {
     setIsModalVisible(true)
     console.log('visible:', isModalVisible)
   }
-  
+  */
   const getAllUsers = async () => {
-    const resp = await axios.get(`localhost:8080/api/users`);
-    console.log(resp.data)
-    setUsers(resp.data)
+    try{
+      console.log("users - getallusers - ENTRO =============")
+      const resp = await axios.get('http://localhost:8080/api/users');
+      console.log(resp.data)
+      setUsers(resp.data)
+    } catch (error){
+      console.log("getAllUsers" , error)
+      throw error
+    }
   }
 
   useEffect(() =>{
@@ -29,16 +35,34 @@ const UsersCrud = () => {
   const openModal = ()=>{
       setModal(true)
    }
-   const [ userdetails, setUsersdetails]  = useState({})
+  const [ userdetails, setUsersdetails]  = useState({})
 
   const handleOnDelete = (event) => {
     //antes de borrar llamar a un modal que confirme que quiere borrar ese libro
     setUsersdetails (event)
-   // console.log('books-handleOnDelete', bookdetails)
     setIsModalVisible(true)
-    } 
-
-  const columns = [
+  } 
+  
+  const handleOnEdit = (event) => {
+    console.log('front-users-handleOnedit', userdetails)
+    console.log('front-users-handleOnedit ==== FALTA PROGRAMARLO!')
+    //llamar a un modal que confirme que quiere borrar ese libro
+    //setUsersdetails (event)
+    //setIsModalVisible(true)
+  } 
+  
+    const columns = [
+    {
+      title: 'Accion',
+      dataIndex: 'actions',
+      key: 'actions',
+      render: (text, row) =>
+        <>
+          <DeleteOutlined style={{fontSize:'25px', color:'red'}}  onClick={()=>handleOnDelete(row)}/>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <EditOutlined style={{fontSize:'25px', color:'blue'}}  onClick={()=>handleOnEdit(row)} />
+        </>
+    },
     {
       title: 'Nombre',
       dataIndex: 'firstName',
@@ -55,11 +79,6 @@ const UsersCrud = () => {
       key: 'userName',
     },
     {
-      title: 'Password',
-      dataIndex: 'password',
-      key: 'password',
-    },
-    {
       title: 'Mail',
       dataIndex: 'email',
       key: 'email',
@@ -70,16 +89,11 @@ const UsersCrud = () => {
       key: 'type',
     },
     {
-      title: 'Actions',
-      dataIndex: 'actions',
-      key: 'actions',
-      render: (text, row) =>
-        <>
-          <DeleteOutlined style={{fontSize:'25px', color:'red'}}  onClick={()=>handleOnDelete(row)}/>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          <EditOutlined style={{fontSize:'25px', color:'blue'}} />
-        </>
+      title: 'Password',
+      dataIndex: 'password',
+      key: 'password',
     },
+    
   ];
   
   
@@ -87,6 +101,8 @@ const UsersCrud = () => {
     <div>
       <h1>Administracion de Usuarios</h1>
       <Button type="primary" icon={<PlusCircleOutlined/>} onClick={ openModal} >Agregar Usuario</Button>
+      <UserModal usermodal={usermodal} setModal={setModal} getAllUsers={getAllUsers} />
+      <ConfirmModal isModalVisible={isModalVisible} setIsModalVisible={setIsModalVisible} getAllUsers={getAllUsers} userdetails={userdetails} />
       <Table dataSource={users} columns={columns} rowKey="_id"/>
     </div>
 

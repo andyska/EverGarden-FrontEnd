@@ -25,7 +25,7 @@ const ConfirmModal = ({isModalVisible ,setIsModalVisible ,  getAllUsers , userde
     }
   } 
   return (
-      <Modal title="Confirma Borrar ese Usuario ?" visible={isModalVisible} onOk={handleOnDelete} onCancel={handleCancel}>
+      <Modal title="Confirma Borrar este Usuario ?" visible={isModalVisible} onOk={handleOnDelete} onCancel={handleCancel}>
         <p>{userdetails.firstname}</p>
         <p>{userdetails.lastname}</p>
         <p>{userdetails.userName}</p>
