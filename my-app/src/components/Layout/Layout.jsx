@@ -21,6 +21,9 @@ import MyCarousel from '../Carousel/Carousel'
 import IndexPage from '../Pages/Index'
 import MyLogin from '../Login/Login'
 import Products from '../Pages/products'
+import ProductsCrud from '../../ProductsCrud'
+import MenuAdmin from '../Pages/MenuAdmin'
+import Users from '../../Users'
 
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -77,12 +80,12 @@ const MyLayout = () => {
                 Contacto
               </NavLink>
             </Menu.Item>  
-
+{/* 
             <Menu.Item className="item" key="6" icon={<IdcardOutlined />}>
               <NavLink to="/admin">
                 Acceso
               </NavLink>
-            </Menu.Item>  
+            </Menu.Item>   */}
             </Menu>
         </Sider>
 
@@ -100,6 +103,9 @@ const MyLayout = () => {
                 <Route exact path="/products" element= {<Products/>} />
                 <Route exact path="/contact" element= {<ContactModal/>} />
                 <Route exact path="/admin" element= {<MyLogin/>} />
+                <Route exact path="/MenuAdmin" element= {<MenuAdmin/>} />
+                <Route exact path="/ProductsCrud" element= {<ProductsCrud/>} />
+                <Route exact path="/Users" element= {<Users/>} />
             </Routes>
           </Content>
 

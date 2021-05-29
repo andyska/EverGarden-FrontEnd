@@ -3,11 +3,11 @@ import {Table} from 'antd'
 import axios from 'axios'
 import {DeleteOutlined , EditOutlined} from '@ant-design/icons';
 
-
 const ProductsCrud = () => {
 
   const [products, setProducts] = useState([])
   const [isModalVisible, setIsModalVisible] = useState(true);
+  const token = Storage.getItem('Token')
 
   const handleOnClick =() => {
     setIsModalVisible(true)
@@ -15,7 +15,9 @@ const ProductsCrud = () => {
   }
   
   const getAllProducts = async () => {
-    const resp = await axios.get('http://localhost:8080/api/products');
+    const resp = await axios.get('http://localhost:8080/api/products', {
+      headers:{'Authorization': 'bearer' + token}
+    });
     console.log(resp.data)
     setProducts(resp.data)
   }
