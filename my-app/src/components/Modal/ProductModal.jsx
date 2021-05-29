@@ -1,7 +1,7 @@
 import React, {  useState } from 'react'
 import { Modal , Button, Form , Input} from 'antd'
 import axios from 'axios'
-
+import './ProductModal.css'
 const {Item}=Form
 
 const ProductModal =({productmodal, setProductModal , getAllProducts}) =>{
@@ -21,28 +21,37 @@ const ProductModal =({productmodal, setProductModal , getAllProducts}) =>{
     const closeModal = ()=>{
       setProductModal(false)
     }
+
     const handleNewProduct=e=>{
         const {name, value } = e.target ;
-        setNewProduct({...newproduct,
-            [name]: value});
-            console.log('handleNewProduct',newproduct)
-        }
-    const saveModal = async ()=>{
+        setNewProduct({...newproduct, [name]: value});
+        console.log('nuevo producto', newproduct)
+    }
+
+   /* const saveModal = async ()=>{
         console.log('save modal - newproduct', newproduct)
         const response = await axios.post('http://localhost:8080/api/products/' , newproduct )
         //validar que salio ok el post para refrescar la tabla
         console.log('despues de dar de alta',response)
         closeModal()
         getAllProducts()
-    }
+    }*/
+
+    const saveModal = async e => {
+        e.preventDefault();
+        const resp = await axios.post('http://localhost:8080/api/products', newproduct);
+        console.log(resp)
+        closeModal()
+        getAllProducts()
+    };
         
     const formview={
         labelCol:{
-            span:4},
+            span:8},
         wrapperCol:{
             span:16
         },
-        }
+    }
            
 return (
     <div>
@@ -61,7 +70,7 @@ return (
                  <Input name="brand" onChange={handleNewProduct}/>
              </Item>
              <Item label="Categoria">
-                 <Input name=" category" onChange={handleNewProduct}/>
+                 <Input name="category" onChange={handleNewProduct}/>
              </Item>
              <Item label="Descripcion">
                  <Input name="description" onChange={handleNewProduct}/>

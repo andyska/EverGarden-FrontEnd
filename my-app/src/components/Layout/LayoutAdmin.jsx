@@ -5,6 +5,7 @@ import {NavLink } from 'react-router-dom'
 import { Divider } from 'antd'
 import ProductsCrud from '../../ProductsCrud'
 import Users from '../Pages/Users'
+import imgHeader from '../../images/header_a.jpg'
 import {
   BookOutlined,
   GithubOutlined,
@@ -55,7 +56,12 @@ const LayoutAdmin = (visible) => {
       </Sider>
 
       <Layout className="site-layout">
-        <Header className="site-layout-background" style={{ padding: 0 }} />
+        <Header>
+          <div>
+            <img className="img" src={imgHeader} alt=""/>
+          </div>
+        </Header>
+    
         <Content style={{ margin: '0 16px' }}>
           
           <div className="site-layout-background" style={{ padding: 24, minHeight: 360 }}>
