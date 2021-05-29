@@ -4,19 +4,14 @@ import axios from 'axios'
 import {DeleteOutlined , EditOutlined , PlusCircleOutlined} from '@ant-design/icons';
 import UserModal from '../Modal/UserModal'
 import ConfirmModal from '../Modal/ConfirmModal'
+import EditModal from '../Modal/EditModal'
 
 const UsersCrud = () => {
   const [users, setUsers] = useState([])
-  const [isModalVisible, setIsModalVisible] = useState(true);
-/*
-  const handleOnClick =() => {
-    setIsModalVisible(true)
-    console.log('visible:', isModalVisible)
-  }
-  */
+  const [isModalVisible, setIsModalVisible] = useState(false);
+
   const getAllUsers = async () => {
     try{
-      //console.log("users - getallusers - ENTRO =============")
       const resp = await axios.get('http://localhost:8080/api/users');
       //console.log("Nuevo usuario", resp.data)
       setUsers(resp.data)
@@ -43,14 +38,15 @@ const UsersCrud = () => {
     setUsersdetails (event)
     setIsModalVisible(true)
   } 
-  
-  const handleOnEdit = (event) => {
-    console.log('front-users-handleOnedit', userdetails)
-    console.log('front-users-handleOnedit ==== FALTA PROGRAMARLO!')
-    message.error('SIN PROGRAMAR AUN');
-    //llamar a un modal que confirme que quiere borrar ese libro
-    //setUsersdetails (event)
-    //setIsModalVisible(true)
+
+  const [ isEditModalVisible, setIsEditModalVisible] = useState(false);
+  const [ usereditdetails, setUserEditdetails]  = useState({})
+
+  const handleOnEdit = (row) => {
+    console.log('USERS.jx --handleOnedit====> ROW', row)
+    setUserEditdetails (row)
+    //console.log('USERS.jx - usereditdetails ===>', usereditdetails)
+    setIsEditModalVisible(true)
   } 
   
     const columns = [
@@ -98,8 +94,24 @@ const UsersCrud = () => {
     <div>
       <h1>Administracion de Usuarios</h1>
       <Button type="primary" icon={<PlusCircleOutlined/>} onClick={ openModal} >Agregar Usuario</Button>
-      <UserModal usermodal={usermodal} setModal={setModal} getAllUsers={getAllUsers} />
-      <ConfirmModal isModalVisible={isModalVisible} setIsModalVisible={setIsModalVisible} getAllUsers={getAllUsers} userdetails={userdetails} />
+      <UserModal 
+        usermodal={usermodal} 
+        setModal={setModal} 
+        getAllUsers={getAllUsers} 
+      />
+      <ConfirmModal 
+        isModalVisible={isModalVisible} 
+        setIsModalVisible={setIsModalVisible} 
+        getAllUsers={getAllUsers} 
+        userdetails={userdetails} 
+      />
+      <EditModal 
+        isEditModalVisible={isEditModalVisible}
+        setIsEditModalVisible={setIsEditModalVisible} 
+        getAllUsers={getAllUsers} 
+        usereditdetails={usereditdetails} 
+        setUserEditdetails={setUserEditdetails}
+      />
       <Table dataSource={users} columns={columns} rowKey="_id"/>
     </div>
 
