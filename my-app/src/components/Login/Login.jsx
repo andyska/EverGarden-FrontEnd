@@ -23,9 +23,13 @@ const tailLayout = {
   },
 };
 
-const MyLogin = () => {
- 
-  
+const MyLogin = ({isConfigHidden, HandleConfig}) => {
+   /*
+  const HandleConfig =() => {
+    setIsConfigHidden(false)
+    console.log("llegue hasta aca!")
+  }
+*/
   const onFinish = async(values) => {
     console.log('Success:', values);
     const userObject = 
@@ -38,8 +42,8 @@ const MyLogin = () => {
     const response = await axios.post('http://localhost:8080/api/users/login/', userObject );
      localStorage.setItem("Token", response.data.token) 
      alert ('Bienvenido! Presione ACEPTAR para ingresar al menú de usuario administrador') 
-     window.location.href= '/MenuAdmin'  
-     //HandleConfig()
+    // window.location.href= '/MenuAdmin'  
+     HandleConfig()
   } 
   catch(err){
     //settear en true la bandera para levantar para que salte el error de loggeo

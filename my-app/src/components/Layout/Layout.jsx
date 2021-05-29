@@ -31,7 +31,7 @@ const { Header, Content, Footer, Sider } = Layout;
 const MyLayout = () => {
   const [collapsed, setCollapsed] = useState(false)
   const [isModalVisible, setIsModalVisible] = useState(true);
-  const [isConfigHidden, setIsConfigHidden] = useState(false);
+  const [isConfigHidden, setIsConfigHidden] = useState(true);
   
 
   const handleOnCollapsed = (collapsed) => {
@@ -46,7 +46,7 @@ const MyLayout = () => {
   }
 
   const HandleConfig =() => {
-    setIsConfigHidden(true)
+    setIsConfigHidden(false)
     console.log("llegue hasta aca!")
   }
 
@@ -108,7 +108,7 @@ const MyLayout = () => {
                 <Route exact path="/galery" element= {<MyCarousel/>} />
                 <Route exact path="/products" element= {<Products/>} />
                 <Route exact path="/contact" element= {<ContactModal/>} />
-                <Route exact path="/admin" element= {<MyLogin/>} />
+                <Route exact path="/admin" element= {<MyLogin isConfigHidden= {isConfigHidden} HandleConfig= {HandleConfig}/>} />
                 <Route exact path="/MenuAdmin" element= {<MenuAdmin/>} />
                 <Route exact path="/ProductsCrud" element= {<ProductsCrud/>} />
                 <Route exact path="/Users" element= {<Users/>} />
