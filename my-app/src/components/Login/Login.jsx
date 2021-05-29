@@ -4,8 +4,9 @@ import './Login.css'
 import LayoutAdmin from '../Layout/LayoutAdmin'
 import  {NavLink,  Routes, Route} from 'react-router-dom'
 import axios from 'axios'
-
-
+import { message } from 'antd';
+import setIsConfigHidden from '../Layout/Layout'
+import HandleConfig from '../Layout/Layout'
 
 const layout = {
   labelCol: {
@@ -23,6 +24,8 @@ const tailLayout = {
 };
 
 const MyLogin = () => {
+ 
+  
   const onFinish = async(values) => {
     console.log('Success:', values);
     const userObject = 
@@ -31,13 +34,20 @@ const MyLogin = () => {
         password: values.password
       }
     console.log ('userObject:', userObject)
+    try{
     const response = await axios.post('http://localhost:8080/api/users/login/', userObject );
-    console.log ('repsonse:', response.data)
+     localStorage.setItem("Token", response.data.token) 
+     alert ('Bienvenido! Presione ACEPTAR para ingresar al menú de usuario administrador') 
      window.location.href= '/MenuAdmin'  
-     // no estoy segura que me este redirigiendo bien porque /MenuAdmin deberia ser una pagina en blanco que renderice un Hello World 
-     // pruebo rediriegiendo a aboutus y veo que esta funcionando OK
-     //window.location.href= '/AboutUs' 
-  };
+     //HandleConfig()
+  } 
+  catch(err){
+    //settear en true la bandera para levantar para que salte el error de loggeo
+    console.log('este es el error de login', err)
+    alert ('Error: Usuario o Contraseña invalidos')
+    
+    };
+  }
 
   const onFinishFailed = (errorInfo) => {
     console.log('Failed:', errorInfo);
@@ -97,9 +107,8 @@ const MyLogin = () => {
 
       <Form.Item {...tailLayout}>
 
-        <Button type="primary" htmlType="submit" style={{backgroundColor: '#666600', border: 'none'}} >
+        <Button type="primary" htmlType="submit" style={{backgroundColor: '#666600', border: 'none'}}>
           Ingresar
-
         </Button>
       </Form.Item>
     </Form>

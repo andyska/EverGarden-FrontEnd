@@ -16,31 +16,41 @@ import {
   PictureOutlined,
   TeamOutlined,
   ShopOutlined,
+  SettingOutlined
 } from '@ant-design/icons'
 import MyCarousel from '../Carousel/Carousel'
 import IndexPage from '../Pages/Index'
 import MyLogin from '../Login/Login'
 import Products from '../Pages/Products'
+import ProductsCrud from '../../ProductsCrud'
+import MenuAdmin from '../Pages/MenuAdmin'
+import Users from '../Pages/Users'
 
 const { Header, Content, Footer, Sider } = Layout;
 
 const MyLayout = () => {
   const [collapsed, setCollapsed] = useState(false)
   const [isModalVisible, setIsModalVisible] = useState(true);
+  const [isConfigHidden, setIsConfigHidden] = useState(false);
+  
 
   const handleOnCollapsed = (collapsed) => {
     console.log(collapsed);
     setCollapsed(collapsed);
+       
   };
 
-
-  const HandleOnClick =() => {
+   const HandleOnClick =() => {
     setIsModalVisible(true)
     console.log('visible:', isModalVisible)
   }
 
+  const HandleConfig =() => {
+    setIsConfigHidden(true)
+    console.log("llegue hasta aca!")
+  }
 
-  return (
+   return (
     <Layout style={{ minHeight: '100vh' }}>
       
       <Layout>
@@ -66,8 +76,8 @@ const MyLayout = () => {
               </NavLink>
             </Menu.Item>
 
-            <Menu.Item className="item" key="4" icon={<ShopOutlined />}>
-              <NavLink to="/products">
+            <Menu.Item className="item" key="4" icon={<ShopOutlined />} >
+              <NavLink to="/products"  >
                 Producto
               </NavLink>
             </Menu.Item>
@@ -77,12 +87,11 @@ const MyLayout = () => {
                 Contacto
               </NavLink>
             </Menu.Item>  
-
-            <Menu.Item className="item" key="6" icon={<IdcardOutlined />}>
-              <NavLink to="/admin">
-                Acceso
+            <Menu.Item className="item" key="6" icon={<SettingOutlined/>}>
+              <NavLink hidden={isConfigHidden} id="Config" to="/MenuAdmin" >
+                Configuraciones
               </NavLink>
-            </Menu.Item>  
+            </Menu.Item>   
             </Menu>
         </Sider>
 
@@ -100,6 +109,9 @@ const MyLayout = () => {
                 <Route exact path="/products" element= {<Products/>} />
                 <Route exact path="/contact" element= {<ContactModal/>} />
                 <Route exact path="/admin" element= {<MyLogin/>} />
+                <Route exact path="/MenuAdmin" element= {<MenuAdmin/>} />
+                <Route exact path="/ProductsCrud" element= {<ProductsCrud/>} />
+                <Route exact path="/Users" element= {<Users/>} />
             </Routes>
           </Content>
 

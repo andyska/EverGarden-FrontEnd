@@ -2,14 +2,15 @@ import React, { useEffect, useState } from 'react'
 import { Table , Button} from 'antd'
 import axios from 'axios'
 import {DeleteOutlined , EditOutlined, PlusCircleOutlined} from '@ant-design/icons';
-import ProductModal from '../src/components/Modal/ProductModal'
-import ModalConfirm from '../src/components/Modal/ModalConfirm'
-import ModalUpDate from '../src/components/Modal/ModalUpDate'
-
+import ProductModal from './components/Modal/ProductModal'
+import ModalConfirm from './components/Modal/ModalConfirm'
+import ModalUpDate from './components/Modal/ModalUpDate'
 const ProductsCrud = () => {
 
   const [products, setProducts] = useState([])
-  const [productmodal, setProductModal] = useState(false)
+  const [isModalVisibleDelete, setIsModalVisibleDelete] = useState(false);
+  const [isModalVisibleUpDate, setIsModalVisibleUpDate] = useState(false);
+  //const token = Storage.getItem('Token') //, {headers:{'Authorization': 'bearer' + token}}
 
   const getAllProducts = async () => {
     const resp = await axios.get('http://localhost:8080/api/products');
@@ -22,18 +23,19 @@ const ProductsCrud = () => {
   },[]
   )
 
+  const [productmodal, setProductModal] = useState(false)
+  
   const openModal = ()=>{
     setProductModal(true)
    }
  
-  const [ isModalVisible, setIsModalVisible] = useState(false)
   const [ productdetails, setProductdetails]  = useState({})
     
   const handleOnDelete = (event) => {
         //antes de borrar llamar a un modal que confirme que quiere borrar ese libro
     setProductdetails (event)
        // console.log('books-handleOnDelete', bookdetails)
-    setIsModalVisible(true)
+    setIsModalVisibleDelete(true)
     //const deleteId = event._id
           /*  const response = await axios.delete('http://localhost:8080/api/books/' + deleteId)
             //validar que salio ok el delete para refrescar la tabla
@@ -45,7 +47,7 @@ const ProductsCrud = () => {
       //antes de borrar llamar a un modal que confirme que quiere borrar ese libro
     setProductdetails (event)
      // console.log('books-handleOnDelete', bookdetails)
-    setIsModalVisible(true)
+     setIsModalVisibleUpDate(true)
     //const deleteId = event._id
         /*  const response = await axios.delete('http://localhost:8080/api/books/' + deleteId)
           //validar que salio ok el delete para refrescar la tabla
@@ -113,8 +115,8 @@ const ProductsCrud = () => {
     <div>
       <Button type="primary" icon={<PlusCircleOutlined/>} onClick={openModal} >Nuevo Producto</Button>
       <ProductModal productmodal={productmodal} setProductModal={setProductModal} getAllProducts={getAllProducts} />
-      <ModalConfirm isModalVisible={isModalVisible} setIsModalVisible={setIsModalVisible} getAllProducts={getAllProducts} productdetails={productdetails} />
-      <ModalUpDate isModalVisible={isModalVisible} setIsModalVisible={setIsModalVisible} getAllProducts={getAllProducts} productdetails={productdetails} />
+      <ModalConfirm isModalVisible={isModalVisibleDelete} setIsModalVisible={setIsModalVisibleDelete} getAllProducts={getAllProducts} productdetails={productdetails} />
+      <ModalUpDate isModalVisible={isModalVisibleUpDate} setIsModalVisible={setIsModalVisibleUpDate} getAllProducts={getAllProducts} productdetails={productdetails}/>
       <Table dataSource={products} columns={columns} rowKey="_id"/>
     </div>
 
