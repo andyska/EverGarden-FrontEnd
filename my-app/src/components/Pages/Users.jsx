@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import {Table , Button} from 'antd'
+import {message,Table , Button} from 'antd'
 import axios from 'axios'
 import {DeleteOutlined , EditOutlined , PlusCircleOutlined} from '@ant-design/icons';
 import UserModal from '../Modal/UserModal'
@@ -16,12 +16,13 @@ const UsersCrud = () => {
   */
   const getAllUsers = async () => {
     try{
-      console.log("users - getallusers - ENTRO =============")
+      //console.log("users - getallusers - ENTRO =============")
       const resp = await axios.get('http://localhost:8080/api/users');
-      console.log(resp.data)
+      //console.log("Nuevo usuario", resp.data)
       setUsers(resp.data)
     } catch (error){
-      console.log("getAllUsers" , error)
+      //console.log("getAllUsers" , error)
+      message.error("Fallo la conexion con el BackEnd:" + error)
       throw error
     }
   }
@@ -46,6 +47,7 @@ const UsersCrud = () => {
   const handleOnEdit = (event) => {
     console.log('front-users-handleOnedit', userdetails)
     console.log('front-users-handleOnedit ==== FALTA PROGRAMARLO!')
+    message.error('SIN PROGRAMAR AUN');
     //llamar a un modal que confirme que quiere borrar ese libro
     //setUsersdetails (event)
     //setIsModalVisible(true)
@@ -88,12 +90,7 @@ const UsersCrud = () => {
       dataIndex: 'type',
       key: 'type',
     },
-    {
-      title: 'Password',
-      dataIndex: 'password',
-      key: 'password',
-    },
-    
+        
   ];
   
   
