@@ -1,0 +1,26 @@
+.name {
+  font-weight: bold;
+}
+
+img {
+  width:150px;
+  height:150px;
+  border-radius:160px;
+  border:2px solid #dfdbdb;
+}
+
+.github-profile{
+  margin: 1rem;
+}
+
+.info {
+  display: inline-block;
+  margin-left: 10px
+}
+
+.cardStyle {
+   margin: 1rem;
+   float: left;
+}
+
+

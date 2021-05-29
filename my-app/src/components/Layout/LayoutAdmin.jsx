@@ -5,6 +5,7 @@ import {NavLink } from 'react-router-dom'
 import { Divider } from 'antd'
 import ProductsCrud from '../../ProductsCrud'
 import Users from '../Pages/Users'
+import imgHeader from '../../images/header_a.jpg'
 import {
   BookOutlined,
   GithubOutlined,
@@ -31,14 +32,20 @@ const LayoutAdmin = (visible) => {
 
           <Menu.ItemGroup className="itemGroup" key="g1" title="Menu" >
             <Divider style={{ borderColor: 'white' }} />
-
+            
             <Menu.Item className="item" key="1" icon={<GithubOutlined />}>
+              <NavLink to="/menuadmin">
+                Usuario
+              </NavLink>
+            </Menu.Item>
+
+            <Menu.Item className="item" key="2" icon={<GithubOutlined />}>
               <NavLink to="/users">
                 Usuario
               </NavLink>
             </Menu.Item>
 
-            <Menu.Item className="item" key="2" icon={<BookOutlined />}>
+            <Menu.Item className="item" key="3" icon={<BookOutlined />}>
               <NavLink to="/productocrud">
                 Productos
               </NavLink>
@@ -49,7 +56,12 @@ const LayoutAdmin = (visible) => {
       </Sider>
 
       <Layout className="site-layout">
-        <Header className="site-layout-background" style={{ padding: 0 }} />
+        <Header>
+          <div>
+            <img className="img" src={imgHeader} alt=""/>
+          </div>
+        </Header>
+    
         <Content style={{ margin: '0 16px' }}>
           
           <div className="site-layout-background" style={{ padding: 24, minHeight: 360 }}>

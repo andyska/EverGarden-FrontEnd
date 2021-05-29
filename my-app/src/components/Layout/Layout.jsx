@@ -21,7 +21,7 @@ import {
 import MyCarousel from '../Carousel/Carousel'
 import IndexPage from '../Pages/Index'
 import MyLogin from '../Login/Login'
-import Products from '../Pages/products'
+import Products from '../Pages/Products'
 import ProductsCrud from '../../ProductsCrud'
 import MenuAdmin from '../Pages/MenuAdmin'
 import Users from '../Pages/Users'
