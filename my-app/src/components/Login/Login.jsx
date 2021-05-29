@@ -5,7 +5,8 @@ import LayoutAdmin from '../Layout/LayoutAdmin'
 import  {NavLink,  Routes, Route} from 'react-router-dom'
 import axios from 'axios'
 import { message } from 'antd';
-
+import setIsConfigHidden from '../Layout/Layout'
+import HandleConfig from '../Layout/Layout'
 
 const layout = {
   labelCol: {
@@ -24,6 +25,7 @@ const tailLayout = {
 
 const MyLogin = () => {
  
+  
   const onFinish = async(values) => {
     console.log('Success:', values);
     const userObject = 
@@ -34,16 +36,16 @@ const MyLogin = () => {
     console.log ('userObject:', userObject)
     try{
     const response = await axios.post('http://localhost:8080/api/users/login/', userObject );
-    console.log ('repsonse:', response.data)
-    console.log('token:', response.data.token)
      localStorage.setItem("Token", response.data.token) 
      alert ('Bienvenido! Presione ACEPTAR para ingresar al menú de usuario administrador') 
      window.location.href= '/MenuAdmin'  
+     //HandleConfig()
   } 
   catch(err){
     //settear en true la bandera para levantar para que salte el error de loggeo
     console.log('este es el error de login', err)
     alert ('Error: Usuario o Contraseña invalidos')
+    
     };
   }
 
@@ -107,7 +109,6 @@ const MyLogin = () => {
 
         <Button type="primary" htmlType="submit" style={{backgroundColor: '#666600', border: 'none'}}>
           Ingresar
-
         </Button>
       </Form.Item>
     </Form>

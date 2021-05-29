@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button } from 'antd';
+import { Button, Space } from 'antd';
 
 const MenuAdmin = () => {
 
@@ -16,12 +16,14 @@ const MenuAdmin = () => {
      return (
          <div>
          <h1>MENU ADMINISTRADOR</h1>
+         <Space>
          <Button onClick={handleOnClick}>
-             Product CRUD
+          Configurar Productos
          </Button >
          <Button onClick={handleUsersClick}>
-         Users CRUD
+         Configurar Usuarios
         </Button>
+        </Space>
         </div>
           )
  }
