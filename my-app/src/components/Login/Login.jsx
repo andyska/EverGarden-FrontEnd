@@ -34,16 +34,16 @@ const MyLogin = ({HandleConfig}) => {
       }
     console.log ('userObject:', userObject)
     try{
-    const response = await axios.post('http://localhost:8080/api/users/login/', userObject );
+    const response = await axios.post('http://localhost:8080/api/admin/users/login/', userObject );
      localStorage.setItem("Token", response.data.token) 
-     alert ('Bienvenido! Presione ACEPTAR para ingresar al menú de usuario administrador') 
-    // window.location.href= '/MenuAdmin'  
-     HandleConfig()
+     message.success(`Bienvenido ${userObject.userName}!`+' Utilice la sección "Configuraciones" del menú lateral para realizar acciones de administrador',8,HandleConfig())
+     //HandleConfig()
   } 
   catch(err){
     //settear en true la bandera para levantar para que salte el error de loggeo
     console.log('este es el error de login', err)
-    alert ('Error: Usuario o Contraseña invalidos')
+    message.error('Error de inicio de sesión. Verifique usuario y contraseña ingresados',5)
+    //alert ('Error: Usuario o Contraseña invalidos')
     
     };
   }

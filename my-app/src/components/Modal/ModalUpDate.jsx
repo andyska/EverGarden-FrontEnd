@@ -6,7 +6,7 @@ const {Item}=Form
 
 const ModalUpDate = ({isModalVisible ,setIsModalVisible ,  getAllProducts , productdetails}) => {
   console.log('ModalUpDate-productdetails - 1', productdetails)
-  const productid =  'http://localhost:8080/api/products/' + productdetails._id
+  const productid =  'http://localhost:8080/api/admin/products/' + productdetails._id
   console.log('ModalUpDate-productdid -2 ',productid)
   const token = localStorage.getItem('Token')
 
