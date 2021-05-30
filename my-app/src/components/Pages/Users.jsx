@@ -9,10 +9,11 @@ import EditModal from '../Modal/EditModal'
 const UsersCrud = () => {
   const [users, setUsers] = useState([])
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const token = localStorage.getItem('Token')
 
   const getAllUsers = async () => {
     try{
-      const resp = await axios.get('http://localhost:8080/api/users');
+      const resp = await axios.get('http://localhost:8080/api/users',{headers: {Authorization: 'Bearer ' + token}});
       //console.log("Nuevo usuario", resp.data)
       setUsers(resp.data)
     } catch (error){

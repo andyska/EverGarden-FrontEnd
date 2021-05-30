@@ -8,6 +8,7 @@ const ModalUpDate = ({isModalVisible ,setIsModalVisible ,  getAllProducts , prod
   console.log('ModalUpDate-productdetails - 1', productdetails)
   const productid =  'http://localhost:8080/api/products/' + productdetails._id
   console.log('ModalUpDate-productdid -2 ',productid)
+  const token = localStorage.getItem('Token')
 
   const [editproduct, setEditProduct] = useState({
     product: productdetails.product,
@@ -35,7 +36,7 @@ const ModalUpDate = ({isModalVisible ,setIsModalVisible ,  getAllProducts , prod
     console.log('ModalUpDate-productdetails -3 ',hhh)
     try{  
       hhh.preventDefault();
-      const response = await axios.put(productid, editproduct)
+      const response = await axios.put(productid, editproduct,{headers: {Authorization: 'Bearer ' + token}});
       //validar que salio ok el put para refrescar la tabla
       console.log('despues de editar',response)
       getAllProducts()

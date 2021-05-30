@@ -1,4 +1,4 @@
-import React, { useState  } from 'react'
+import React, { useState, useEffect  } from 'react'
 import { Layout, Menu } from 'antd'
 import './Layout.css'
 import  {NavLink,  Routes, Route} from 'react-router-dom'
@@ -21,7 +21,7 @@ import {
 import MyCarousel from '../Carousel/Carousel'
 import IndexPage from '../Pages/Index'
 import MyLogin from '../Login/Login'
-import Products from '../Pages/Products'
+import Products from '../Pages/products'
 import ProductsCrud from '../../ProductsCrud'
 import MenuAdmin from '../Pages/MenuAdmin'
 import Users from '../Pages/Users'
@@ -31,9 +31,27 @@ const { Header, Content, Footer, Sider } = Layout;
 const MyLayout = () => {
   const [collapsed, setCollapsed] = useState(false)
   const [isModalVisible, setIsModalVisible] = useState(true);
-  const [isConfigHidden, setIsConfigHidden] = useState(true);
-  
 
+  
+// quizas haya que hacerlo directamente en App asociado a las credenciales de usuario como le dijo 
+// Ramiro a Santi en la consulta (Ver el video de youtube)
+//la condicion deberia ir mas alla de la sola existencia del token, permisos!
+
+     useEffect(()=>{
+    if (localStorage.getItem('Token')){ 
+      setIsConfigHidden (false)
+    } else {
+      setIsConfigHidden(true)
+    }
+  })
+ 
+  const [isConfigHidden, setIsConfigHidden] = useState(true);
+ 
+  const token = () =>{ if (localStorage.getItem('Token'))
+  return  true} 
+
+  console.log("estado del token:", token())
+  
   const handleOnCollapsed = (collapsed) => {
     console.log(collapsed);
     setCollapsed(collapsed);
@@ -45,7 +63,7 @@ const MyLayout = () => {
     console.log('visible:', isModalVisible)
   }
 
-  const HandleConfig =() => {
+  const HandleConfig = () => {
     setIsConfigHidden(false)
     console.log("llegue hasta aca!")
   }
@@ -87,7 +105,7 @@ const MyLayout = () => {
                 Contacto
               </NavLink>
             </Menu.Item>  
-            <Menu.Item className="item" key="6" icon={<SettingOutlined/>}>
+            <Menu.Item className="item" key="6" icon={<SettingOutlined/>} hidden= {isConfigHidden}>
               <NavLink hidden={isConfigHidden} id="Config" to="/MenuAdmin" >
                 Configuraciones
               </NavLink>
@@ -108,7 +126,7 @@ const MyLayout = () => {
                 <Route exact path="/galery" element= {<MyCarousel/>} />
                 <Route exact path="/products" element= {<Products/>} />
                 <Route exact path="/contact" element= {<ContactModal/>} />
-                <Route exact path="/admin" element= {<MyLogin isConfigHidden= {isConfigHidden} HandleConfig= {HandleConfig}/>} />
+                <Route exact path="/admin" element= {<MyLogin HandleConfig= {HandleConfig}/>} />
                 <Route exact path="/MenuAdmin" element= {<MenuAdmin/>} />
                 <Route exact path="/ProductsCrud" element= {<ProductsCrud/>} />
                 <Route exact path="/Users" element= {<Users/>} />

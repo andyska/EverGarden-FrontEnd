@@ -10,10 +10,14 @@ const ProductsCrud = () => {
   const [products, setProducts] = useState([])
   const [isModalVisibleDelete, setIsModalVisibleDelete] = useState(false);
   const [isModalVisibleUpDate, setIsModalVisibleUpDate] = useState(false);
-  //const token = Storage.getItem('Token') //, {headers:{'Authorization': 'bearer' + token}}
+  const token = localStorage.getItem('Token') 
 
   const getAllProducts = async () => {
-    const resp = await axios.get('http://localhost:8080/api/products');
+    const resp = await axios.get('http://localhost:8080/api/products',
+    {
+    headers: {Authorization: 'Bearer ' + token //the token is a variable which holds the token
+    }
+    });
     console.log(resp.data)
     setProducts(resp.data)
   }

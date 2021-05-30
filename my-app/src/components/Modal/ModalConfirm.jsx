@@ -6,6 +6,7 @@ const ModalConfirm = ({isModalVisible ,setIsModalVisible ,  getAllProducts , pro
   console.log('ModalConfirm-bookdetails - 1', productdetails)
   const productid =  'http://localhost:8080/api/products/' + productdetails._id
   console.log('ModalConfirm-productdetails -2 ',productid)
+  const token = localStorage.getItem('Token')
   
   const handleCancel = () => {
     setIsModalVisible(false)
@@ -14,7 +15,7 @@ const ModalConfirm = ({isModalVisible ,setIsModalVisible ,  getAllProducts , pro
   const handleOnDelete = async (hhh) => {
     console.log('ModalConfirm-productdetails -3 ',hhh)
     try{
-      const response = await axios.delete(productid)
+      const response = await axios.delete(productid,{headers: {Authorization: 'Bearer ' + token}});
       //validar que salio ok el delete para refrescar la tabla
       console.log('despues de borrar',response)
       getAllProducts()
