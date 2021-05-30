@@ -7,6 +7,7 @@ const { Option } = Select;
 
 const UserModal =({usermodal, setModal , getAllUsers}) =>{
     const [formadd] = Form.useForm();
+    const token = localStorage.getItem('Token')
     //este use efect limpia el form al entrar
     useEffect(()=>{
         console.log('useEffect','adentro')
@@ -50,7 +51,7 @@ const UserModal =({usermodal, setModal , getAllUsers}) =>{
         //console.log(form.validateFields)
         try{
            //console.log('FRONT-save modal-newuser:', newuser)
-            const response = await axios.post('http://localhost:8080/api/users/' , newuser )
+            const response = await axios.post('http://localhost:8080/api/users/' , newuser ,{headers: {Authorization: 'Bearer ' + token}});
             //validar que salio ok el post para refrescar la tabla
             //console.log('Front-new USER -response',response)
             message.success("Se creo usuario: " + response.data.userName)

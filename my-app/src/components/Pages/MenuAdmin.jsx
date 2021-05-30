@@ -11,17 +11,21 @@ const MenuAdmin = () => {
     window.location.href= '/Users' 
   }
 
+  const handleLogOutClick = () => {}
 
      console.log("entró a MenuAdmin")
      return (
          <div>
          <h1>MENU ADMINISTRADOR</h1>
          <Space>
-         <Button onClick={handleOnClick}>
+         <Button onClick={handleOnClick} >
           Configurar Productos
          </Button >
          <Button onClick={handleUsersClick}>
          Configurar Usuarios
+        </Button>
+        <Button onClick={handleLogOutClick}>
+         Cerrar Sesión
         </Button>
         </Space>
         </div>

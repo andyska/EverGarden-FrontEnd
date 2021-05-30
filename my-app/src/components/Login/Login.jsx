@@ -23,13 +23,8 @@ const tailLayout = {
   },
 };
 
-const MyLogin = ({isConfigHidden, HandleConfig}) => {
-   /*
-  const HandleConfig =() => {
-    setIsConfigHidden(false)
-    console.log("llegue hasta aca!")
-  }
-*/
+const MyLogin = ({HandleConfig}) => {
+ 
   const onFinish = async(values) => {
     console.log('Success:', values);
     const userObject = 

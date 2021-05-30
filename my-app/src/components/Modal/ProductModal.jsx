@@ -6,6 +6,8 @@ const {Item}=Form
 
 const ProductModal =({productmodal, setProductModal , getAllProducts}) =>{
     console.log('dentro del product modal- modal', productmodal)
+    const token = localStorage.getItem('Token')
+
     const [newproduct, setNewProduct] = useState({
       product: '',
       brand: '',
@@ -39,7 +41,7 @@ const ProductModal =({productmodal, setProductModal , getAllProducts}) =>{
 
     const saveModal = async e => {
         e.preventDefault();
-        const resp = await axios.post('http://localhost:8080/api/products', newproduct);
+        const resp = await axios.post('http://localhost:8080/api/products', newproduct,{headers: {Authorization: 'Bearer ' + token}});
         console.log(resp)
         closeModal()
         getAllProducts()

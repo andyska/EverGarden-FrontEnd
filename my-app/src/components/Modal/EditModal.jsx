@@ -6,9 +6,10 @@ const { Item } = Form
 const { Group } = Radio
 //const { Password } = Input 
 
+
 const EditModal =({isEditModalVisible, setIsEditModalVisible, getAllUsers,  usereditdetails, setUserEditdetails}) => {
     console.log('EDIT modal - userEDITtails =========', usereditdetails )
-    
+    const token = localStorage.getItem('Token')
     const [formedit] = Form.useForm()
    
     const closeModal = ()=>{
@@ -20,7 +21,7 @@ const EditModal =({isEditModalVisible, setIsEditModalVisible, getAllUsers,  user
         try{ 
             const senduser={...edituser , password : '123456' }
             console.log("por grabar ==",'http://localhost:8080/api/users/'+ usereditdetails._id)
-            const response = await axios.put('http://localhost:8080/api/users/'+ usereditdetails._id , senduser )
+            const response = await axios.put('http://localhost:8080/api/users/'+ usereditdetails._id , senduser,{headers: {Authorization: 'Bearer ' + token}});
             console.log("put de usuario-response",response)
             message.success("Se Actualizo usuario: " + senduser.userName)
             closeModal()
