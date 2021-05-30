@@ -1,8 +1,11 @@
 import React from 'react';
-import { Button, Space } from 'antd';
+import { Button, Space, message } from 'antd';
+import GoToMain from '../GoToMain'
 
 const MenuAdmin = () => {
 
+  const token = localStorage.getItem('Token') 
+  
     const handleOnClick =() => {
     window.location.href= '/ProductsCrud' 
   }
@@ -13,10 +16,10 @@ const MenuAdmin = () => {
 
   const handleLogOutClick = () => {
     localStorage.removeItem('Token')
-    window.location.href='/'
+    GoToMain()
   }
-
      console.log("entró a MenuAdmin")
+     if (token){
      return (
          <div>
          <h1>MENU ADMINISTRADOR</h1>
@@ -32,7 +35,12 @@ const MenuAdmin = () => {
         </Button>
         </Space>
         </div>
-          )
+          )}
+          else {
+            GoToMain()
+            alert ('Credenciales inválidas. Debe iniciar sesión como usuario administrador para acceder a esta pantalla')
+            return null
+          }
  }
  
  export default MenuAdmin
