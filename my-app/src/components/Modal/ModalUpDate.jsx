@@ -1,4 +1,4 @@
-import React, {  useState } from 'react'
+import React, {  useState , useEffect} from 'react'
 import { Modal , Button, Form , Input} from 'antd'
 import axios from 'axios'
 import './ProductModal.css'
@@ -8,6 +8,7 @@ const ModalUpDate = ({isModalVisible ,setIsModalVisible ,  getAllProducts , prod
   console.log('ModalUpDate-productdetails - 1', productdetails)
   const productid =  'http://localhost:8080/api/products/' + productdetails._id
   console.log('ModalUpDate-productdid -2 ',productid)
+  const [formedit] = Form.useForm()
 
   const [editproduct, setEditProduct] = useState({
     product: productdetails.product,
@@ -26,6 +27,7 @@ const ModalUpDate = ({isModalVisible ,setIsModalVisible ,  getAllProducts , prod
 
  const handleEditProduct=e=>{
     const {name, value } = e.target ;
+    setEditProduct({...editproduct, [name]: value});
     console.log('etarget',e.target);
     console.log('handleEdit',{...editproduct, [name]: value});
     console.log('edito producto', editproduct)
@@ -54,6 +56,13 @@ const ModalUpDate = ({isModalVisible ,setIsModalVisible ,  getAllProducts , prod
       },
   }
 
+  useEffect(() =>{
+    getAllProducts()
+  },[]
+  )
+
+
+
 return (
     <div>
       <Modal title='Editar Producto' 
@@ -64,7 +73,7 @@ return (
         >
          <Form {...formview}>
              <Item label="Producto">
-                 <Input name="product" onChange={handleEditProduct} value={productdetails.product}/>
+                 <Input name="product" onChange={handleEditProduct} />
              </Item>
              <Item label="Marca">
                  <Input name="brand" onChange={handleEditProduct} value={productdetails.brand}/>
