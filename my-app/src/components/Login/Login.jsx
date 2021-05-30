@@ -36,7 +36,7 @@ const MyLogin = ({HandleConfig}) => {
     try{
     const response = await axios.post('http://localhost:8080/api/admin/users/login/', userObject );
      localStorage.setItem("Token", response.data.token) 
-     message.success(`Bienvenido ${userObject.userName}!`+' Utilice la sección "Configuraciones" del menú lateral para realizar acciones de administrador',8,HandleConfig())
+     message.success(`Bienvenido ${userObject.userName}!`+' Utilice la sección "Configuraciones" del menú lateral para realizar acciones de administrador',4,HandleConfig())
      //HandleConfig()
   } 
   catch(err){
