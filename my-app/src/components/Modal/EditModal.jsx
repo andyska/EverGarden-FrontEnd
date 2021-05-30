@@ -20,8 +20,8 @@ const EditModal =({isEditModalVisible, setIsEditModalVisible, getAllUsers,  user
     const saveModal = async (edituser)=>{
         try{ 
             const senduser={...edituser , password : '123456' }
-            console.log("por grabar ==",'http://localhost:8080/api/users/'+ usereditdetails._id)
-            const response = await axios.put('http://localhost:8080/api/users/'+ usereditdetails._id , senduser,{headers: {Authorization: 'Bearer ' + token}});
+            console.log("por grabar ==",'http://localhost:8080/api/admin/users/'+ usereditdetails._id)
+            const response = await axios.put('http://localhost:8080/api/admin/users/'+ usereditdetails._id , senduser,{headers: {Authorization: 'Bearer ' + token}});
             console.log("put de usuario-response",response)
             message.success("Se Actualizo usuario: " + senduser.userName)
             closeModal()

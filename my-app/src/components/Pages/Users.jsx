@@ -13,7 +13,7 @@ const UsersCrud = () => {
 
   const getAllUsers = async () => {
     try{
-      const resp = await axios.get('http://localhost:8080/api/users',{headers: {Authorization: 'Bearer ' + token}});
+      const resp = await axios.get('http://localhost:8080/api/admin/users',{headers: {Authorization: 'Bearer ' + token}});
       //console.log("Nuevo usuario", resp.data)
       setUsers(resp.data)
     } catch (error){

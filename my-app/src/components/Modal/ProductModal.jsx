@@ -32,7 +32,7 @@ const ProductModal =({productmodal, setProductModal , getAllProducts}) =>{
 
    /* const saveModal = async ()=>{
         console.log('save modal - newproduct', newproduct)
-        const response = await axios.post('http://localhost:8080/api/products/' , newproduct )
+        const response = await axios.post('http://localhost:8080/api/admin/products/' , newproduct )
         //validar que salio ok el post para refrescar la tabla
         console.log('despues de dar de alta',response)
         closeModal()
@@ -41,7 +41,7 @@ const ProductModal =({productmodal, setProductModal , getAllProducts}) =>{
 
     const saveModal = async e => {
         e.preventDefault();
-        const resp = await axios.post('http://localhost:8080/api/products', newproduct,{headers: {Authorization: 'Bearer ' + token}});
+        const resp = await axios.post('http://localhost:8080/api/admin/products', newproduct,{headers: {Authorization: 'Bearer ' + token}});
         console.log(resp)
         closeModal()
         getAllProducts()

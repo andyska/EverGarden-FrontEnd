@@ -13,11 +13,7 @@ const ProductsCrud = () => {
   const token = localStorage.getItem('Token') 
 
   const getAllProducts = async () => {
-    const resp = await axios.get('http://localhost:8080/api/products',
-    {
-    headers: {Authorization: 'Bearer ' + token //the token is a variable which holds the token
-    }
-    });
+    const resp = await axios.get('http://localhost:8080/api/admin/products',{headers: {Authorization: 'Bearer ' + token}});
     console.log(resp.data)
     setProducts(resp.data)
   }

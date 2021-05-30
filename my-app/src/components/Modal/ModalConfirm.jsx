@@ -4,10 +4,10 @@ import axios from 'axios'
 
 const ModalConfirm = ({isModalVisible ,setIsModalVisible ,  getAllProducts , productdetails}) => {
   console.log('ModalConfirm-bookdetails - 1', productdetails)
-  const productid =  'http://localhost:8080/api/products/' + productdetails._id
+  const productid =  'http://localhost:8080/api/admin/products/' + productdetails._id
   console.log('ModalConfirm-productdetails -2 ',productid)
   const token = localStorage.getItem('Token')
-  
+
   const handleCancel = () => {
     setIsModalVisible(false)
   };
