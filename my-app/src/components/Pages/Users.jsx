@@ -5,6 +5,7 @@ import {DeleteOutlined , EditOutlined , PlusCircleOutlined} from '@ant-design/ic
 import UserModal from '../Modal/UserModal'
 import ConfirmModal from '../Modal/ConfirmModal'
 import EditModal from '../Modal/EditModal'
+import GoToMain from '../GoToMain'
 
 const UsersCrud = () => {
   const [users, setUsers] = useState([])
@@ -12,6 +13,7 @@ const UsersCrud = () => {
   const token = localStorage.getItem('Token')
 
   const getAllUsers = async () => {
+    if(token){
     try{
       const resp = await axios.get('http://localhost:8080/api/admin/users',{headers: {Authorization: 'Bearer ' + token}});
       //console.log("Nuevo usuario", resp.data)
@@ -20,6 +22,10 @@ const UsersCrud = () => {
       //console.log("getAllUsers" , error)
       message.error("Fallo la conexion con el BackEnd:" + error)
       throw error
+    }}
+    else {
+      alert ('Credenciales inválidas. Debe iniciar sesion como usuario administrador para acceder a esta pantalla')
+      GoToMain()
     }
   }
 
@@ -90,7 +96,7 @@ const UsersCrud = () => {
         
   ];
   
-  
+  if(token){
   return (
     <div>
       <h1>Administracion de Usuarios</h1>
@@ -114,9 +120,12 @@ const UsersCrud = () => {
         setUserEditdetails={setUserEditdetails}
       />
       <Table dataSource={users} columns={columns} rowKey="_id"/>
-    </div>
+    </div>)}
+    else {
+      return null
+    }
 
-  )
+  
 }
 
 export default UsersCrud
