@@ -11,7 +11,10 @@ const MenuAdmin = () => {
     window.location.href= '/Users' 
   }
 
-  const handleLogOutClick = () => {}
+  const handleLogOutClick = () => {
+    localStorage.removeItem('Token')
+    window.location.href='/'
+  }
 
      console.log("entró a MenuAdmin")
      return (
