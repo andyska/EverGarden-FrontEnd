@@ -1,21 +1,36 @@
 import React, { useEffect, useState } from 'react'
-import { Table , Button} from 'antd'
+import { Table , Button, message} from 'antd'
 import axios from 'axios'
 import {DeleteOutlined , EditOutlined, PlusCircleOutlined} from '@ant-design/icons';
 import ProductModal from './components/Modal/ProductModal'
 import ModalConfirm from './components/Modal/ModalConfirm'
 import ModalUpDate from './components/Modal/ModalUpDate'
+import GoToMain from './components/GoToMain'
+
 const ProductsCrud = () => {
 
   const [products, setProducts] = useState([])
   const [isModalVisibleDelete, setIsModalVisibleDelete] = useState(false);
   const [isModalVisibleUpDate, setIsModalVisibleUpDate] = useState(false);
   const token = localStorage.getItem('Token') 
-
-  const getAllProducts = async () => {
-    const resp = await axios.get('http://localhost:8080/api/admin/products',{headers: {Authorization: 'Bearer ' + token}});
-    console.log(resp.data)
-    setProducts(resp.data)
+  
+   const getAllProducts = async (req) => {
+    if (token){
+    try{
+      const resp = await axios.get('http://localhost:8080/api/admin/products',{headers: {Authorization: 'Bearer ' + token}});
+      const authToken = resp.headers.Authorization
+      console.log("este es el tokn del header" ,authToken)
+      console.log(resp.data)
+      console.log(resp.headers)
+      setProducts(resp.data)}
+      catch(error){
+        message.error("Fallo la conexion con el BackEnd:" + error)
+        throw error
+      }}
+    else{
+      alert ('Credenciales inválidas. Debe iniciar sesion como usuario administrador para acceder a esta pantalla')
+      GoToMain()
+    }
   }
 
   useEffect(() =>{
@@ -110,18 +125,20 @@ const ProductsCrud = () => {
 
   ];
   
-  
-  return (
+    if (token){
+      return(
     <div>
       <Button type="primary" icon={<PlusCircleOutlined/>} onClick={openModal} >Nuevo Producto</Button>
       <ProductModal productmodal={productmodal} setProductModal={setProductModal} getAllProducts={getAllProducts} />
       <ModalConfirm isModalVisible={isModalVisibleDelete} setIsModalVisible={setIsModalVisibleDelete} getAllProducts={getAllProducts} productdetails={productdetails} />
       <ModalUpDate isModalVisible={isModalVisibleUpDate} setIsModalVisible={setIsModalVisibleUpDate} getAllProducts={getAllProducts} productdetails={productdetails}/>
       <Table dataSource={products} columns={columns} rowKey="_id"/>
-    </div>
+    </div>)}
+    else {
+      return null
+    }}
 
-  )
-}
+
 
 export default ProductsCrud
 

@@ -6,6 +6,7 @@ import UserModal from '../Modal/UserModal'
 import ConfirmModal from '../Modal/ConfirmModal'
 import EditModal from '../Modal/EditModal'
 //import './Users.css' 
+import GoToMain from '../GoToMain'
 
 const UsersCrud = () => {
   const [users, setUsers] = useState([])
@@ -13,6 +14,7 @@ const UsersCrud = () => {
   const token = localStorage.getItem('Token')
 
   const getAllUsers = async () => {
+    if(token){
     try{
       const resp = await axios.get('http://localhost:8080/api/admin/users',{headers: {Authorization: 'Bearer ' + token}});
       //console.log("Nuevo usuario", resp.data)
@@ -21,6 +23,10 @@ const UsersCrud = () => {
       //console.log("getAllUsers" , error)
       message.error("Fallo la conexion con el BackEnd:" + error)
       throw error
+    }}
+    else {
+      alert ('Credenciales inválidas. Debe iniciar sesion como usuario administrador para acceder a esta pantalla')
+      GoToMain()
     }
   }
 
@@ -91,8 +97,11 @@ const UsersCrud = () => {
         
   ];
   
+
   //<h1  margin-left="10px"  height="30px" >Administracion de Usuarios</h1>
-    return (
+
+  if(token){
+  return (
     <div>
       <Button type="primary" icon={<PlusCircleOutlined/>} onClick={ openModal} >Agregar Usuario</Button>
       <UserModal 
@@ -114,9 +123,12 @@ const UsersCrud = () => {
         setUserEditdetails={setUserEditdetails}
       />
       <Table dataSource={users} columns={columns} rowKey="_id"/>
-    </div>
+    </div>)}
+    else {
+      return null
+    }
 
-  )
+  
 }
 
 export default UsersCrud

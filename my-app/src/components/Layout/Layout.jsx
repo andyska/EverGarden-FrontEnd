@@ -1,4 +1,4 @@
-import React, { useState, useEffect  } from 'react'
+import React, { useState, useEffect, Redirect} from 'react'
 import { Layout, Menu } from 'antd'
 import './Layout_1.css'
 import  {NavLink,  Routes, Route} from 'react-router-dom'
@@ -120,6 +120,7 @@ const MyLayout = () => {
             </div>
           </Header>
           <Content>
+            
             <Routes> 
                 <Route exact path="/" element= {<IndexPage/>} />
                 <Route exact path="/aboutus" element= {<AboutUs/>} />
@@ -127,7 +128,7 @@ const MyLayout = () => {
                 <Route exact path="/products" element= {<Products/>} />
                 <Route exact path="/contact" element= {<ContactModal/>} />
                 <Route exact path="/admin" element= {<MyLogin HandleConfig= {HandleConfig}/>} />
-                <Route exact path="/MenuAdmin" element= {<MenuAdmin/>} />
+                <Route exact path="/MenuAdmin" element= {<MenuAdmin/>}  />
                 <Route exact path="/ProductsCrud" element= {<ProductsCrud/>} />
                 <Route exact path="/Users" element= {<Users/>} />
             </Routes>

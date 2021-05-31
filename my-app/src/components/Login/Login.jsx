@@ -6,7 +6,8 @@ import  {NavLink,  Routes, Route} from 'react-router-dom'
 import axios from 'axios'
 import { message } from 'antd';
 import setIsConfigHidden from '../Layout/Layout'
-import HandleConfig from '../Layout/Layout'
+import HandleConfig from '../Layout/Layout' 
+import GoToMain from '../GoToMain'
 
 const layout = {
   labelCol: {
@@ -36,8 +37,10 @@ const MyLogin = ({HandleConfig}) => {
     try{
     const response = await axios.post('http://localhost:8080/api/admin/users/login/', userObject );
      localStorage.setItem("Token", response.data.token) 
-     message.success(`Bienvenido ${userObject.userName}!`+' Utilice la sección "Configuraciones" del menú lateral para realizar acciones de administrador',4,HandleConfig())
+     //alert(`Bienvenido ${userObject.userName}!`+' Utilice la sección "Configuraciones" del menú lateral para realizar acciones de administrador')
      //HandleConfig()
+     message.success(`Bienvenido ${userObject.userName}!`+' Utilice la sección "Configuraciones" del menú lateral para realizar acciones de administrador',4,HandleConfig())
+     //GoToMain()
   } 
   catch(err){
     //settear en true la bandera para levantar para que salte el error de loggeo
