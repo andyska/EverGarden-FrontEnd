@@ -27,6 +27,7 @@ import MenuAdmin from '../Pages/MenuAdmin'
 import Users from '../Pages/Users'
 
 const { Header, Content, Footer, Sider } = Layout;
+const {SubMenu} = Menu
 
 const MyLayout = () => {
   const [collapsed, setCollapsed] = useState(false)
@@ -109,11 +110,26 @@ const MyLayout = () => {
                 Contacto
               </NavLink>
             </Menu.Item>  
-            <Menu.Item className="item" key="6" icon={<SettingOutlined/>} hidden= {isConfigHidden}>
-              <NavLink hidden={isConfigHidden} id="Config" to="/MenuAdmin" >
-                Configuraciones
-              </NavLink>
-            </Menu.Item>   
+
+            <SubMenu key="conf_menu" icon={<SettingOutlined />} 
+              title="Configuraciones"  hidden= {isConfigHidden}
+            >
+              <Menu.Item key="6">
+                <NavLink hidden={isConfigHidden} id="crudproduct" to="/ProductsCrud" >
+                  Adm.Productos
+                </NavLink>
+              </Menu.Item>
+              <Menu.Item key="7">
+                <NavLink hidden={isConfigHidden} id="crudusers" to="/User" >
+                  Adm.Usuarios
+                </NavLink>
+              </Menu.Item>
+              <Menu.Item key="8">
+                <NavLink hidden={isConfigHidden} id="cerrar" to="/MenuAdmin" >
+                  Cerrar Sesion
+                </NavLink>
+              </Menu.Item>
+            </SubMenu>
             </Menu>
         </Sider>
 

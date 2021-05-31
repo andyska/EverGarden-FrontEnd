@@ -27,7 +27,12 @@ const ModalConfirm = ({isModalVisible ,setIsModalVisible ,  getAllProducts , pro
   } 
 
   return (
-      <Modal title="Desea Eliminar un Producto ?" visible={isModalVisible} onOk={handleOnDelete} onCancel={handleCancel}>
+      <Modal 
+        title="Desea Eliminar un Producto ?" 
+        visible={isModalVisible} 
+        onOk={handleOnDelete} 
+        onCancel={handleCancel}
+      >
         <p>{productdetails.product}</p>
         <p>{productdetails.brand}</p>
         <p>{productdetails.category}</p>
