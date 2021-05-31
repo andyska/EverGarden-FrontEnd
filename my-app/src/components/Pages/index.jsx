@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import imgContent from '../../images/fondo.png'
+import imgContent from '../../images/fondo2.png'
 import imgIndex from '../../images/fotoinicial.jpg'
 import './Index.css'
 

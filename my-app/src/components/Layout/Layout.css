@@ -7,13 +7,13 @@
 .ant-layout-header,
 .ant-layout-footer {
   color: #fff;
-  background: #7dbcea;
+  background:gray,
 }
 [data-theme="dark"] .ant-layout-header {
-  background: #6aa0c7;
+  background: gray;
 }
 [data-theme="dark"] .ant-layout-footer {
-  background: #6aa0c7;
+  background: gray;
 }
 .ant-layout-footer {
   line-height: 1.5;
@@ -37,10 +37,10 @@
   min-height: 120px;
   color: #fff;
   line-height: 120px;
-  background: rgba(16, 142, 233, 1);
+  background: gray(16, 142, 233, 1);
 }
 [data-theme="dark"] .ant-layout-content {
-  background: #107bcb;
+  background: gray;
 }
 .code-box-demo > .ant-layout + .ant-layout {
   margin-top: 48px;
@@ -61,7 +61,7 @@
 
 .anticon {
   display: inline-block;
-  color: black;
+  color: white;
   font-style: normal;
   line-height: 0;
   text-align: center;
@@ -73,7 +73,7 @@
 }
 
 .ant-menu-dark.ant-menu-dark:not(.ant-menu-horizontal) .ant-menu-item-selected {
-  background-color:#99CC99;
+  background-color:gray;
 }
 
 .ant-menu-dark .ant-menu-item-selected > a, .ant-menu-dark .ant-menu-item-selected > span > a, .ant-menu-dark .ant-menu-item-selected > a:hover, .ant-menu-dark .ant-menu-item-selected > span > a:hover {
@@ -203,7 +203,7 @@ footer {
 }
 
 .container-footer{
-  background: #99CC99;
+  background: gray;
   margin: auto;
   width: 100%;
 }

@@ -19,7 +19,7 @@ import {
   SettingOutlined
 } from '@ant-design/icons'
 import MyCarousel from '../Carousel/Carousel'
-import IndexPage from '../Pages/Index'
+import IndexPage from '../Pages/index'
 import MyLogin from '../Login/Login'
 import Products from '../Pages/products'
 import ProductsCrud from '../../ProductsCrud'
