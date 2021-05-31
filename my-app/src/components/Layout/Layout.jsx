@@ -1,5 +1,5 @@
 import React, { useState, useEffect, Redirect} from 'react'
-import { Layout, Menu } from 'antd'
+import { Button, Layout, Menu } from 'antd'
 import './Layout_1.css'
 import  {NavLink,  Routes, Route} from 'react-router-dom'
 import AboutUs from '../Pages/AboutUs'
@@ -66,6 +66,10 @@ const MyLayout = () => {
   const HandleConfig = () => {
     setIsConfigHidden(false)
     console.log("llegue hasta aca!")
+  }
+
+  const onLogin=()=>{
+    window.location.href = '/admin'
   }
 
    return (
@@ -140,12 +144,11 @@ const MyLayout = () => {
                
               <div class="column1">
                 <img src={logoPlanta}/>
-                <p>
-                  Sistema Modulares 
-                </p>
-                <p>
-                  de Jardineria Vertical
-                </p>
+                <div className="site-button-ghost-wrapper">
+                  <Button type="primary" ghost onClick={onLogin}>
+                    Login
+                  </Button>
+                </div>
               </div>
                 <div className="column2">
                 <h4>Redes Sociales</h4>

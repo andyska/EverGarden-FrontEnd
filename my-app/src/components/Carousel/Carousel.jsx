@@ -2,6 +2,7 @@ import React , {useState} from 'react'
 import { Carousel } from 'antd';
 //import { LeftCircleTwoTone , RightCircleTwoTone } from '@ant-design/icons'
 import gardenImages from './GardenImages'
+import armadoImages from '../Carousel/ArmadoImages'
 //import './Carousel.css'
 import './Carousel1.css'
 import MyDropDown from '../DropDown/DropDown'
