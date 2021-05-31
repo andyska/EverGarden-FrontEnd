@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-//import imgContent from '../../images/fondo.png'
-//import imgContent from '../../images/fondo5.png'
-import imgContent from '../../images/fondo_4.png'
+												 
+import imgContent from '../../images/fondo.png'
+												 
 import imgIndex from '../../images/fotoinicial.jpg'
 import './Index.css'
 
@@ -19,7 +19,12 @@ const IndexPage = () => {
         <div className="col">
           <div className="col2"/>
           <div className="col2">
-            <p className="p-frase">"Planta tus sueños y crecerán días felices"</p>
+            <ul>
+              <p className="p-frase">"Planta tus sueños y crecerán días felices"</p>
+              <p className="p-frase">"Planta tu propio Jardin y decora tu propia Alma"</p>
+              <p className="p-frase">"Una Flor florece para su propia alegria"</p>
+              <p className="p-frase">"La tierra es insultada y ofrece flores como respuesta"</p>
+            </ul>
             <p className="p-frase">"Ever Garden"</p>
           </div>
         
