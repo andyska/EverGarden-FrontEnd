@@ -146,7 +146,7 @@ const MyLayout = () => {
                 <img src={logoPlanta}/>
                 <div className="site-button-ghost-wrapper">
                   <Button type="primary" ghost onClick={onLogin}>
-                    Login
+                    Acceso
                   </Button>
                 </div>
               </div>
