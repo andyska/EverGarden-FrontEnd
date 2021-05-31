@@ -6,7 +6,8 @@ import  {NavLink,  Routes, Route} from 'react-router-dom'
 import axios from 'axios'
 import { message } from 'antd';
 import setIsConfigHidden from '../Layout/Layout'
-import HandleConfig from '../Layout/Layout'
+import HandleConfig from '../Layout/Layout' 
+import GoToMain from '../GoToMain'
 
 const layout = {
   labelCol: {
@@ -23,9 +24,8 @@ const tailLayout = {
   },
 };
 
-const MyLogin = () => {
+const MyLogin = ({HandleConfig}) => {
  
-  
   const onFinish = async(values) => {
     console.log('Success:', values);
     const userObject = 
@@ -35,16 +35,18 @@ const MyLogin = () => {
       }
     console.log ('userObject:', userObject)
     try{
-    const response = await axios.post('http://localhost:8080/api/users/login/', userObject );
+    const response = await axios.post('http://localhost:8080/api/admin/users/login/', userObject );
      localStorage.setItem("Token", response.data.token) 
-     alert ('Bienvenido! Presione ACEPTAR para ingresar al menú de usuario administrador') 
-     window.location.href= '/MenuAdmin'  
+     //alert(`Bienvenido ${userObject.userName}!`+' Utilice la sección "Configuraciones" del menú lateral para realizar acciones de administrador')
      //HandleConfig()
+     message.success(`Bienvenido ${userObject.userName}!`+' Utilice la sección "Configuraciones" del menú lateral para realizar acciones de administrador',4,HandleConfig())
+     //GoToMain()
   } 
   catch(err){
     //settear en true la bandera para levantar para que salte el error de loggeo
     console.log('este es el error de login', err)
-    alert ('Error: Usuario o Contraseña invalidos')
+    message.error('Error de inicio de sesión. Verifique usuario y contraseña ingresados',5)
+    //alert ('Error: Usuario o Contraseña invalidos')
     
     };
   }

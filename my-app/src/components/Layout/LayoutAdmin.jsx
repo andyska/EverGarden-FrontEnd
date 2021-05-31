@@ -3,7 +3,7 @@ import { Layout, Menu } from 'antd'
 import {Routes, Route} from 'react-router-dom'
 import {NavLink } from 'react-router-dom'
 import { Divider } from 'antd'
-import ProductsCrud from '../../ProductsCrud'
+import ProductsCrud from '../Pages/ProductsCrud1'
 import Users from '../Pages/Users'
 import imgHeader from '../../images/header_a.jpg'
 import {

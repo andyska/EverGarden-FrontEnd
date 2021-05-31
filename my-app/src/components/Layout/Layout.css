@@ -36,7 +36,7 @@
 .ant-layout-content {
   min-height: 120px;
   color: #fff;
-  line-height: 120px;
+  line-height: 20px;
   background: rgba(16, 142, 233, 1);
 }
 [data-theme="dark"] .ant-layout-content {
@@ -124,7 +124,7 @@ footer {
   width: 100%;
   max-width: 1200px;
   margin: auto;
-  padding: 10px;
+  padding: 0;
   
 }
 

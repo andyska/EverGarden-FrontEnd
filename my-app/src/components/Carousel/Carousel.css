@@ -40,3 +40,7 @@ las flechitas para pasar de una foto a otra
   opacity: 1;
   transition: all 1s;
 }
+
+img{
+  border-radius: 15px;
+}

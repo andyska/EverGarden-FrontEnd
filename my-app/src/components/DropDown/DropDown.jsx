@@ -6,7 +6,7 @@ const MyDropDown = ( {galeryImages, setGaleryImages} ) => {
 const onMenuClick = e => {
     // console.log('menu click', e.target.target);
     // en target.target viene el valor de la propiedad target del menu
-     if (e.target.target == 1 ) {
+     if (e.target.target === 1 ) {
          setGaleryImages(gardenImages)
      } else {
          setGaleryImages(armadoImages)}
@@ -15,12 +15,12 @@ const onMenuClick = e => {
  const menu = (
   <Menu>
     <Menu.Item>
-      <a target="1" rel="noopener noreferrer" onClick={onMenuClick}>
+      <a target="1" href="J" rel="noopener noreferrer" onClick={onMenuClick}>
         Jardines
       </a>
     </Menu.Item>
     <Menu.Item>
-      <a target="2" rel="noopener noreferrer"  onClick={onMenuClick}>
+      <a target="2" href='P' rel="noopener noreferrer"  onClick={onMenuClick}>
         Pasos de Armado
       </a>
     </Menu.Item>

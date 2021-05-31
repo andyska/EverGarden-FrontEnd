@@ -2,9 +2,7 @@ import React , {useState} from 'react'
 import { Carousel } from 'antd';
 //import { LeftCircleTwoTone , RightCircleTwoTone } from '@ant-design/icons'
 import gardenImages from './GardenImages'
-//import armadoImages from './ArmadoImages'
 import './Carousel.css'
-import RadioGalery from '../Radio/Radio'
 import MyDropDown from '../DropDown/DropDown'
 
 function onChange(a, b, c) {

@@ -4,26 +4,28 @@ import axios from 'axios'
 import {DeleteOutlined , EditOutlined , PlusCircleOutlined} from '@ant-design/icons';
 import UserModal from '../Modal/UserModal'
 import ConfirmModal from '../Modal/ConfirmModal'
+import EditModal from '../Modal/EditModal'
+import GoToMain from '../GoToMain'
 
 const UsersCrud = () => {
   const [users, setUsers] = useState([])
-  const [isModalVisible, setIsModalVisible] = useState(true);
-/*
-  const handleOnClick =() => {
-    setIsModalVisible(true)
-    console.log('visible:', isModalVisible)
-  }
-  */
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const token = localStorage.getItem('Token')
+
   const getAllUsers = async () => {
+    if(token){
     try{
-      //console.log("users - getallusers - ENTRO =============")
-      const resp = await axios.get('http://localhost:8080/api/users');
+      const resp = await axios.get('http://localhost:8080/api/admin/users',{headers: {Authorization: 'Bearer ' + token}});
       //console.log("Nuevo usuario", resp.data)
       setUsers(resp.data)
     } catch (error){
       //console.log("getAllUsers" , error)
       message.error("Fallo la conexion con el BackEnd:" + error)
       throw error
+    }}
+    else {
+      alert ('Credenciales inválidas. Debe iniciar sesion como usuario administrador para acceder a esta pantalla')
+      GoToMain()
     }
   }
 
@@ -43,14 +45,15 @@ const UsersCrud = () => {
     setUsersdetails (event)
     setIsModalVisible(true)
   } 
-  
-  const handleOnEdit = (event) => {
-    console.log('front-users-handleOnedit', userdetails)
-    console.log('front-users-handleOnedit ==== FALTA PROGRAMARLO!')
-    message.error('SIN PROGRAMAR AUN');
-    //llamar a un modal que confirme que quiere borrar ese libro
-    //setUsersdetails (event)
-    //setIsModalVisible(true)
+
+  const [ isEditModalVisible, setIsEditModalVisible] = useState(false);
+  const [ usereditdetails, setUserEditdetails]  = useState({})
+
+  const handleOnEdit = (row) => {
+    console.log('USERS.jx --handleOnedit====> ROW', row)
+    setUserEditdetails (row)
+    //console.log('USERS.jx - usereditdetails ===>', usereditdetails)
+    setIsEditModalVisible(true)
   } 
   
     const columns = [
@@ -93,17 +96,36 @@ const UsersCrud = () => {
         
   ];
   
-  
+  if(token){
   return (
     <div>
       <h1>Administracion de Usuarios</h1>
       <Button type="primary" icon={<PlusCircleOutlined/>} onClick={ openModal} >Agregar Usuario</Button>
-      <UserModal usermodal={usermodal} setModal={setModal} getAllUsers={getAllUsers} />
-      <ConfirmModal isModalVisible={isModalVisible} setIsModalVisible={setIsModalVisible} getAllUsers={getAllUsers} userdetails={userdetails} />
+      <UserModal 
+        usermodal={usermodal} 
+        setModal={setModal} 
+        getAllUsers={getAllUsers} 
+      />
+      <ConfirmModal 
+        isModalVisible={isModalVisible} 
+        setIsModalVisible={setIsModalVisible} 
+        getAllUsers={getAllUsers} 
+        userdetails={userdetails} 
+      />
+      <EditModal 
+        isEditModalVisible={isEditModalVisible}
+        setIsEditModalVisible={setIsEditModalVisible} 
+        getAllUsers={getAllUsers} 
+        usereditdetails={usereditdetails} 
+        setUserEditdetails={setUserEditdetails}
+      />
       <Table dataSource={users} columns={columns} rowKey="_id"/>
-    </div>
+    </div>)}
+    else {
+      return null
+    }
 
-  )
+  
 }
 
 export default UsersCrud

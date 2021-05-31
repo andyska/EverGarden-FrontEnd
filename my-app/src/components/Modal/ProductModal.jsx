@@ -1,11 +1,13 @@
 import React, {  useState } from 'react'
-import { Modal , Button, Form , Input} from 'antd'
+import { Modal , Button, Form , Input, message, Select} from 'antd'
 import axios from 'axios'
 import './ProductModal.css'
 const {Item}=Form
 
 const ProductModal =({productmodal, setProductModal , getAllProducts}) =>{
     console.log('dentro del product modal- modal', productmodal)
+    const token = localStorage.getItem('Token')
+
     const [newproduct, setNewProduct] = useState({
       product: '',
       brand: '',
@@ -30,7 +32,7 @@ const ProductModal =({productmodal, setProductModal , getAllProducts}) =>{
 
    /* const saveModal = async ()=>{
         console.log('save modal - newproduct', newproduct)
-        const response = await axios.post('http://localhost:8080/api/products/' , newproduct )
+        const response = await axios.post('http://localhost:8080/api/admin/products/' , newproduct )
         //validar que salio ok el post para refrescar la tabla
         console.log('despues de dar de alta',response)
         closeModal()
@@ -39,10 +41,15 @@ const ProductModal =({productmodal, setProductModal , getAllProducts}) =>{
 
     const saveModal = async e => {
         e.preventDefault();
-        const resp = await axios.post('http://localhost:8080/api/products', newproduct);
-        console.log(resp)
-        closeModal()
-        getAllProducts()
+        try{
+            const resp = await axios.post('http://localhost:8080/api/admin/products', newproduct,{headers: {Authorization: 'Bearer ' + token}});
+            console.log(resp)
+            closeModal()
+            getAllProducts()
+        } catch (error){
+            message.error("Fallo la Grabacion del Producto - Error:"  + error)
+            throw error
+        }
     };
         
     const formview={
@@ -63,29 +70,60 @@ return (
             <Button type="primary" onClick={saveModal}>Guardar</Button>
         ]}>
          <Form {...formview}>
-             <Item label="Producto">
-                 <Input name="product" onChange={handleNewProduct}/>
+            <Item label="Producto" 
+              name="product" 
+              rules={[{ required: true, message: 'Ingrese nombre del PRODUCTO (max:20)' , max:20 }]}
+            >
+                <Input name="product" onChange={handleNewProduct} allowClear/>
+            </Item>
+
+            <Item label="Marca" 
+              name="brand" 
+              rules={[{ required: true, message: 'Ingrese la MARCA (max:20)' , max:20}]}
+            >
+                 <Input name="brand" onChange={handleNewProduct} allowClear/>
              </Item>
-             <Item label="Marca">
-                 <Input name="brand" onChange={handleNewProduct}/>
+
+             <Item label="Categoria" 
+              name="category" 
+              rules={[{ required: true, message: 'Ingrese CATEGORIA (max:20)' , max:20}]}
+            >
+                 <Input name="category" onChange={handleNewProduct} allowClear/>
              </Item>
-             <Item label="Categoria">
-                 <Input name="category" onChange={handleNewProduct}/>
+
+              <Item label="Descripcion" 
+              name="description" 
+              rules={[{ required: true, message: 'Ingrese DESCRIPCION (max:200)' , max:200}]}
+            >
+                 <Input name="description" onChange={handleNewProduct} allowClear/>
              </Item>
-             <Item label="Descripcion">
-                 <Input name="description" onChange={handleNewProduct}/>
+
+             <Item label="Dimensiones" 
+              name="dimensions" 
+              rules={[{ required: true, message: 'Ingrese DIMENSIONES (max:15)' , max:15}]}
+            >
+                 <Input name="dimensions" onChange={handleNewProduct} allowClear/>
              </Item>
-             <Item label="Dimensiones">
-                 <Input name="dimensions" onChange={handleNewProduct}/>
+
+             <Item label="Tipo de Uso" 
+              name="use" 
+              rules={[{ required: true, message: 'Ingrese tipo de USO (max:15)' , max:15}]}
+            >
+                 <Input name="use" onChange={handleNewProduct} allowClear/>
              </Item>
-             <Item label="Uso">
-                 <Input name="use" onChange={handleNewProduct}/>
+
+             <Item label="Url Imagen" 
+              name="photo_url" 
+              rules={[{ required: true, message: 'Ingrese URL (max:200)' , max:200}]}
+            >
+                 <Input name="photo_url" onChange={handleNewProduct} allowClear/>
              </Item>
-             <Item label="Imagen">
-                 <Input name="photo_url" onChange={handleNewProduct}/>
-             </Item>
-             <Item label="Precio">
-                 <Input name="price" onChange={handleNewProduct}/>
+
+              <Item label="Precio" 
+              name="price" 
+              rules={[{ required: true, message: 'Ingrese PRECIO'}]}
+            >
+                 <Input name="price" onChange={handleNewProduct} allowClear/>
              </Item>
          </Form>
       </Modal>

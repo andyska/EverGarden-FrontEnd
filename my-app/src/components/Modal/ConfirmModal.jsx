@@ -4,9 +4,10 @@ import axios from 'axios'
 
 const ConfirmModal = ({isModalVisible ,setIsModalVisible ,  getAllUsers , userdetails}) => {
   console.log('ConfirmModal-usertails - 1', userdetails)
-  const userid =  'http://localhost:8080/api/users/' + userdetails._id
+  const userid =  'http://localhost:8080/api/admin/users/' + userdetails._id
  // console.log('ConfirmModal-bookdetails -2 ',userid)
-  
+ const token = localStorage.getItem('Token') 
+
   const handleCancel = () => {
     setIsModalVisible(false)
   };
@@ -14,7 +15,7 @@ const ConfirmModal = ({isModalVisible ,setIsModalVisible ,  getAllUsers , userde
   const handleOnDelete = async (hhh) => {
     //console.log('ModalConfirm-3 ',hhh)
     try{
-      const response = await axios.delete(userid)
+      const response = await axios.delete(userid,{headers: {Authorization: 'Bearer ' + token}});
       //validar que salio ok el delete para refrescar la tabla
       //console.log('despues de borrar',response)
       message.success('Usuario Borrado con Exito')
