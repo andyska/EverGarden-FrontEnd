@@ -36,7 +36,7 @@ const EditModal =({isEditModalVisible, setIsEditModalVisible, getAllUsers,  user
         saveModal(edituser)
     } 
     const formFailed =(error) =>{
-        message.error("ERROR en los datos, no pasan las validaciones=>" + error)
+        message.error("ERROR en los datos. No cumplen las validaciones que se muestran en rojo")
     } 
 
     const [value, setValue] = useState("admin")
@@ -98,9 +98,8 @@ const EditModal =({isEditModalVisible, setIsEditModalVisible, getAllUsers,  user
             </Item>
             <Item label="Usuario" 
                 name="userName" 
-                rules={[{ required: true, message: 'Ingrese el Usuario (max:15)' , max:15}]}
             >
-                <Input />
+                <p>{usereditdetails.userName}</p> 
             </Item>
             <Item label="Tipo" 
                 name="type" 
