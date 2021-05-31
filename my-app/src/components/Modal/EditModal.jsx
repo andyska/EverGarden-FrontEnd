@@ -75,6 +75,7 @@ const EditModal =({isEditModalVisible, setIsEditModalVisible, getAllUsers,  user
         visible={isEditModalVisible}
         width={700}
         footer={null}
+        onCancel={closeModal}
       >
      
          <Row>
