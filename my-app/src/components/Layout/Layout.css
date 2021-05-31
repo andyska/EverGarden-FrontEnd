@@ -7,13 +7,13 @@
 .ant-layout-header,
 .ant-layout-footer {
   color: #fff;
-  background:gray,
+  background: #7dbcea;
 }
 [data-theme="dark"] .ant-layout-header {
-  background: gray;
+  background: #6aa0c7;
 }
 [data-theme="dark"] .ant-layout-footer {
-  background: gray;
+  background: #6aa0c7;
 }
 .ant-layout-footer {
   line-height: 1.5;
@@ -36,11 +36,11 @@
 .ant-layout-content {
   min-height: 120px;
   color: #fff;
-  line-height: 120px;
-  background: gray(16, 142, 233, 1);
+  line-height: 20px;
+  background: rgba(16, 142, 233, 1);
 }
 [data-theme="dark"] .ant-layout-content {
-  background: gray;
+  background: #107bcb;
 }
 .code-box-demo > .ant-layout + .ant-layout {
   margin-top: 48px;
@@ -61,7 +61,7 @@
 
 .anticon {
   display: inline-block;
-  color: white;
+  color: black;
   font-style: normal;
   line-height: 0;
   text-align: center;
@@ -73,7 +73,7 @@
 }
 
 .ant-menu-dark.ant-menu-dark:not(.ant-menu-horizontal) .ant-menu-item-selected {
-  background-color:gray;
+  background-color:#99CC99;
 }
 
 .ant-menu-dark .ant-menu-item-selected > a, .ant-menu-dark .ant-menu-item-selected > span > a, .ant-menu-dark .ant-menu-item-selected > a:hover, .ant-menu-dark .ant-menu-item-selected > span > a:hover {
@@ -124,7 +124,7 @@ footer {
   width: 100%;
   max-width: 1200px;
   margin: auto;
-  padding: 10px;
+  padding: 0;
   
 }
 
@@ -203,7 +203,7 @@ footer {
 }
 
 .container-footer{
-  background: gray;
+  background: #99CC99;
   margin: auto;
   width: 100%;
 }
