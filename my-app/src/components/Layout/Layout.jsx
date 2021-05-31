@@ -1,6 +1,7 @@
-import React, { useState, useEffect, Redirect} from 'react'
+import React, { useState, useEffect} from 'react'
 import { Button, Layout, Menu } from 'antd'
-import './Layout_1.css'
+import './Layout.css'
+//import './Layout_1.css'
 import  {NavLink,  Routes, Route} from 'react-router-dom'
 import AboutUs from '../Pages/AboutUs'
 import ContactModal from '../Modal/ContactModal'
@@ -19,14 +20,16 @@ import {
   SettingOutlined
 } from '@ant-design/icons'
 import MyCarousel from '../Carousel/Carousel'
-import IndexPage from '../Pages/index'
+import IndexPage from '../Pages/Index'
 import MyLogin from '../Login/Login'
 import Products from '../Pages/products'
-import ProductsCrud from '../../ProductsCrud'
+import Error404 from '../Pages/Error404'
+import ProductsCrud from '../Pages/ProductsCrud'
 import MenuAdmin from '../Pages/MenuAdmin'
 import Users from '../Pages/Users'
 
 const { Header, Content, Footer, Sider } = Layout;
+const {SubMenu} = Menu
 
 const MyLayout = () => {
   const [collapsed, setCollapsed] = useState(false)
@@ -109,11 +112,26 @@ const MyLayout = () => {
                 Contacto
               </NavLink>
             </Menu.Item>  
-            <Menu.Item className="item" key="6" icon={<SettingOutlined/>} hidden= {isConfigHidden}>
-              <NavLink hidden={isConfigHidden} id="Config" to="/MenuAdmin" >
-                Configuraciones
-              </NavLink>
-            </Menu.Item>   
+
+            <SubMenu key="conf_menu" icon={<SettingOutlined />} 
+              title="Configuraciones"  hidden= {isConfigHidden}
+            >
+              <Menu.Item key="6">
+                <NavLink hidden={isConfigHidden} id="crudproduct" to="/ProductsCrud" >
+                  Adm.Productos
+                </NavLink>
+              </Menu.Item>
+              <Menu.Item key="7">
+                <NavLink hidden={isConfigHidden} id="crudusers" to="/Users" >
+                  Adm.Usuarios
+                </NavLink>
+              </Menu.Item>
+              <Menu.Item key="8">
+                <NavLink hidden={isConfigHidden} id="cerrar" to="/MenuAdmin" >
+                  Cerrar Sesion
+                </NavLink>
+              </Menu.Item>
+            </SubMenu>
             </Menu>
         </Sider>
 
@@ -135,6 +153,7 @@ const MyLayout = () => {
                 <Route exact path="/MenuAdmin" element= {<MenuAdmin/>}  />
                 <Route exact path="/ProductsCrud" element= {<ProductsCrud/>} />
                 <Route exact path="/Users" element= {<Users/>} />
+                <Route exact path="*" element= {<Error404/>} />
             </Routes>
           </Content>
 

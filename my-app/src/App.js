@@ -1,7 +1,7 @@
 import './App.css';
 import React from 'react'
 import 'antd/dist/antd.css'
-import LayoutAdmin from './components/Layout/LayoutAdmin';
+//import LayoutAdmin from './components/Layout/LayoutAdmin';
 import MyLayout from './components/Layout/Layout'
 
 

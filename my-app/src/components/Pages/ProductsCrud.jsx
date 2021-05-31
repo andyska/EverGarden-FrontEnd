@@ -2,10 +2,10 @@ import React, { useEffect, useState } from 'react'
 import { Table , Button, message} from 'antd'
 import axios from 'axios'
 import {DeleteOutlined , EditOutlined, PlusCircleOutlined} from '@ant-design/icons';
-import ProductModal from './components/Modal/ProductModal'
-import ModalConfirm from './components/Modal/ModalConfirm'
-import ModalUpDate from './components/Modal/ModalUpDate'
-import GoToMain from './components/GoToMain'
+import ProductModal from '../../components/Modal/ProductModal'
+import ModalConfirm from '../../components/Modal/ModalConfirm'
+import ModalUpDate from '../../components/Modal/ModalUpDate'
+import GoToMain from '../../components/GoToMain'
 
 const ProductsCrud = () => {
 

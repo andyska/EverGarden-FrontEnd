@@ -3,6 +3,7 @@ import { Modal, Button, Form, Input, Select} from 'antd';
 import imgContacto from '../../images/contacto.jpg'
 import './ContactModal.css'
 import emailjs from 'emailjs-com';
+import icon from '../../images/logo.png'
 
 const layout = {
   labelCol: {
@@ -69,7 +70,7 @@ const ContactModal = (visible) => {
 
         <img className="img-contact" src={imgContacto} alt="" />
 
-      <Modal title="Basic Modal" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
+      <Modal icon= {icon} title="Contacto" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
         <Form {...layout} name="nest-messages" onFinish={onFinish} validateMessages={validateMessages}>
           <Form.Item
             name={['user', 'name']}
@@ -89,6 +90,7 @@ const ContactModal = (visible) => {
             rules={[
               {
                 type: 'email',
+                required: true,
               },
             ]}
           >
@@ -103,7 +105,15 @@ const ContactModal = (visible) => {
             <Input addonBefore={prefixSelector} style={{ width: '100%' }} />
           </Form.Item>
 
-          <Form.Item name={['user', 'introduction']} label="Mensaje">
+          <Form.Item 
+            name={['user', 'introduction']} 
+            label="Mensaje"
+            rules={[
+              {
+                required: true,
+              },
+            ]}
+            >
             <Input.TextArea />
           </Form.Item>
 

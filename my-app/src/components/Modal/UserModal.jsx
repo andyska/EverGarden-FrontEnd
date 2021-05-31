@@ -44,7 +44,7 @@ const UserModal = ({usermodal, setModal , getAllUsers}) => {
         setValue(e.target.value)
     }
 
-    const onCancel = ()=>{
+    const handleCancel = ()=>{
         closeModal()
     }
 
@@ -66,6 +66,7 @@ const UserModal = ({usermodal, setModal , getAllUsers}) => {
         visible={usermodal}
         width={700}
         footer={null}
+        onCancel={closeModal}
       >
         <Row>
             <Col xs={1} sm={2} md={3} lg={4}></Col>
@@ -79,14 +80,16 @@ const UserModal = ({usermodal, setModal , getAllUsers}) => {
             <Item label="Nombre" 
                 name="firstName" 
                 rules={[{ required: true, message: 'Ingrese el NOMBRE (max:20)' , max:20 }]}
+                allowClear
             >
-                <Input />
+                <Input   />
             </Item>
             <Item label="Apellido" 
                 name="lastName" 
                 rules={[{ required: true, message: 'Ingrese el APELLIDO (max:20)' , max:20}]}
+                allowClear
             >
-                <Input />
+                <Input  />
             </Item>
             <Item label="Tipo" 
                 name="type" 
@@ -102,19 +105,19 @@ const UserModal = ({usermodal, setModal , getAllUsers}) => {
                 name="email" 
                 rules={[{ required: true, message: 'Ingrese el Mail (max:70)' , max:70}]}
             >
-                <Input />
+                <Input allowClear />
             </Item>
             <Item
              label="Contraseña" 
              name="password" 
              rules={[{ required: true, message: 'Ingrese Contraseña(max:10-min:3)' , min:3 ,max:10}]}
             >
-                <Password/>
+                <Password allowClear />
             </Item>
             <Item style={{textAlign:'center'}}>
                 <Button type="primary" htmlType="submit">Guardar</Button>
                 &nbsp;&nbsp;&nbsp;
-                <Button htmlType="button" onClick={onCancel}>Cancelar</Button>
+                <Button htmlType="button" onClick={handleCancel}>Cancelar</Button>
             </Item>
         </Form>
       </Col>
