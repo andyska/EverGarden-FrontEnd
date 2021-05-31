@@ -5,7 +5,7 @@
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
-    background-color: gray;
+    background-color: #99CC99;
 }
 
 .ant-card-head {
@@ -15,7 +15,7 @@
     color: rgba(0, 0, 0, 0.85);
     font-weight: 500;
     font-size: 16px;
-    background:gray;
+    background: #99CC99;
     border-bottom: 1px solid #f0f0f0;
     border-radius: 2px 2px 0 0;
 }
@@ -28,5 +28,6 @@
 }
 
 .ant-card-cover img {
-    border-radius: 15px;
+    object-fit: cover
 }
+
