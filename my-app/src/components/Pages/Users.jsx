@@ -5,6 +5,7 @@ import {DeleteOutlined , EditOutlined , PlusCircleOutlined} from '@ant-design/ic
 import UserModal from '../Modal/UserModal'
 import ConfirmModal from '../Modal/ConfirmModal'
 import EditModal from '../Modal/EditModal'
+//import './Users.css' 
 import GoToMain from '../GoToMain'
 
 const UsersCrud = () => {
@@ -63,9 +64,9 @@ const UsersCrud = () => {
       key: 'actions',
       render: (text, row) =>
         <>
-          <DeleteOutlined style={{fontSize:'25px', color:'red'}}  onClick={()=>handleOnDelete(row)}/>
+          <DeleteOutlined style={{fontSize:'25px', color:"#666600"}}  onClick={()=>handleOnDelete(row)}/>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          <EditOutlined style={{fontSize:'25px', color:'blue'}}  onClick={()=>handleOnEdit(row)} />
+          <EditOutlined style={{fontSize:'25px', color:'#5E498C'}}  onClick={()=>handleOnEdit(row)} />
         </>
     },
     {
@@ -96,10 +97,12 @@ const UsersCrud = () => {
         
   ];
   
+
+  //<h1  margin-left="10px"  height="30px" >Administracion de Usuarios</h1>
+
   if(token){
   return (
     <div>
-      <h1>Administracion de Usuarios</h1>
       <Button type="primary" icon={<PlusCircleOutlined/>} onClick={ openModal} >Agregar Usuario</Button>
       <UserModal 
         usermodal={usermodal} 

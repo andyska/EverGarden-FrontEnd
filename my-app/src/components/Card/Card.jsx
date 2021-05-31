@@ -2,7 +2,7 @@ import React from 'react'
 //import './Card.css'
 import { Card } from 'antd';
 import 'antd/dist/antd.css';
-import './Card.css'
+import './Card1.css'
 const { Meta } = Card;
 
 const MyCard = ({info}) =>  {

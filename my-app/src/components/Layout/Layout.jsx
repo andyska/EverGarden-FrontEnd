@@ -1,6 +1,6 @@
 import React, { useState, useEffect, Redirect} from 'react'
 import { Layout, Menu } from 'antd'
-import './Layout.css'
+import './Layout_1.css'
 import  {NavLink,  Routes, Route} from 'react-router-dom'
 import AboutUs from '../Pages/AboutUs'
 import ContactModal from '../Modal/ContactModal'
