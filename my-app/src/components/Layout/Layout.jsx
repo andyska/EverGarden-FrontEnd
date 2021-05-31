@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Redirect} from 'react'
+import React, { useState, useEffect} from 'react'
 import { Button, Layout, Menu } from 'antd'
 import './Layout_1.css'
 import  {NavLink,  Routes, Route} from 'react-router-dom'
@@ -19,10 +19,11 @@ import {
   SettingOutlined
 } from '@ant-design/icons'
 import MyCarousel from '../Carousel/Carousel'
-import IndexPage from '../Pages/index'
+import IndexPage from '../Pages/Index'
 import MyLogin from '../Login/Login'
 import Products from '../Pages/products'
-import ProductsCrud from '../../ProductsCrud'
+import Error404 from '../Pages/Error404'
+import ProductsCrud from '../Pages/ProductsCrud'
 import MenuAdmin from '../Pages/MenuAdmin'
 import Users from '../Pages/Users'
 
@@ -120,7 +121,7 @@ const MyLayout = () => {
                 </NavLink>
               </Menu.Item>
               <Menu.Item key="7">
-                <NavLink hidden={isConfigHidden} id="crudusers" to="/User" >
+                <NavLink hidden={isConfigHidden} id="crudusers" to="/Users" >
                   Adm.Usuarios
                 </NavLink>
               </Menu.Item>
@@ -151,6 +152,7 @@ const MyLayout = () => {
                 <Route exact path="/MenuAdmin" element= {<MenuAdmin/>}  />
                 <Route exact path="/ProductsCrud" element= {<ProductsCrud/>} />
                 <Route exact path="/Users" element= {<Users/>} />
+                <Route exact path="*" element= {<Error404/>} />
             </Routes>
           </Content>
 

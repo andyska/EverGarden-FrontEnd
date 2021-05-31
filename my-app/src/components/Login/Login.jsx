@@ -1,7 +1,7 @@
 import React , {useState , useEffect} from 'react';
 import { Form, Input, Button, Checkbox, Space } from 'antd';
 import './Login.css'
-import LayoutAdmin from '../Layout/LayoutAdmin'
+//import LayoutAdmin from '../Layout/LayoutAdmin'
 import  {NavLink,  Routes, Route} from 'react-router-dom'
 import axios from 'axios'
 import { message } from 'antd';
@@ -11,16 +11,16 @@ import GoToMain from '../GoToMain'
 
 const layout = {
   labelCol: {
-    span: 8,
+    span:4,
   },
   wrapperCol: {
-    span: 16,
+    span: 20,
   },
 };
 const tailLayout = {
   wrapperCol: {
-    offset: 8,
-    span: 16,
+    offset: 4,
+    span: 20,
   },
 };
 
