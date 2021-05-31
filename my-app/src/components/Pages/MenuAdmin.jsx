@@ -38,7 +38,7 @@ const MenuAdmin = () => {
           )}
           else {
             GoToMain()
-            alert ('Credenciales inválidas. Debe iniciar sesión como usuario administrador para acceder a esta pantalla')
+            alert ('Debe iniciar sesion como usuario administrador para acceder a esta ruta')
             return null
           }
  }

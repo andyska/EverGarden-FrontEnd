@@ -25,7 +25,7 @@ const UsersCrud = () => {
       throw error
     }}
     else {
-      alert ('Credenciales inválidas. Debe iniciar sesion como usuario administrador para acceder a esta pantalla')
+      alert ('Debe iniciar sesion como usuario administrador para acceder a esta ruta')
       GoToMain()
     }
   }
