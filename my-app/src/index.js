@@ -6,6 +6,12 @@ import reportWebVitals from './reportWebVitals';
 import {BrowserRouter, Route} from 'react-router-dom'
 import MenuAdmin from './components/Pages/MenuAdmin'
 
+const GoToMain = () => {
+  window.location.href = '/'
+}
+
+export default GoToMain
+
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
