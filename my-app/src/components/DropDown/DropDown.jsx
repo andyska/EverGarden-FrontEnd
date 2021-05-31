@@ -15,12 +15,12 @@ const onMenuClick = e => {
  const menu = (
   <Menu>
     <Menu.Item>
-      <a target="1" href="J" rel="noopener noreferrer" onClick={onMenuClick}>
+      <a target="1" rel="noopener noreferrer" onClick={onMenuClick}>
         Jardines
       </a>
     </Menu.Item>
     <Menu.Item>
-      <a target="2" href='P' rel="noopener noreferrer"  onClick={onMenuClick}>
+      <a target="2"  rel="noopener noreferrer"  onClick={onMenuClick}>
         Pasos de Armado
       </a>
     </Menu.Item>
