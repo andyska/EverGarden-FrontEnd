@@ -1,6 +1,7 @@
 import React, {  /*createRef,*/ useEffect, useState } from 'react'
 import { Modal , Button, Form , Input, message, Radio, Col , Row} from 'antd'
 import axios from 'axios'
+import './UserModal.css'
 
 const { Item } = Form
 const { Group } = Radio
@@ -49,6 +50,7 @@ const EditModal =({isEditModalVisible, setIsEditModalVisible, getAllUsers,  user
     }
 
     useEffect(()=>{
+        console.log("EDITMODAL-useEffect de seteo")
         if (typeof usereditdetails.firstName !== undefined){
             formedit.setFieldsValue ({
                 firstName : usereditdetails.firstName,
@@ -76,8 +78,8 @@ const EditModal =({isEditModalVisible, setIsEditModalVisible, getAllUsers,  user
       >
      
          <Row>
-             <Col xs={1} sm={2} md={6} lg={7}></Col>
-             <Col xs={22} sm={20} md={12} lg={10}>
+             <Col xs={1} sm={2} md={3} lg={4}></Col>
+             <Col xs={23} sm={22} md={21} lg={18}>
          <Form 
             name="formulario" 
             onFinish={formSuccess}
