@@ -7,13 +7,13 @@
 .ant-layout-header,
 .ant-layout-footer {
   color: #fff;
-  background: #7dbcea;
+  background: #E6EE9C;
 }
 [data-theme="dark"] .ant-layout-header {
-  background: #6aa0c7;
+  background: #E6EE9C;
 }
 [data-theme="dark"] .ant-layout-footer {
-  background: #6aa0c7;
+  background: #E6EE9C;
 }
 .ant-layout-footer {
   line-height: 1.5;
@@ -37,10 +37,10 @@
   min-height: 120px;
   color: #fff;
   line-height: 20px;
-  background: rgba(16, 142, 233, 1);
+  background: #E6EE9C;
 }
 [data-theme="dark"] .ant-layout-content {
-  background: #107bcb;
+  background: #E6EE9C;
 }
 .code-box-demo > .ant-layout + .ant-layout {
   margin-top: 48px;
@@ -208,9 +208,10 @@ footer {
 }
 
 .container-footer{
-  background: #99CC99;
+  background: #E6EE9C;
   margin: auto;
   width: 100%;
+  color: #666600
 }
 
 .footer{
@@ -223,23 +224,23 @@ footer {
 }
 
 .copyright {
-  color:white;
+  color:#666600;
 }
 
 .copyright a {
-  color:white;
+  color:#666600;
   text-decoration: none;
   font-weight: bold;
 }
 
 .information a {
   text-decoration: none;
-  color: white;
+  color: #666600;
 }
 
 .ant-layout-footer {
   line-height: 0.5;
-  color: #fff;
+  color: #666600;
   background: white;
   padding: 0px 0px;
 }
