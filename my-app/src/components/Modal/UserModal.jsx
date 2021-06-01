@@ -59,12 +59,8 @@ const UserModal = ({usermodal, setModal , getAllUsers}) => {
     })
 
     const formview={
-        labelCol:{
-        span:3},
-        wrapperCol:{
-          span:21
-          },
-        
+        labelCol:{ span:4}, 
+        wrapperCol:{span:20},
       }
 
     return (
@@ -76,8 +72,8 @@ const UserModal = ({usermodal, setModal , getAllUsers}) => {
         onCancel={closeModal}
       >
         <Row>
-            <Col xs={1} sm={2} md={3} lg={4}></Col>
-            <Col xs={23} sm={22} md={21} lg={18}>
+            <Col xs={4} sm={4} md={2} lg={2}></Col>
+            <Col xs={20} sm={20} md={22} lg={22}>
         <Form 
             name="formulario" 
             onFinish={formSuccess}
