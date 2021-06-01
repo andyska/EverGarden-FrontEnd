@@ -19,11 +19,12 @@ const UsersCrud = () => {
       const resp = await axios.get('http://localhost:8080/api/admin/users',{headers: {Authorization: 'Bearer ' + token}});
       //console.log("Nuevo usuario", resp.data)
       setUsers(resp.data)
-    } catch (error){
-      //console.log("getAllUsers" , error)
-      message.error("Fallo la conexion con el BackEnd:" + error)
-      throw error
-    }}
+    } catch(error){
+      localStorage.removeItem('Token')
+      GoToMain()   
+      message.error("Sesión expirada. Inicie sesión nuevamente", 4)
+      throw error        
+    } }   
     else {
       alert ('Debe iniciar sesion como usuario administrador para acceder a esta ruta')
       GoToMain()

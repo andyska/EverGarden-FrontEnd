@@ -128,7 +128,7 @@ const MyLayout = () => {
               </Menu.Item>
               <Menu.Item key="8">
                 <NavLink hidden={isConfigHidden} id="cerrar" to="/MenuAdmin" >
-                  Cerrar Sesion
+                  Cerrar Sesión
                 </NavLink>
               </Menu.Item>
             </SubMenu>
