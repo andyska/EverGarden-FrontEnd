@@ -60,10 +60,11 @@ const UserModal = ({usermodal, setModal , getAllUsers}) => {
 
     const formview={
         labelCol:{
-        span:4},
+        span:3},
         wrapperCol:{
-          span:20
+          span:21
           },
+        
       }
 
     return (
@@ -113,7 +114,7 @@ const UserModal = ({usermodal, setModal , getAllUsers}) => {
                 name="email" 
                 rules={[{ required: true, message: 'Ingrese el Mail (max:70)' , max:70}]}
             >
-                <Input allowClear />
+                <Input />
             </Item>
             <Item
              label="Contraseña" 
