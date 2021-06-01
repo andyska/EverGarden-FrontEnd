@@ -28,6 +28,7 @@
 }
 
 .ant-card-cover img {
-    object-fit: cover
+    object-fit: cover;
+    margin-top: 5px;
 }
 

@@ -141,6 +141,7 @@ footer {
 
 .column1{
   max-width: 400px;
+  margin-top: 5px;
 }
 
 .column1 h1{
@@ -211,7 +212,9 @@ footer {
   background: #E6EE9C;
   margin: auto;
   width: 100%;
-  color: #666600
+  color: #666600;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 
 .footer{
@@ -221,6 +224,7 @@ footer {
 
   display: flex;
   justify-content: space-between;
+
 }
 
 .copyright {
@@ -257,6 +261,7 @@ footer {
   text-shadow: none;
   box-shadow: none;
 }
+
 
 /*.ant-menu-item ant-menu-item-only-child{
   margin-top: 10px;

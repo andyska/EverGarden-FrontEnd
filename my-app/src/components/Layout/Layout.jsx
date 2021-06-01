@@ -36,7 +36,6 @@ const {SubMenu} = Menu
 const MyLayout = () => {
   const [collapsed, setCollapsed] = useState(false)
   const [isModalVisible, setIsModalVisible] = useState(true);
-
   
 // quizas haya que hacerlo directamente en App asociado a las credenciales de usuario como le dijo 
 // Ramiro a Santi en la consulta (Ver el video de youtube)
@@ -169,8 +168,8 @@ const MyLayout = () => {
             <div className="container-all">
               <div className="container-body">
                
-              <div class="column1">
-                <img src={logoPlanta}/>
+              <div class="column1" >
+                <img src={logoPlanta} margin-top="5px" padding-top="2px"/>
                 <div className="site-button-ghost-wrapper">
                   <Button type="primary" ghost onClick={onLogin} >
                     Acceso
@@ -178,7 +177,7 @@ const MyLayout = () => {
                 </div>
               </div>
                 <div className="column2">
-                <h4>Redes Sociales</h4>
+                
                     <div className="row">
                       <img src={iconFacebook}/>
                       <label>Seguinos en Facebook</label>
@@ -191,7 +190,7 @@ const MyLayout = () => {
                 </div>
 
                 <div className="column3">
-                  <h4>Informacion Contactos</h4>
+                
                     <div class="row2">
                         <img src={iconMail}/>
                         <label>skamelka@gmail.com</label>
@@ -211,7 +210,7 @@ const MyLayout = () => {
                   </div>
 
                   <div class="information">
-                    <a href="">Informacion de la Empresa</a> | 
+                    <a href="/aboutus">Informacion de la Empresa</a> | 
                     <a href="">Politicas y Privacidad</a> |
                     <a href="">Terminos y Condiciones</a>   
                   </div>

@@ -10,8 +10,7 @@ const containerStyle = {
   backgroundPosition: 'center',
   backgroundSize: '100%',
   backgroundRepeat: 'no-repeat'
-};
-
+}
 const IndexPage = () => {
 
   return (
