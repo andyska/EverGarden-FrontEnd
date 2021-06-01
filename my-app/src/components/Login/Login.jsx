@@ -1,13 +1,9 @@
-import React , {useState , useEffect} from 'react';
+import React , {useState } from 'react';
 import { Form, Input, Button, Checkbox, Space } from 'antd';
 import './Login.css'
-//import LayoutAdmin from '../Layout/LayoutAdmin'
-import  {NavLink,  Routes, Route} from 'react-router-dom'
 import axios from 'axios'
 import { message } from 'antd';
-import setIsConfigHidden from '../Layout/Layout'
-import HandleConfig from '../Layout/Layout' 
-import GoToMain from '../GoToMain'
+import ConfirmLogin from '../Modal/ConfirmLogin'
 
 const layout = {
   labelCol: {
@@ -24,59 +20,54 @@ const tailLayout = {
   },
 };
 
-const MyLogin = ({HandleConfig}) => {
-   let readyToRedirect = false 
 
+const MyLogin = ({HandleConfig}) => {
+  let readyToRedirect = false 
+  const [userLogin ,setUserLogin] = useState("");
+  const [isModalLogin ,setIsModalLogin] = useState(false);
   const onFinish = async(values) => {
-    console.log('Success:', values);
+   // console.log('Success:', values);
     const userObject = 
       {
         userName: values.username,
         password: values.password
       }
-    console.log ('userObject:', userObject)
+    //console.log ('userObject:', userObject)
     try{
     const response = await axios.post('http://localhost:8080/api/admin/users/login/', userObject );
      localStorage.setItem("Token", response.data.token) 
      readyToRedirect = true
-     } 
-  catch(err){
-    message.error('Error de inicio de sesión. Verifique usuario y contraseña ingresados',5)
+    } catch(err){
+      message.error('Error de inicio de sesión. Verifique usuario y contraseña ingresados',5)
     }
     finally{
       if (readyToRedirect === true){
-      alert (`Bienvenido ${userObject.userName}!`+' Utilice la sección "Configuraciones" del menú lateral para realizar acciones de administrador')
-      HandleConfig()
-      GoToMain()
-    }
+        //console.log("finally" , values)
+        //activo el modal
+        setUserLogin(values)
+        setIsModalLogin(true)
+        HandleConfig()
+        //GoToMain()
+      }
     };
   }
 
   const onFinishFailed = (errorInfo) => {
-    console.log('Failed:', errorInfo);
+    message.error('LOGIN Failed: ' + errorInfo);
   };
- /*
-  const HandleOnClick =() => {
-    setIsModalVisible(true)
-    console.log('visible:', isModalVisible);
-    return(
-      <>
-        <LayoutAdmin/>
-      </>
-    );  
-  }*/
-
+ 
   return (
-    
     <Space>
-        <Form
-      {...layout}
-      name="basic"
-      initialValues={{
-        remember: true,
-      }}
-      onFinish={onFinish}
-      onFinishFailed={onFinishFailed}
+      <ConfirmLogin 
+        isModalLogin = {isModalLogin} 
+        setIsModalLogin ={setIsModalLogin} 
+        userLogin={userLogin}/>
+      <Form
+        {...layout}
+        name="basic"
+        initialValues={{ remember: true, }}
+        onFinish={onFinish}
+        onFinishFailed={onFinishFailed}
     >
       <Form.Item
         label="Usuario"

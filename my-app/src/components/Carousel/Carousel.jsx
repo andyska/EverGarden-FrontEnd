@@ -1,9 +1,7 @@
 import React , {useState} from 'react'
 import { Carousel } from 'antd';
-//import { LeftCircleTwoTone , RightCircleTwoTone } from '@ant-design/icons'
 import gardenImages from './GardenImages'
 import armadoImages from '../Carousel/ArmadoImages'
-//import './Carousel.css'
 import './Carousel1.css'
 import MyDropDown from '../DropDown/DropDown'
 
@@ -29,7 +27,7 @@ const imageStyle ={
 }
 
 const MyCarousel = () => {
-    const [galeryImages , setGaleryImages]= useState(gardenImages)
+  const [galeryImages , setGaleryImages]= useState(gardenImages)
       
   return (
   <div>
@@ -42,8 +40,7 @@ const MyCarousel = () => {
       //prevArrow={<LeftCircleTwoTone twoToneColor="#666600" />}
       >
       {galeryImages.map( (imagen , index) => {
-          //console.log('imagen',imagen , 'index', index)
-          return(
+        return(
           <div>
             <h3 style={contentStyle}> 
               <img  src={imagen} alt={""} style ={imageStyle}/>
@@ -51,8 +48,8 @@ const MyCarousel = () => {
           </div>
           )
       } )}
-      </Carousel>
-    </div>
+    </Carousel>
+  </div>
   );
 }
 

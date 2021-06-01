@@ -3,7 +3,7 @@ import {Modal, message} from 'antd';
 import axios from 'axios'
 
 const ConfirmModal = ({isModalVisible ,setIsModalVisible ,  getAllUsers , userdetails}) => {
-  console.log('ConfirmModal-usertails - 1', userdetails)
+ // console.log('ConfirmModal-usertails - 1', userdetails)
   const userid =  'http://localhost:8080/api/admin/users/' + userdetails._id
  // console.log('ConfirmModal-bookdetails -2 ',userid)
  const token = localStorage.getItem('Token') 
