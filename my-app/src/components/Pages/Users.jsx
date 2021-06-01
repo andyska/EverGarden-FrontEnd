@@ -59,17 +59,6 @@ const UsersCrud = () => {
   
     const columns = [
     {
-      title: 'Accion',
-      dataIndex: 'actions',
-      key: 'actions',
-      render: (text, row) =>
-        <>
-          <DeleteOutlined style={{fontSize:'25px', color:"#666600"}}  onClick={()=>handleOnDelete(row)}/>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          <EditOutlined style={{fontSize:'25px', color:'#5E498C'}}  onClick={()=>handleOnEdit(row)} />
-        </>
-    },
-    {
       title: 'Nombre',
       dataIndex: 'firstName',
       key: 'firstName',
@@ -94,6 +83,17 @@ const UsersCrud = () => {
       dataIndex: 'type',
       key: 'type',
     },
+    {
+      title: 'Accion',
+      dataIndex: 'actions',
+      key: 'actions',
+      render: (text, row) =>
+        <>
+          <DeleteOutlined style={{fontSize:'25px', color:"#666600"}}  onClick={()=>handleOnDelete(row)}/>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <EditOutlined style={{fontSize:'25px', color:'#5E498C'}}  onClick={()=>handleOnEdit(row)} />
+        </>
+    }
         
   ];
  

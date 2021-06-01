@@ -58,6 +58,14 @@ const UserModal = ({usermodal, setModal , getAllUsers}) => {
             password :'' })
     })
 
+    const formview={
+        labelCol:{
+        span:3},
+        wrapperCol:{
+          span:21
+          },
+        
+      }
 
     return (
     <div>
@@ -75,7 +83,17 @@ const UserModal = ({usermodal, setModal , getAllUsers}) => {
             onFinish={formSuccess}
             onFinishFailed={formFailed}
             form={formedit}
+            {...formview}
         >
+             <Item label="Tipo" 
+                name="type" 
+                rules={[{ required: true, message: 'Seleccione el TIPO de usuario' }]}
+            >
+                <Group noStyle onChange={onChange} value={value} name="radioButton" >
+                    <Radio value={"admin"}>Administrador</Radio>
+                    <Radio value={"visitor"}>Visita</Radio>
+                </Group>
+            </Item>
             <Item label="Nombre" 
                 name="firstName" 
                 rules={[{ required: true, message: 'Ingrese el NOMBRE (max:20)' , max:20 }]}
@@ -90,28 +108,20 @@ const UserModal = ({usermodal, setModal , getAllUsers}) => {
             >
                 <Input  />
             </Item>
-            <Item label="Tipo" 
-                name="type" 
-                rules={[{ required: true, message: 'Seleccione el TIPO de usuario' }]}
-            >
-                <Group noStyle onChange={onChange} value={value} name="radioButton" >
-                    <Radio value={"admin"}>Administrador</Radio>
-                    <Radio value={"visitor"}>Visita</Radio>
-                </Group>
-            </Item>
+           
             <Item 
                 label="Mail" 
                 name="email" 
                 rules={[{ required: true, message: 'Ingrese el Mail (max:70)' , max:70}]}
             >
-                <Input allowClear />
+                <Input />
             </Item>
             <Item
              label="Contraseña" 
              name="password" 
              rules={[{ required: true, message: 'Ingrese Contraseña(max:10-min:3)' , min:3 ,max:10}]}
             >
-                <Password allowClear />
+                <Password  />
             </Item>
             <Item style={{textAlign:'center'}}>
                 <Button type="primary" htmlType="submit">Guardar</Button>

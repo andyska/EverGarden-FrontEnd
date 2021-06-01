@@ -84,6 +84,15 @@ const EditModal =({isEditModalVisible, setIsEditModalVisible, getAllUsers,  user
             onFinishFailed={formFailed}
             form={formedit}
         >
+             <Item label="Tipo" 
+                name="type" 
+                rules={[{ required: true, message: 'Seleccione el TIPO de usuario' }]}
+            >
+                <Group noStyle onChange={onChange} value={value} name="radioButton" >
+                    <Radio value={"admin"}>Administrador</Radio>
+                    <Radio value={"visitor"}>Visita</Radio>
+                </Group>
+            </Item>
             <Item label="Nombre" 
                 name="firstName" 
                 rules={[{ required: true, message: 'Ingrese el NOMBRE (max:20)' , max:20 }]}
@@ -101,15 +110,7 @@ const EditModal =({isEditModalVisible, setIsEditModalVisible, getAllUsers,  user
             >
                 <p>{usereditdetails.userName}</p> 
             </Item>
-            <Item label="Tipo" 
-                name="type" 
-                rules={[{ required: true, message: 'Seleccione el TIPO de usuario' }]}
-            >
-                <Group noStyle onChange={onChange} value={value} name="radioButton" >
-                    <Radio value={"admin"}>Administrador</Radio>
-                    <Radio value={"visitor"}>Visita</Radio>
-                </Group>
-            </Item>
+           
             <Item 
                 label="Mail" 
                 name="email" 
