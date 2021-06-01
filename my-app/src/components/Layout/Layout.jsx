@@ -211,7 +211,7 @@ const MyLayout = () => {
                   </div>
 
                   <div class="information">
-                    <a href="">Informacion de la Empresa</a> | 
+                    <a href="/aboutus">Informacion de la Empresa</a> | 
                     <a href="">Politicas y Privacidad</a> |
                     <a href="">Terminos y Condiciones</a>   
                   </div>
