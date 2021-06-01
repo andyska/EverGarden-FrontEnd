@@ -1,12 +1,18 @@
 import React, { useEffect, useState } from 'react'
 import { Table , Button, message} from 'antd'
 import axios from 'axios'
-import {DeleteOutlined , EditOutlined, PlusCircleOutlined} from '@ant-design/icons'
+import {DeleteOutlined , EditOutlined, PlusCircleOutlined} from '@ant-design/icons';
+<<<<<<< HEAD:my-app/src/components/Pages/ProductsCrud1.jsx
+import ProductModal from '../Modal/ProductModal'
+import ModalConfirm from '../Modal/ModalConfirm'
+import ModalUpDate from '../Modal/ModalUpDate'
+import GoToMain from '../GoToMain'
+=======
 import ProductModal from '../../components/Modal/ProductModal'
 import ModalConfirm from '../../components/Modal/ModalConfirm'
 import ModalUpDate from '../../components/Modal/ModalUpDate'
 import GoToMain from '../../components/GoToMain'
-
+>>>>>>> d2fb5a0a8b6af25c980768b626819bee6d613f40:my-app/src/components/Pages/ProductsCrud.jsx
 
 const ProductsCrud = () => {
 
@@ -19,18 +25,14 @@ const ProductsCrud = () => {
     if (token){
     try{
       const resp = await axios.get('http://localhost:8080/api/admin/products',{headers: {Authorization: 'Bearer ' + token}});
+      console.log("este es el token del header" ,resp.headers.Authorization)
+      console.log(resp.data)
       console.log(resp.headers)
-      setProducts(resp.data)
-      
-    }
+      setProducts(resp.data)}
       catch(error){
-        localStorage.removeItem('Token')
-        GoToMain()   
-        message.error("Sesión expirada. Inicie sesión nuevamente", 4)
-        throw error        
-      }
-           
-    }
+        message.error("Fallo la conexion con el BackEnd:" + error)
+        throw error
+      }}
     else{
       alert ('Debe iniciar sesion como usuario administrador para acceder a esta ruta')
       GoToMain()
@@ -145,3 +147,4 @@ const ProductsCrud = () => {
 
 
 export default ProductsCrud
+

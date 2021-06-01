@@ -27,6 +27,7 @@ const imageStyle ={
 }
 
 const MyCarousel = () => {
+
   const [galeryImages , setGaleryImages]= useState(gardenImages)
       
   return (
@@ -40,6 +41,7 @@ const MyCarousel = () => {
       //prevArrow={<LeftCircleTwoTone twoToneColor="#666600" />}
       >
       {galeryImages.map( (imagen , index) => {
+
         return(
           <div>
             <h3 style={contentStyle}> 
