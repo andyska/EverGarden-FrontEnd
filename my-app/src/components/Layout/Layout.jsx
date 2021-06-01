@@ -1,6 +1,7 @@
 import React, { useState, useEffect} from 'react'
-import { Layout, Menu } from 'antd'
+import { Button, Layout, Menu } from 'antd'
 import './Layout.css'
+//import './Layout_1.css'
 import  {NavLink,  Routes, Route} from 'react-router-dom'
 import AboutUs from '../Pages/AboutUs'
 import ContactModal from '../Modal/ContactModal'
@@ -23,12 +24,13 @@ import MyCarousel from '../Carousel/Carousel'
 import IndexPage from '../Pages/Index'
 import MyLogin from '../Login/Login'
 import Products from '../Pages/products'
-import ProductsCrud from '../Pages/ProductsCrud1'
+import ProductsCrud from '../Pages/ProductsCrud'
 import MenuAdmin from '../Pages/MenuAdmin'
 import Users from '../Pages/Users'
 import Error404 from '../Pages/Error404'
 
 const { Header, Content, Footer, Sider } = Layout;
+const {SubMenu} = Menu
 
 const MyLayout = () => {
   const [collapsed, setCollapsed] = useState(false)
@@ -70,6 +72,10 @@ const MyLayout = () => {
     console.log("llegue hasta aca!")
   }
 
+  const onLogin=()=>{
+    window.location.href = '/admin'
+  }
+
    return (
     <Layout style={{ minHeight: '100vh' }}>
       
@@ -107,11 +113,26 @@ const MyLayout = () => {
                 Contacto
               </NavLink>
             </Menu.Item>  
-            <Menu.Item className="item" key="6" icon={<SettingOutlined/>} hidden= {isConfigHidden}>
-              <NavLink hidden={isConfigHidden} id="Config" to="/MenuAdmin" >
-                Configuraciones
-              </NavLink>
-            </Menu.Item>   
+
+            <SubMenu key="conf_menu" icon={<SettingOutlined />} 
+              title="Configuraciones"  hidden= {isConfigHidden}
+            >
+              <Menu.Item key="6">
+                <NavLink hidden={isConfigHidden} id="crudproduct" to="/ProductsCrud" >
+                  Adm.Productos
+                </NavLink>
+              </Menu.Item>
+              <Menu.Item key="7">
+                <NavLink hidden={isConfigHidden} id="crudusers" to="/Users" >
+                  Adm.Usuarios
+                </NavLink>
+              </Menu.Item>
+              <Menu.Item key="8">
+                <NavLink hidden={isConfigHidden} id="cerrar" to="/MenuAdmin" >
+                  Cerrar Sesion
+                </NavLink>
+              </Menu.Item>
+            </SubMenu>
             </Menu>
         </Sider>
 
@@ -143,12 +164,11 @@ const MyLayout = () => {
                
               <div class="column1">
                 <img src={logoPlanta}/>
-                <p>
-                  Sistema Modulares 
-                </p>
-                <p>
-                  de Jardineria Vertical
-                </p>
+                <div className="site-button-ghost-wrapper">
+                  <Button type="primary" ghost onClick={onLogin}>
+                    Login
+                  </Button>
+                </div>
               </div>
                 <div className="column2">
                 <h4>Redes Sociales</h4>

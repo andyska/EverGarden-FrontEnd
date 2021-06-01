@@ -22,7 +22,7 @@ las flechitas para pasar de una foto a otra
   color: unset;
 }
 .ant-carousel .slick-dots li.slick-active button {
-  background: gray;
+  background: #5E498C;
   opacity: 1;
 }
 .ant-carousel .slick-dots li button {
@@ -32,7 +32,7 @@ las flechitas para pasar de una foto a otra
   padding: 0;
   color: black;
   font-size: 0;
-  background: #999933;
+  background: #D9C689;
   border: 2px;
   border-radius: 15px;
   outline: none;
@@ -41,6 +41,9 @@ las flechitas para pasar de una foto a otra
   transition: all 1s;
 }
 
-img{
-  border-radius: 15px;
+.ant-layout-content {
+    min-height: 120px;
+    color: #fff;
+    /* line-height: 120px; */
+    background: white;
 }

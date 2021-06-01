@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { Table , Button, message} from 'antd'
 import axios from 'axios'
-import {DeleteOutlined , EditOutlined, PlusCircleOutlined} from '@ant-design/icons';
-import ProductModal from '../Modal/ProductModal'
-import ModalConfirm from '../Modal/ModalConfirm'
-import ModalUpDate from '../Modal/ModalUpDate'
-import GoToMain from '../GoToMain'
+import {DeleteOutlined , EditOutlined, PlusCircleOutlined} from '@ant-design/icons'
+import ProductModal from '../../components/Modal/ProductModal'
+import ModalConfirm from '../../components/Modal/ModalConfirm'
+import ModalUpDate from '../../components/Modal/ModalUpDate'
+import GoToMain from '../../components/GoToMain'
 
 const ProductsCrud = () => {
 
@@ -14,12 +14,11 @@ const ProductsCrud = () => {
   const [isModalVisibleUpDate, setIsModalVisibleUpDate] = useState(false);
   const token = localStorage.getItem('Token') 
   
-   const getAllProducts = async (req) => {
+   const getAllProducts = async () => {
     if (token){
     try{
       const resp = await axios.get('http://localhost:8080/api/admin/products',{headers: {Authorization: 'Bearer ' + token}});
-      const authToken = resp.headers.Authorization
-      console.log("este es el tokn del header" ,authToken)
+      console.log("este es el token del header" ,resp.headers.Authorization)
       console.log(resp.data)
       console.log(resp.headers)
       setProducts(resp.data)}
@@ -28,7 +27,7 @@ const ProductsCrud = () => {
         throw error
       }}
     else{
-      alert ('Credenciales inválidas. Debe iniciar sesion como usuario administrador para acceder a esta pantalla')
+      alert ('Debe iniciar sesion como usuario administrador para acceder a esta ruta')
       GoToMain()
     }
   }

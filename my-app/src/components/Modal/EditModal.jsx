@@ -1,6 +1,7 @@
 import React, {  /*createRef,*/ useEffect, useState } from 'react'
 import { Modal , Button, Form , Input, message, Radio, Col , Row} from 'antd'
 import axios from 'axios'
+import './UserModal.css'
 
 const { Item } = Form
 const { Group } = Radio
@@ -36,7 +37,7 @@ const EditModal =({isEditModalVisible, setIsEditModalVisible, getAllUsers,  user
         saveModal(edituser)
     } 
     const formFailed =(error) =>{
-        message.error("ERROR en los datos, no pasan las validaciones=>" + error)
+        message.error("ERROR en los datos. No cumplen las validaciones que se muestran en rojo")
     } 
 
     const [value, setValue] = useState("admin")
@@ -49,6 +50,7 @@ const EditModal =({isEditModalVisible, setIsEditModalVisible, getAllUsers,  user
     }
 
     useEffect(()=>{
+        console.log("EDITMODAL-useEffect de seteo")
         if (typeof usereditdetails.firstName !== undefined){
             formedit.setFieldsValue ({
                 firstName : usereditdetails.firstName,
@@ -73,11 +75,12 @@ const EditModal =({isEditModalVisible, setIsEditModalVisible, getAllUsers,  user
         visible={isEditModalVisible}
         width={700}
         footer={null}
+        onCancel={closeModal}
       >
      
          <Row>
-             <Col xs={1} sm={2} md={6} lg={7}></Col>
-             <Col xs={22} sm={20} md={12} lg={10}>
+             <Col xs={1} sm={2} md={3} lg={4}></Col>
+             <Col xs={23} sm={22} md={21} lg={18}>
          <Form 
             name="formulario" 
             onFinish={formSuccess}
@@ -98,9 +101,8 @@ const EditModal =({isEditModalVisible, setIsEditModalVisible, getAllUsers,  user
             </Item>
             <Item label="Usuario" 
                 name="userName" 
-                rules={[{ required: true, message: 'Ingrese el Usuario (max:15)' , max:15}]}
             >
-                <Input />
+                <p>{usereditdetails.userName}</p> 
             </Item>
             <Item label="Tipo" 
                 name="type" 

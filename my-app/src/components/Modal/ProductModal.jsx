@@ -1,14 +1,56 @@
-import React, {  useState } from 'react'
-import { Modal , Button, Form , Input, message, Select} from 'antd'
+import React, {useState, useEffect } from 'react'
+import { Modal , Button, Form , Input, message, Select, Row, Col} from 'antd'
 import axios from 'axios'
 import './ProductModal.css'
+
 const {Item}=Form
+const { Option } = Select
 
 const ProductModal =({productmodal, setProductModal , getAllProducts}) =>{
     console.log('dentro del product modal- modal', productmodal)
     const token = localStorage.getItem('Token')
+    const [formedit] = Form.useForm()
+    
+    const closeModal = ()=>{
+      setProductModal(false)
+    }
 
-    const [newproduct, setNewProduct] = useState({
+    const saveModal = async (newproduct)=>{
+      try{
+          const resp = await axios.post('http://localhost:8080/api/admin/products', newproduct,{headers: {Authorization: 'Bearer ' + token}});
+          console.log(resp)
+          message.success("Se Creo Nuevo Producto: " + resp.data.product)
+          closeModal()
+          getAllProducts()
+      } catch (error){
+          message.error("Fallo la Grabacion del Producto - Error:"  + error)
+          throw error
+      }
+  };
+
+  const formSuccess =(newproduct) =>{
+    saveModal(newproduct)
+  }
+
+  const formFailed =(error) =>{
+    message.error("ERROR en los datos. No cumplen las validaciones que se muestran en rojo")
+  }
+
+  const [value, setValue] =  useState("Jardin vertical")
+    const onChange =e=>{
+      console.log('value', value)
+      console.log('e',e)
+        setValue(e)
+        console.log('value', value)
+    }
+
+  const handleCancel = ()=>{
+    closeModal()
+  }
+
+  useEffect(()=>{
+    console.log("EDITMODAL-useEffect de seteo")
+    formedit.setFieldsValue ({
       product: '',
       brand: '',
       category: '',
@@ -16,41 +58,16 @@ const ProductModal =({productmodal, setProductModal , getAllProducts}) =>{
       dimensions: '',
       use: '',
       photo_url: '',
-      price:0
+      price:0 })
+  })
 
-    } )
-    
-    const closeModal = ()=>{
-      setProductModal(false)
-    }
-
-    const handleNewProduct=e=>{
+    /*const handleNewProduct=e=>{
         const {name, value } = e.target ;
         setNewProduct({...newproduct, [name]: value});
         console.log('nuevo producto', newproduct)
-    }
-
-   /* const saveModal = async ()=>{
-        console.log('save modal - newproduct', newproduct)
-        const response = await axios.post('http://localhost:8080/api/admin/products/' , newproduct )
-        //validar que salio ok el post para refrescar la tabla
-        console.log('despues de dar de alta',response)
-        closeModal()
-        getAllProducts()
     }*/
 
-    const saveModal = async e => {
-        e.preventDefault();
-        try{
-            const resp = await axios.post('http://localhost:8080/api/admin/products', newproduct,{headers: {Authorization: 'Bearer ' + token}});
-            console.log(resp)
-            closeModal()
-            getAllProducts()
-        } catch (error){
-            message.error("Fallo la Grabacion del Producto - Error:"  + error)
-            throw error
-        }
-    };
+    
         
     const formview={
         labelCol:{
@@ -65,67 +82,102 @@ return (
       <Modal title='Nuevo Producto' 
         visible={productmodal}
         width={1000}
-        footer={[
-            <Button onClick={closeModal}>Cancelar</Button>,
-            <Button type="primary" onClick={saveModal}>Guardar</Button>
-        ]}>
-         <Form {...formview}>
+        footer={null}
+        onCancel={closeModal}
+      >
+        <Row>
+            <Col xs={1} sm={2} md={3} lg={4}></Col>
+            <Col xs={23} sm={22} md={21} lg={18}>
+          <Form {...formview}
+            name="formulario" 
+            onFinish={formSuccess}
+            onFinishFailed={formFailed}
+            form={formedit}
+          >
             <Item label="Producto" 
               name="product" 
               rules={[{ required: true, message: 'Ingrese nombre del PRODUCTO (max:20)' , max:20 }]}
+              allowClear
             >
-                <Input name="product" onChange={handleNewProduct} allowClear/>
+                <Input/>
             </Item>
 
             <Item label="Marca" 
               name="brand" 
               rules={[{ required: true, message: 'Ingrese la MARCA (max:20)' , max:20}]}
+              allowClear
             >
-                 <Input name="brand" onChange={handleNewProduct} allowClear/>
-             </Item>
+                 <Input/>
+            </Item>
 
-             <Item label="Categoria" 
+            <Item label="Categoria" 
               name="category" 
-              rules={[{ required: true, message: 'Ingrese CATEGORIA (max:20)' , max:20}]}
+              rules={[{ required: true, message: 'Seleccione el TIPO de Categoria'}]}
+              
             >
-                 <Input name="category" onChange={handleNewProduct} allowClear/>
-             </Item>
+                <Select value={value}
+                  placeholder="Seleccione categoria"
+                  onChange={onChange}
+                  
+                  name="select"
+                >
+                  <Option value={"Jardin vertical"}>Jardin vertical</Option>
+                  <Option value={"repuestos"}>repuestos</Option>
+                  <Option value={"armado"}>armado</Option>
+                  <Option value={"vegetal"}>vegetal</Option>
+                  <Option value={"accesorios riego"}>accesorios riego</Option>
+                  <Option value={"tierras"}>tierras</Option>
+                </Select>
+            </Item>
 
-              <Item label="Descripcion" 
+            <Item label="Descripcion" 
               name="description" 
               rules={[{ required: true, message: 'Ingrese DESCRIPCION (max:200)' , max:200}]}
+              allowClear
             >
-                 <Input name="description" onChange={handleNewProduct} allowClear/>
-             </Item>
+              <Input/>
+            </Item>
 
              <Item label="Dimensiones" 
               name="dimensions" 
               rules={[{ required: true, message: 'Ingrese DIMENSIONES (max:15)' , max:15}]}
+              allowClear
             >
-                 <Input name="dimensions" onChange={handleNewProduct} allowClear/>
+                 <Input/>
              </Item>
 
              <Item label="Tipo de Uso" 
               name="use" 
               rules={[{ required: true, message: 'Ingrese tipo de USO (max:15)' , max:15}]}
+              allowClear
             >
-                 <Input name="use" onChange={handleNewProduct} allowClear/>
+                 <Input/>
              </Item>
 
              <Item label="Url Imagen" 
               name="photo_url" 
               rules={[{ required: true, message: 'Ingrese URL (max:200)' , max:200}]}
+              allowClear
             >
-                 <Input name="photo_url" onChange={handleNewProduct} allowClear/>
+                 <Input/>
              </Item>
 
               <Item label="Precio" 
               name="price" 
               rules={[{ required: true, message: 'Ingrese PRECIO'}]}
+              allowClear
             >
-                 <Input name="price" onChange={handleNewProduct} allowClear/>
+                 <Input/>
              </Item>
+
+             <Item style={{textAlign:'center'}}>
+                <Button type="primary" htmlType="submit">Guardar</Button>
+                &nbsp;&nbsp;&nbsp;
+                <Button htmlType="button" onClick={handleCancel}>Cancelar</Button>
+            </Item>
          </Form>
+         </Col>
+      </Row>
       </Modal>
     </div>
 )
