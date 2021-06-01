@@ -40,7 +40,7 @@ const Products = () => {
   
   const getProducts = async (e) => {
     console.log('value del get', e)
-    const resp = await axios.get('http://localhost:8080/api/admin/products',{ params: { category: e } })
+    const resp = await axios.get('http://localhost:8080/api/products',{ params: { category: e } })
     console.log('resp.data',resp.data)
     setProducts(resp.data)
     console.log('products',products)

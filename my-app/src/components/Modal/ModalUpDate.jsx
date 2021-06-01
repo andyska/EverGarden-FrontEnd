@@ -3,6 +3,7 @@ import { Modal , Button, Form , Input, message, Select, Col , Row} from 'antd'
 import axios from 'axios'
 import './ProductModal.css'
 
+
 const { Item } = Form
 const { Option } = Select
 
@@ -82,10 +83,11 @@ useEffect(()=>{
 
 return (
   <div>
-    <Modal title='Editacion de Datos de Producto' 
+    <Modal title='Edición de Datos de Producto' 
       visible={isModalVisible}
       width={1000}
       footer={null}
+      onCancel={handleCancel}
     >
       <Row>
         <Col xs={1} sm={2} md={6} lg={7}></Col>

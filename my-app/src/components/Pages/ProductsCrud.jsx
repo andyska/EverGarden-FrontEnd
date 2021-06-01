@@ -121,9 +121,9 @@ const ProductsCrud = () => {
       key: 'actions',
       render: (text, row) =>
         <>
-          <DeleteOutlined style={{fontSize:'25px', color:'red'}} onClick={()=>handleOnDelete(row)}/>
+          <DeleteOutlined style={{fontSize:'25px', color:'#666600'}} onClick={()=>handleOnDelete(row)}/>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          <EditOutlined style={{fontSize:'25px', color:'blue'}} onClick={() =>handleOnUpDate(row)} />
+          <EditOutlined style={{fontSize:'25px', color:'#663399'}} onClick={() =>handleOnUpDate(row)} />
         </>
     },
 
