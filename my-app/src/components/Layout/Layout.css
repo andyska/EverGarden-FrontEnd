@@ -71,7 +71,12 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
+.anticon.anticon-right {
+ color :#666600;
+}
+.anticon.anticon-left {
+  color :#666600;
+ }
 .ant-menu-dark.ant-menu-dark:not(.ant-menu-horizontal) .ant-menu-item-selected {
   background-color:#999933; ;
 }
