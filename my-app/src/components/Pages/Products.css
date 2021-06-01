@@ -77,4 +77,16 @@ article {
 .header{
   color: black;
   font-weight: bold;
+  margin-right: 20px;
+  padding: 10px;
+}
+
+.divSelect{
+  width: 40%;
+  
+}
+
+.selectProduct{
+  width: 40%;
+  margin-right: 10px;
 }
