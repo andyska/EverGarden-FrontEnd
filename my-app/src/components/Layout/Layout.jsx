@@ -1,11 +1,11 @@
 import React, { useState, useEffect} from 'react'
-import { Button, Layout, Menu } from 'antd'
+import { Button, Layout, Menu, message } from 'antd'
 import './Layout.css'
 //import './Layout_1.css'
 import  {NavLink,  Routes, Route} from 'react-router-dom'
 import AboutUs from '../Pages/AboutUs'
 import ContactModal from '../Modal/ContactModal'
-import imgHeader from '../../images/header_a.jpg'
+import imgHeader from '../../images/LOGO_EVER_GARDEN_APAISADO.jpg'
 import iconFacebook from "../../images/facebook.png"
 import iconInstagram from "../../images/instagram.png"
 import iconMail from "../../images/mail.png"
@@ -27,6 +27,7 @@ import Error404 from '../Pages/Error404'
 import ProductsCrud from '../Pages/ProductsCrud'
 import MenuAdmin from '../Pages/MenuAdmin'
 import Users from '../Pages/Users'
+import GoToMain from '../GoToMain'
 
 const { Header, Content, Footer, Sider } = Layout;
 const {SubMenu} = Menu
@@ -70,6 +71,12 @@ const MyLayout = () => {
     setIsConfigHidden(false)
     console.log("llegue hasta aca!")
   }
+
+  const handleLogOutClick = () => {
+    localStorage.removeItem('Token')
+    message.success('Cerrando sesión. Gracias por su visita',5)
+    setTimeout(GoToMain, 2000);
+    }
 
   const onLogin=()=>{
     window.location.href = '/admin'
@@ -127,7 +134,7 @@ const MyLayout = () => {
                 </NavLink>
               </Menu.Item>
               <Menu.Item key="8">
-                <NavLink hidden={isConfigHidden} id="cerrar" to="/MenuAdmin" >
+                <NavLink hidden={isConfigHidden} id="cerrar" to="/" onClick={handleLogOutClick} >
                   Cerrar Sesión
                 </NavLink>
               </Menu.Item>
