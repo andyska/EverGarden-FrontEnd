@@ -25,7 +25,8 @@ const tailLayout = {
 };
 
 const MyLogin = ({HandleConfig}) => {
- 
+   let readyToRedirect = false 
+
   const onFinish = async(values) => {
     console.log('Success:', values);
     const userObject = 
@@ -37,17 +38,17 @@ const MyLogin = ({HandleConfig}) => {
     try{
     const response = await axios.post('http://localhost:8080/api/admin/users/login/', userObject );
      localStorage.setItem("Token", response.data.token) 
-     //alert(`Bienvenido ${userObject.userName}!`+' Utilice la sección "Configuraciones" del menú lateral para realizar acciones de administrador')
-     //HandleConfig()
-     message.success(`Bienvenido ${userObject.userName}!`+' Utilice la sección "Configuraciones" del menú lateral para realizar acciones de administrador',4,HandleConfig())
-     //GoToMain()
-  } 
+     readyToRedirect = true
+     } 
   catch(err){
-    //settear en true la bandera para levantar para que salte el error de loggeo
-    console.log('este es el error de login', err)
     message.error('Error de inicio de sesión. Verifique usuario y contraseña ingresados',5)
-    //alert ('Error: Usuario o Contraseña invalidos')
-    
+    }
+    finally{
+      if (readyToRedirect === true){
+      alert (`Bienvenido ${userObject.userName}!`+' Utilice la sección "Configuraciones" del menú lateral para realizar acciones de administrador')
+      HandleConfig()
+      GoToMain()
+    }
     };
   }
 

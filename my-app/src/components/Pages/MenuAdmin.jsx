@@ -18,22 +18,16 @@ const MenuAdmin = () => {
     localStorage.removeItem('Token')
     GoToMain()
   }
-     console.log("entró a MenuAdmin")
+    
      if (token){
      return (
          <div>
          <h1>MENU ADMINISTRADOR</h1>
          <Space>
-         <Button onClick={handleOnClick} >
-          Configurar Productos
-         </Button >
-         <Button onClick={handleUsersClick}>
-         Configurar Usuarios
-        </Button>
-        <Button onClick={handleLogOutClick}>
+         <Button onClick={handleLogOutClick}>
          Cerrar Sesión
         </Button>
-        </Space>
+        </Space> *
         </div>
           )}
           else {
