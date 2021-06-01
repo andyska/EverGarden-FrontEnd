@@ -11,6 +11,7 @@ import iconInstagram from "../../images/instagram.png"
 import iconMail from "../../images/mail.png"
 import iconMap from "../../images/ubicacion.png"
 import logoPlanta from '../../images/logo.png'
+
 import {
   HomeOutlined,
   IdcardOutlined,
@@ -23,11 +24,11 @@ import MyCarousel from '../Carousel/Carousel'
 import IndexPage from '../Pages/Index'
 import MyLogin from '../Login/Login'
 import Products from '../Pages/products'
-import Error404 from '../Pages/Error404'
 import ProductsCrud from '../Pages/ProductsCrud'
 import MenuAdmin from '../Pages/MenuAdmin'
 import Users from '../Pages/Users'
 import GoToMain from '../GoToMain'
+import Error404 from '../Pages/Error404'
 
 const { Header, Content, Footer, Sider } = Layout;
 const {SubMenu} = Menu
@@ -149,7 +150,7 @@ const MyLayout = () => {
             </div>
           </Header>
           <Content>
-            
+
             <Routes> 
                 <Route exact path="/" element= {<IndexPage/>} />
                 <Route exact path="/aboutus" element= {<AboutUs/>} />
@@ -171,7 +172,7 @@ const MyLayout = () => {
               <div class="column1">
                 <img src={logoPlanta}/>
                 <div className="site-button-ghost-wrapper">
-                  <Button type="primary" ghost onClick={onLogin}>
+                  <Button type="primary" ghost onClick={onLogin} >
                     Acceso
                   </Button>
                 </div>

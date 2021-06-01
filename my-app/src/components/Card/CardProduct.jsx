@@ -5,6 +5,7 @@ import { Card } from 'antd';
 
 const CardProduct = (props) => {
   const profile = props.profile
+  console.log('profile.photo_url',profile.photo_url)
   const { Meta } = Card;
 
   return (
@@ -12,7 +13,7 @@ const CardProduct = (props) => {
     <Card className="cardStyle"
       hoverable
       style={{ width: 180 }}
-      cover={<img src={profile.photo_url} alt=""></img>}
+      cover={<img src={profile.photo_url} alt=""/>}
     >
       <Meta classeName="title" title= {profile.product} />
       <Meta title= {profile.brand} />
@@ -20,14 +21,6 @@ const CardProduct = (props) => {
       
     </Card>
 
-    /*<div className="github-profile">
-      <img src={profile.avatar_url} alt=""></img>
-      <div className="info">
-        <div className="name">Name: {profile.name}</div>
-        <div className="userName">User: {profile.login}</div>
-        <div className="company">Company: {profile.company}</div>
-      </div>
-    </div>*/
   );
 }
 

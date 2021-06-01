@@ -1,10 +1,11 @@
 import React, {useEffect, useState } from 'react'
-import { Modal , Button, Form , Input, message, Radio, Col , Row} from 'antd'
+import { Modal , Button, Form , Input, message, Select, Col , Row} from 'antd'
 import axios from 'axios'
 import './ProductModal.css'
 
+
 const { Item } = Form
-const { Group } = Radio
+const { Option } = Select
 
 const ModalUpDate = ({isModalVisible ,setIsModalVisible ,  getAllProducts , productdetails}) =>{
   console.log('ModalUpDate-productdetails - 1', productdetails)
@@ -35,7 +36,15 @@ const formSuccess =(editproduct) =>{
 } 
 const formFailed =(error) =>{
   message.error("ERROR en los datos, no pasan las validaciones=>" + error)
-} 
+}
+
+const [value, setValue] =  useState("Jardin vertical")
+    const onChange =e=>{
+      console.log('value', value)
+      console.log('e',e)
+        setValue(e)
+        console.log('value', value)
+    }
 
 useEffect(()=>{
   if (typeof productdetails._id !== undefined){
@@ -74,10 +83,11 @@ useEffect(()=>{
 
 return (
   <div>
-    <Modal title='Editacion de Datos de Producto' 
+    <Modal title='Edición de Datos de Producto' 
       visible={isModalVisible}
       width={1000}
       footer={null}
+      onCancel={handleCancel}
     >
       <Row>
         <Col xs={1} sm={2} md={6} lg={7}></Col>
@@ -106,9 +116,22 @@ return (
 
             <Item label="Categoria" 
               name="category" 
-              rules={[{ required: true, message: 'Ingrese CATEGORIA (max:20)' , max:20}]}
+              rules={[{ required: true, message: 'Seleccione el TIPO de Categoria'}]}
+              
             >
-              <Input />
+                <Select value={value}
+                  placeholder="Seleccione categoria"
+                  onChange={onChange}
+                  
+                  name="select"
+                >
+                  <Option value={"Jardin vertical"}>Jardin vertical</Option>
+                  <Option value={"repuestos"}>repuestos</Option>
+                  <Option value={"armado"}>armado</Option>
+                  <Option value={"vegetal"}>vegetal</Option>
+                  <Option value={"accesorios riego"}>accesorios riego</Option>
+                  <Option value={"tierras"}>tierras</Option>
+                </Select>
             </Item>
 
             <Item label="Descripcion" 

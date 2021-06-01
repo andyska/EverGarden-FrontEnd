@@ -2,7 +2,9 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import CardList from '../Card/CardList'
 import './Products.css'
-import { Cascader } from 'antd'
+import { Select } from 'antd'
+
+const { Option } = Select
 
 const Products = () => {
   const [products, setProducts] = useState([])
@@ -25,28 +27,20 @@ const Products = () => {
       label: 'Todos', 
     },
   ];
-       
-  function onChange(value) {
-    console.log('options', options)
-    
-    if (value[0]){
-      const query = value[0];
-      console.log('value',value[0]);
-      getProducts(query)
-    }else if(value[1]){
-      const query = value[1];
-      console.log('value',value[1]);
-      getProducts(query)
-    }else if(value[2]){
-      const query = value[2];
-      console.log('value',value[2]);
-      getProducts(query)
-    }
+
+  const [value, setValue] =  useState("Jardin vertical")
+  const onChange =e=>{
+    console.log('value', value)
+    console.log('e',e)
+      setValue(e)
+      getProducts(e)
+      console.log('value', value)
   }
+
   
-  const getProducts = async (query) => {
-    
-    const resp = await axios.get('http://localhost:8080/api/products',{ params: { category: query } })
+  const getProducts = async (e) => {
+    console.log('value del get', e)
+    const resp = await axios.get('http://localhost:8080/api/products',{ params: { category: e } })
     console.log('resp.data',resp.data)
     setProducts(resp.data)
     console.log('products',products)
@@ -65,7 +59,18 @@ const Products = () => {
           <h1>PRODUCTOS</h1>
         </div>
         <div>
-          <Cascader options={options} onChange={onChange} placeholder="Please select" />
+          <Select value={value}
+                  placeholder="Seleccione categoria"
+                  onChange={onChange}
+                  name="select"
+          >
+                  <Option value={"Jardin vertical"}>Jardin vertical</Option>
+                  <Option value={"repuestos"}>repuestos</Option>
+                  <Option value={"armado"}>armado</Option>
+                  <Option value={"vegetal"}>vegetal</Option>
+                  <Option value={"accesorios riego"}>accesorios riego</Option>
+                  <Option value={"tierras"}>tierras</Option>
+          </Select>
         </div>
       </div>
         <CardList data={products}/>

@@ -38,6 +38,8 @@ const UserModal = ({usermodal, setModal , getAllUsers}) => {
 
     const [value, setValue] = useState("admin")
     const onChange =e=>{
+        console.log('value', value)
+        console.log('e.target.value', e.target.value)
         setValue(e.target.value)
     }
 
@@ -79,7 +81,7 @@ const UserModal = ({usermodal, setModal , getAllUsers}) => {
                 rules={[{ required: true, message: 'Ingrese el NOMBRE (max:20)' , max:20 }]}
                 allowClear
             >
-                <Input   />
+                <Input/>
             </Item>
             <Item label="Apellido" 
                 name="lastName" 
