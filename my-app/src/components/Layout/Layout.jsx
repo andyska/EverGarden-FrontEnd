@@ -121,20 +121,20 @@ const MyLayout = () => {
               </NavLink>
             </Menu.Item>  
 
-            <SubMenu key="conf_menu" icon={<SettingOutlined />} 
+            <SubMenu style={{ margin: '0px' }} key="conf_menu" icon={<SettingOutlined />} 
               title="Configuraciones"  hidden= {isConfigHidden}
             >
-              <Menu.Item key="6">
+              <Menu.Item style={{ margin: '0px' }} key="6">
                 <NavLink hidden={isConfigHidden} id="crudproduct" to="/ProductsCrud" >
                   Adm.Productos
                 </NavLink>
               </Menu.Item>
-              <Menu.Item key="7">
+              <Menu.Item style={{ margin: '0px' }} key="7">
                 <NavLink hidden={isConfigHidden} id="crudusers" to="/Users" >
                   Adm.Usuarios
                 </NavLink>
               </Menu.Item>
-              <Menu.Item key="8">
+              <Menu.Item style={{ margin: '0px' }} key="8">
                 <NavLink hidden={isConfigHidden} id="cerrar" to="/" onClick={handleLogOutClick} >
                   Cerrar Sesión
                 </NavLink>
