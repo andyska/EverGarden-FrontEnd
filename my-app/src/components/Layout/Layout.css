@@ -54,7 +54,7 @@
   color: #fff;
   line-height: 48px;
   text-align: center;
-  background:#999933;
+  background: #E6EE9C;
   cursor: pointer;
   transition: all 0.2s;
 }
@@ -73,7 +73,7 @@
 }
 
 .ant-menu-dark.ant-menu-dark:not(.ant-menu-horizontal) .ant-menu-item-selected {
-  background-color:#99CC99;
+  background-color:#999933; ;
 }
 
 .ant-menu-dark .ant-menu-item-selected > a, .ant-menu-dark .ant-menu-item-selected > span > a, .ant-menu-dark .ant-menu-item-selected > a:hover, .ant-menu-dark .ant-menu-item-selected > span > a:hover {
@@ -242,4 +242,12 @@ footer {
 .div-index{
   width: 100%;
   height: 100%;
+}
+
+.ant-btn-background-ghost.ant-btn-primary {
+  color: white;
+  background: transparent;
+  border-color: white;
+  text-shadow: none;
+  box-shadow: none;
 }

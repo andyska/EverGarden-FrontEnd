@@ -1,12 +1,15 @@
-import { Menu, Dropdown, Button, Space } from 'antd';
+import React /*, {UseState}*/ from 'react'
+import { Menu, Dropdown, Button, Space } from 'antd'
 import gardenImages from '../Carousel/GardenImages'
 import armadoImages from '../Carousel/ArmadoImages'
 
 const MyDropDown = ( {galeryImages, setGaleryImages} ) => {
-const onMenuClick = e => {
-    // console.log('menu click', e.target.target);
+  
+  //const [galeryImages , setGaleryImages] = UseState(gardenImages)
+  const onMenuClick = e => {
+     console.log('menu click', e.target.target)
     // en target.target viene el valor de la propiedad target del menu
-     if (e.target.target === 1 ) {
+     if (e.target.target === "1" ) {
          setGaleryImages(gardenImages)
      } else {
          setGaleryImages(armadoImages)}
