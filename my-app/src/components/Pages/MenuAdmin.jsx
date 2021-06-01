@@ -1,11 +1,11 @@
 import React from 'react';
-import { Button, Space, message } from 'antd';
+import { Button, Space } from 'antd';
 import GoToMain from '../GoToMain'
 
 const MenuAdmin = () => {
 
   const token = localStorage.getItem('Token') 
-  
+  /*
     const handleOnClick =() => {
     window.location.href= '/ProductsCrud' 
   }
@@ -13,7 +13,7 @@ const MenuAdmin = () => {
   const handleUsersClick =() => {
     window.location.href= '/Users' 
   }
-
+*/
   const handleLogOutClick = () => {
     localStorage.removeItem('Token')
     GoToMain()
