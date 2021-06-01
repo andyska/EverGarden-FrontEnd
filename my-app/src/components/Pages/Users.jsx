@@ -5,7 +5,6 @@ import {DeleteOutlined , EditOutlined , PlusCircleOutlined} from '@ant-design/ic
 import UserModal from '../Modal/UserModal'
 import ConfirmModal from '../Modal/ConfirmModal'
 import EditModal from '../Modal/EditModal'
-//import './Users.css' 
 import GoToMain from '../GoToMain'
 
 const UsersCrud = () => {
@@ -52,7 +51,7 @@ const UsersCrud = () => {
   const [ usereditdetails, setUserEditdetails]  = useState({})
 
   const handleOnEdit = (row) => {
-    console.log('USERS.jx --handleOnedit====> ROW', row)
+    //console.log('USERS.jx --handleOnedit====> ROW', row)
     setUserEditdetails (row)
     //console.log('USERS.jx - usereditdetails ===>', usereditdetails)
     setIsEditModalVisible(true)
@@ -97,10 +96,7 @@ const UsersCrud = () => {
     },
         
   ];
-  
-
-  //<h1  margin-left="10px"  height="30px" >Administracion de Usuarios</h1>
-
+ 
   if(token){
   return (
     <div>
