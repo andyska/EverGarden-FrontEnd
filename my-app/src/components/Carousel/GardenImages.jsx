@@ -14,6 +14,6 @@ const gardenImages = [
     imagen6,imagen7, imagen8, imagen9,imagen10
 ]
 
-console.log('gardenImages', gardenImages)
+//console.log('gardenImages', gardenImages)
 
 export default gardenImages

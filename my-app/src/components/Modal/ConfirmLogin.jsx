@@ -3,7 +3,7 @@ import {Modal} from 'antd';
 import GoToMain from '../GoToMain'
 
 const ConfirmLogin = ({isModalLogin ,setIsModalLogin , userLogin}) => {
-  console.log('ConfirmLogin-', userLogin)
+  //console.log('ConfirmLogin-', userLogin)
   
   const handleOK =  () => {
     //console.log('ModalConfirm-3 ',hhh)
