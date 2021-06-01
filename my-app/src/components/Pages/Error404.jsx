@@ -1,4 +1,4 @@
-import logoPlanta from '../../images/404.jpg'
+import logoPlanta from '../../images/verde.jpg'
 import './Error404.css'
 
 const Error404 = () => {
