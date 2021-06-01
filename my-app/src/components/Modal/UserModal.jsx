@@ -1,14 +1,11 @@
-import React, {  /*createRef,*/ useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Modal , Button, Form , Input, message, Radio, Col , Row} from 'antd'
 import axios from 'axios'
 import Password from 'antd/lib/input/Password'
 import './UserModal.css'
 
-
 const { Item } = Form
 const { Group } = Radio
-
-//const NewUserModal =({usermodal, setModal, getAllUsers,  usereditdetails, setUserEditdetails}) => {
 const UserModal = ({usermodal, setModal , getAllUsers}) => {
     //console.log('EDIT modal - userEDITtails =========', usereditdetails )
     const token = localStorage.getItem('Token')
@@ -20,9 +17,9 @@ const UserModal = ({usermodal, setModal , getAllUsers}) => {
  
     const saveModal = async (newuser)=>{
         try{ 
-            console.log("por grabar ==",'http://localhost:8080/api/admin/users/' , newuser)
+            //console.log("por grabar ==",'http://localhost:8080/api/admin/users/' , newuser)
             const response = await axios.post('http://localhost:8080/api/admin/users/', newuser,{headers: {Authorization: 'Bearer ' + token}});
-            console.log("post de usuario-response",response)
+            //console.log("post de usuario-response",response)
             message.success("Se CREO usuario: " + response.data.userName)
             closeModal()
             getAllUsers()
@@ -51,7 +48,7 @@ const UserModal = ({usermodal, setModal , getAllUsers}) => {
     }
 
     useEffect(()=>{
-        console.log("EDITMODAL-useEffect de seteo")
+        //console.log("EDITMODAL-useEffect de seteo")
         formedit.setFieldsValue ({
                 firstName : '',
                 lastName : '',

@@ -7,6 +7,7 @@ import ModalConfirm from '../../components/Modal/ModalConfirm'
 import ModalUpDate from '../../components/Modal/ModalUpDate'
 import GoToMain from '../../components/GoToMain'
 
+
 const ProductsCrud = () => {
 
   const [products, setProducts] = useState([])
@@ -18,14 +19,18 @@ const ProductsCrud = () => {
     if (token){
     try{
       const resp = await axios.get('http://localhost:8080/api/admin/products',{headers: {Authorization: 'Bearer ' + token}});
-      console.log("este es el token del header" ,resp.headers.Authorization)
-      console.log(resp.data)
       console.log(resp.headers)
-      setProducts(resp.data)}
+      setProducts(resp.data)
+      
+    }
       catch(error){
-        message.error("Fallo la conexion con el BackEnd:" + error)
-        throw error
-      }}
+        localStorage.removeItem('Token')
+        GoToMain()   
+        message.error("Sesión expirada. Inicie sesión nuevamente", 4)
+        throw error        
+      }
+           
+    }
     else{
       alert ('Debe iniciar sesion como usuario administrador para acceder a esta ruta')
       GoToMain()

@@ -129,7 +129,7 @@ const MyLayout = () => {
               </Menu.Item>
               <Menu.Item key="8">
                 <NavLink hidden={isConfigHidden} id="cerrar" to="/MenuAdmin" >
-                  Cerrar Sesion
+                  Cerrar Sesión
                 </NavLink>
               </Menu.Item>
             </SubMenu>
@@ -166,7 +166,7 @@ const MyLayout = () => {
                 <img src={logoPlanta}/>
                 <div className="site-button-ghost-wrapper">
                   <Button type="primary" ghost onClick={onLogin}>
-                    Login
+                    Acceso
                   </Button>
                 </div>
               </div>

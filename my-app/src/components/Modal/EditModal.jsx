@@ -1,15 +1,13 @@
-import React, {  /*createRef,*/ useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Modal , Button, Form , Input, message, Radio, Col , Row} from 'antd'
 import axios from 'axios'
 import './UserModal.css'
 
 const { Item } = Form
 const { Group } = Radio
-//const { Password } = Input 
-
 
 const EditModal =({isEditModalVisible, setIsEditModalVisible, getAllUsers,  usereditdetails, setUserEditdetails}) => {
-    console.log('EDIT modal - userEDITtails =========', usereditdetails )
+    //console.log('EDIT modal - userEDITtails =========', usereditdetails )
     const token = localStorage.getItem('Token')
     const [formedit] = Form.useForm()
    
@@ -21,9 +19,9 @@ const EditModal =({isEditModalVisible, setIsEditModalVisible, getAllUsers,  user
     const saveModal = async (edituser)=>{
         try{ 
             const senduser={...edituser , password : '123456' }
-            console.log("por grabar ==",'http://localhost:8080/api/admin/users/'+ usereditdetails._id)
+            //console.log("por grabar ==",'http://localhost:8080/api/admin/users/'+ usereditdetails._id)
             const response = await axios.put('http://localhost:8080/api/admin/users/'+ usereditdetails._id , senduser,{headers: {Authorization: 'Bearer ' + token}});
-            console.log("put de usuario-response",response)
+            //console.log("put de usuario-response",response)
             message.success("Se Actualizo usuario: " + senduser.userName)
             closeModal()
             getAllUsers()
@@ -50,7 +48,7 @@ const EditModal =({isEditModalVisible, setIsEditModalVisible, getAllUsers,  user
     }
 
     useEffect(()=>{
-        console.log("EDITMODAL-useEffect de seteo")
+        //console.log("EDITMODAL-useEffect de seteo")
         if (typeof usereditdetails.firstName !== undefined){
             formedit.setFieldsValue ({
                 firstName : usereditdetails.firstName,
@@ -77,16 +75,15 @@ const EditModal =({isEditModalVisible, setIsEditModalVisible, getAllUsers,  user
         footer={null}
         onCancel={closeModal}
       >
-     
-         <Row>
-             <Col xs={1} sm={2} md={3} lg={4}></Col>
-             <Col xs={23} sm={22} md={21} lg={18}>
-         <Form 
+        <Row>
+            <Col xs={1} sm={2} md={3} lg={4}></Col>
+            <Col xs={23} sm={22} md={21} lg={18}>
+        <Form 
             name="formulario" 
             onFinish={formSuccess}
             onFinishFailed={formFailed}
             form={formedit}
-            >
+        >
             <Item label="Nombre" 
                 name="firstName" 
                 rules={[{ required: true, message: 'Ingrese el NOMBRE (max:20)' , max:20 }]}
@@ -125,10 +122,10 @@ const EditModal =({isEditModalVisible, setIsEditModalVisible, getAllUsers,  user
                 &nbsp;&nbsp;&nbsp;
                 <Button htmlType="button" onClick={onCancel}>Cancelar</Button>
             </Item>
-          </Form>
-         </Col>
-        </Row>
-      </Modal>
+        </Form>
+       </Col>
+      </Row>
+    </Modal>
     </div>
 )
 }

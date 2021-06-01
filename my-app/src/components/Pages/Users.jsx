@@ -5,7 +5,6 @@ import {DeleteOutlined , EditOutlined , PlusCircleOutlined} from '@ant-design/ic
 import UserModal from '../Modal/UserModal'
 import ConfirmModal from '../Modal/ConfirmModal'
 import EditModal from '../Modal/EditModal'
-//import './Users.css' 
 import GoToMain from '../GoToMain'
 
 const UsersCrud = () => {
@@ -19,11 +18,12 @@ const UsersCrud = () => {
       const resp = await axios.get('http://localhost:8080/api/admin/users',{headers: {Authorization: 'Bearer ' + token}});
       //console.log("Nuevo usuario", resp.data)
       setUsers(resp.data)
-    } catch (error){
-      //console.log("getAllUsers" , error)
-      message.error("Fallo la conexion con el BackEnd:" + error)
-      throw error
-    }}
+    } catch(error){
+      localStorage.removeItem('Token')
+      GoToMain()   
+      message.error("Sesión expirada. Inicie sesión nuevamente", 4)
+      throw error        
+    } }   
     else {
       alert ('Debe iniciar sesion como usuario administrador para acceder a esta ruta')
       GoToMain()
@@ -51,7 +51,7 @@ const UsersCrud = () => {
   const [ usereditdetails, setUserEditdetails]  = useState({})
 
   const handleOnEdit = (row) => {
-    console.log('USERS.jx --handleOnedit====> ROW', row)
+    //console.log('USERS.jx --handleOnedit====> ROW', row)
     setUserEditdetails (row)
     //console.log('USERS.jx - usereditdetails ===>', usereditdetails)
     setIsEditModalVisible(true)
@@ -96,10 +96,7 @@ const UsersCrud = () => {
     },
         
   ];
-  
-
-  //<h1  margin-left="10px"  height="30px" >Administracion de Usuarios</h1>
-
+ 
   if(token){
   return (
     <div>

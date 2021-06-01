@@ -20,6 +20,6 @@ const armadoImages = [
     imagen21, imagen22, imagen23,imagen24
 ]
 
-console.log('armadoImages', armadoImages)
+//console.log('armadoImages', armadoImages)
 
 export default armadoImages
