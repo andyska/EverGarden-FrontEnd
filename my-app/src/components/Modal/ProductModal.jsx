@@ -94,23 +94,7 @@ return (
             onFinishFailed={formFailed}
             form={formedit}
           >
-            <Item label="Producto" 
-              name="product" 
-              rules={[{ required: true, message: 'Ingrese nombre del PRODUCTO (max:20)' , max:20 }]}
-              allowClear
-            >
-                <Input/>
-            </Item>
-
-            <Item label="Marca" 
-              name="brand" 
-              rules={[{ required: true, message: 'Ingrese la MARCA (max:20)' , max:20}]}
-              allowClear
-            >
-                 <Input/>
-            </Item>
-
-            <Item label="Categoria" 
+             <Item label="Categoria" 
               name="category" 
               rules={[{ required: true, message: 'Seleccione el TIPO de Categoria'}]}
               
@@ -128,6 +112,21 @@ return (
                   <Option value={"accesorios riego"}>accesorios riego</Option>
                   <Option value={"tierras"}>tierras</Option>
                 </Select>
+            </Item>
+            <Item label="Producto" 
+              name="product" 
+              rules={[{ required: true, message: 'Ingrese nombre del PRODUCTO (max:20)' , max:20 }]}
+              allowClear
+            >
+                <Input/>
+            </Item>
+
+            <Item label="Marca" 
+              name="brand" 
+              rules={[{ required: true, message: 'Ingrese la MARCA (max:20)' , max:20}]}
+              allowClear
+            >
+                 <Input/>
             </Item>
 
             <Item label="Descripcion" 
