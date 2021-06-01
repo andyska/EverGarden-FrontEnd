@@ -243,6 +243,11 @@ footer {
   color: #666600;
   background: white;
   padding: 0px 0px;
+  padding-top: 10px;
+}
+
+.container-footer{
+  margin-top: 10px;
 }
 
 .div-index{
@@ -251,21 +256,16 @@ footer {
 }
 
 .ant-btn-background-ghost.ant-btn-primary {
-  color: white;
+  color:white;
   background: transparent;
   border-color: white;
   text-shadow: none;
   box-shadow: none;
 }
 
-/*.ant-menu-item ant-menu-item-only-child{
-  margin-top: 10px;
-  padding: 10px;
-}
 
-.ant-menu-item-only-child{
-  margin-top: 10px;
-  padding: 10px;
+.ant-btn-background-ghost.ant-btn-primary:hover, .ant-btn-background-ghost.ant-btn-primary:focus {
+  color: #666600;
+  background: #666600;
+  border-color: #666600;
 }
-*/
-

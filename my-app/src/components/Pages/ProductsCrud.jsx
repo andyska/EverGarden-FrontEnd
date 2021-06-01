@@ -6,6 +6,7 @@ import ProductModal from '../../components/Modal/ProductModal'
 import ModalConfirm from '../../components/Modal/ModalConfirm'
 import ModalUpDate from '../../components/Modal/ModalUpDate'
 import GoToMain from '../../components/GoToMain'
+import './ProductsCrud.css'
 
 
 const ProductsCrud = () => {
