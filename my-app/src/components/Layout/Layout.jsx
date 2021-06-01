@@ -92,50 +92,50 @@ const MyLayout = () => {
         <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
 
           <Menu.Item className="item" key="1" icon={<HomeOutlined />}>
-              <NavLink to="/">
+              <NavLink to="/"  style= {{fontWeight:'bolder'}}>
                 Inicio
               </NavLink>
             </Menu.Item>
 
             <Menu.Item className="item" key="2" icon={<TeamOutlined />}>
-              <NavLink to="/aboutus">
+              <NavLink to="/aboutus" style= {{fontWeight:'bolder'}}>
                 Nosotros
               </NavLink>
             </Menu.Item>
 
             <Menu.Item className="item" key="3" icon={<PictureOutlined />}>
-              <NavLink to="/galery">
+              <NavLink to="/galery"  style= {{fontWeight:'bolder'}}>
                 Galeria
               </NavLink>
             </Menu.Item>
 
             <Menu.Item className="item" key="4" icon={<ShopOutlined />} >
-              <NavLink to="/products"  >
+              <NavLink to="/products"   style= {{fontWeight:'bolder'}}>
                 Producto
               </NavLink>
             </Menu.Item>
 
             <Menu.Item className="item" key="5" icon={<IdcardOutlined />}>
-              <NavLink to="/contact" onClick={() => HandleOnClick()} >
+              <NavLink to="/contact" onClick={() => HandleOnClick()}   style= {{fontWeight:'bolder'}}>
                 Contacto
               </NavLink>
             </Menu.Item>  
 
             <SubMenu style={{ margin: '0px' }} key="conf_menu" icon={<SettingOutlined />} 
-              title="Configuraciones"  hidden= {isConfigHidden}
+              title="Configuraciones"  hidden= {isConfigHidden}  style= {{fontWeight:'bolder'}}
             >
               <Menu.Item style={{ margin: '0px' }} key="6">
-                <NavLink hidden={isConfigHidden} id="crudproduct" to="/ProductsCrud" >
+                <NavLink hidden={isConfigHidden} id="crudproduct" to="/ProductsCrud"  >
                   Adm.Productos
                 </NavLink>
               </Menu.Item>
               <Menu.Item style={{ margin: '0px' }} key="7">
-                <NavLink hidden={isConfigHidden} id="crudusers" to="/Users" >
+                <NavLink hidden={isConfigHidden} id="crudusers" to="/Users"  >
                   Adm.Usuarios
                 </NavLink>
               </Menu.Item>
               <Menu.Item style={{ margin: '0px' }} key="8">
-                <NavLink hidden={isConfigHidden} id="cerrar" to="/" onClick={handleLogOutClick} >
+                <NavLink hidden={isConfigHidden} id="cerrar" to="/" onClick={handleLogOutClick}  >
                   Cerrar Sesión
                 </NavLink>
               </Menu.Item>
